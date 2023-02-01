@@ -1,4 +1,4 @@
-# Shelfie Review - Book share 
+# Shelfie Share - Book reveiws and TBR shelf share 
 
 ## MVP - User can
 - Sign up for account
@@ -7,6 +7,7 @@
 - View list of books and their reviews
 - CRUD - create, update, delete review they left
 - Create book post
+
 ## Stretch
 - Share shelfie post - likes
 - Search books by name

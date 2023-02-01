@@ -45,11 +45,6 @@ Fox Vinyl Record Collections helps the user keep track of their collection inven
 $ bundle exec rake server
 ```
 
-
-Frontend, open `http://localhost:3000` to view it in your browser
-
-Backend, open `http://localhost:9292/collectors` to view data in your browser
-
 ## Resources
 - Photos of general records sourced from - [Canva] 
 - Record images sourced from - [Discogs]
