@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BookForm() {
+const BookForm = () => {
   return (
     <div>BookForm</div>
   )

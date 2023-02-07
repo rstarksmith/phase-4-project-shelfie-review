@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MyShelfie() {
+const MyShelfie = () => {
   return (
     <div>MyShelfie</div>
   )

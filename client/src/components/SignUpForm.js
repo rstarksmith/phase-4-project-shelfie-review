@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SignUpForm() {
+const SignUpForm = () => {
   return (
     <div>SignUpForm</div>
   )
