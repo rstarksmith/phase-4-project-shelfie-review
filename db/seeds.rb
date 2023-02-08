@@ -27,7 +27,7 @@ Review.create(header:"Loved This Book!", comment: "The author educates and enter
 Review.create(header:"Meh", comment: "I was disappointed in 'Trust'. It is beautifully written but never goes anywhere. Each story is interesting and would have made a good novel if expanded, but altogether not much of a book.", book_id: b9.id , user_id: u3.id)
 Review.create(header:"YES!", comment: "I was hooked after the first couple chapters! I highly recommend this book for fantasy fans.", book_id: b1.id , user_id: u2.id)
 Review.create(header:"Slow start", comment: "But once you get about halfway, the story takes off. Great.. just hang in there for the first bit.", book_id: b2.id , user_id: u3.id)
-Review.create(header:"Favorite book of all time", comment: "Quite possibly my favorite book ever-- not just of this series--I highly recommend it.", book_id: b3.id , user_id: u4.id)
+Review.create(header:"Favorite book of all time", comment: "Quite possibly my favorite book ever, not just of this series. I highly recommend it.", book_id: b3.id , user_id: u4.id)
 Review.create(header:"Great read", comment: "This is one of those books where you wish you could read it for the first time again, it's just such a great book. These characters are one of a kind and I truly cherish them so much.", book_id: b4.id , user_id: u5.id)
 Review.create(header:"In Love", comment: "I like this book, it has a lot of good content that will be useful to know in the last book but certianly not necessary. I don't think that this is a must read before continuing to the last book.", book_id: b5.id , user_id: u6.id)
 Review.create(header:"Not my cup of tea", comment: "Skimmed at best. Was boring and couldn't seem to get into the characters.", book_id: b7.id , user_id: u4.id)
