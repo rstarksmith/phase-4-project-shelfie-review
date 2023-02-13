@@ -5,13 +5,13 @@ const BookForm = () => {
 
   return (
     <div>
-      {/* <form>
+      <form>
         <input
           className="input"
           name="artist"
           type="text"
-          onChange={handleChange}
-          value={formData.artist}
+          // onChange={handleChange}
+          // value={formData.artist}
           placeholder="Title..."
         />
         <br />
@@ -19,23 +19,25 @@ const BookForm = () => {
           className="input"
           name="title"
           type="text"
-          onChange={handleChange}
-          value={formData.title}
+          // onChange={handleChange}
+          // value={formData.title}
           placeholder="Author..."
         />
+        <br/>
         <input
           className="input"
           name="title"
           type="text"
-          onChange={handleChange}
-          value={formData.title}
+          // onChange={handleChange}
+          // value={formData.title}
           placeholder="Image URL..."
         />
+        <br/>
         <select
           className="input"
           name="media_condition"
-          onChange={handleChange}
-          value={formData.media_condition}
+          // onChange={handleChange}
+          // value={formData.media_condition}
         >
           <option value="Romance">Romance</option>
           <option value="Fantasy">Fantasy</option>
@@ -46,7 +48,9 @@ const BookForm = () => {
           <option value="Misc Fiction">Misc Fiction</option>
           <option value="Nonfiction">Nonfiction</option>
         </select>
-      </form> */}
+        <br/>
+        <button>Add Book</button>
+      </form>
     </div>
   );
 }

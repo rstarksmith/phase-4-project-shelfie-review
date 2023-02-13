@@ -3,6 +3,11 @@ import { Link } from "react-router-dom"
 const SignUp = () => {
   return (
     <div>
+      <img
+        src="https://i.imgur.com/pxg3tZ9.png"
+        alt="shelfie share logo"
+        className="logo"
+      />
       <div>
         <h3> Sign in to My Shelfie</h3>
         <form>
@@ -37,7 +42,7 @@ const SignUp = () => {
             // onChange={handleChange}
             placeholder="Photo URL of your current TBR shelf..."
           />
-          <br/>
+          <br />
           <button>Sign up</button>
         </form>
 

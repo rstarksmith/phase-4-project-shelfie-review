@@ -14,7 +14,7 @@ const NavBar = () => {
         />
       </Link>
       <div className="nav-links">
-        <NavLink to="/">Features</NavLink>
+        <NavLink to="#features">Features</NavLink>
         {/* conditional render - features takes to icons on homepage and only shows when not logged in */}
         <NavLink to="/books">Book Reviews</NavLink>
         {/* books shows only when logged in */}

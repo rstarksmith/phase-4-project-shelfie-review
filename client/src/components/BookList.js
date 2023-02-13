@@ -1,6 +1,7 @@
-import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 const BookList = () => {
+  const navigate = useNavigate()
 
   // const books = () => {
   //   // map through books card
@@ -15,7 +16,7 @@ const BookList = () => {
           Leave a book review to help your fellow readers grow their TBR shelf!
         </h4>
       </div>
-      <button>Add a Book</button>
+      <button onClick={() => navigate("/books/new")}>Add a Book</button>
       {/* onclick show book form */}
       <div>
         {/* {books} */}

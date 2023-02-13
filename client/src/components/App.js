@@ -7,6 +7,7 @@ import BookList from "./BookList"
 import BookReviewPage from "./BookReviewPage"
 import MyShelfie from "./MyShelfie"
 import ShelfieShare from "./ShelfieShare"
+import BookForm from "./BookForm"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList />} />
         <Route path="/books/:id" element={<BookReviewPage />} />
+        <Route path="/books/new" element={<BookForm />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
         {/* conditional */}
         <Route path="/shelfieshare" element={<ShelfieShare />} />
