@@ -19,6 +19,7 @@ function App() {
         <Route path="/books" element={<BookList />} />
         <Route path="/books/:id" element={<BookReviewPage />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
+        {/* conditional */}
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
