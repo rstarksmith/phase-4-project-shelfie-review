@@ -37,6 +37,8 @@ const SignUp = () => {
             // onChange={handleChange}
             placeholder="Photo URL of your current TBR shelf..."
           />
+          <br/>
+          <button>Sign up</button>
         </form>
 
         <p>Already have an account?</p>

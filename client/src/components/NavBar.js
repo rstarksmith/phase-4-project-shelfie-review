@@ -1,7 +1,9 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const navigate = useNavigate()
+
   return (
     <nav className="navbar">
       <Link to="/">
@@ -20,10 +22,10 @@ const NavBar = () => {
       </div>
       <div>
         {/* conditional render if user is signed in display username and logout button */}
-        <button>Sign up</button>
-        <button>My Shelfie</button>
-        <button>Sign in</button>
-        <button>Sign out</button>
+        <button onClick={() => navigate("/signup")}>Sign up</button>
+        <button onClick={() => navigate("/myshelfie")}>My Shelfie</button>
+        <button onClick={() => navigate("/signin")}>Sign in</button>
+        <button>Log out</button>
       </div>
     </nav>
   );

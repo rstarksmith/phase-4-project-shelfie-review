@@ -20,6 +20,8 @@ const SignIn = () => {
           // onChange={handleChange}
           placeholder="Enter Password..."
         />
+        <br/>
+        <button>Sign in</button>
       </form>
 
         <p>Don't have an account?</p><Link to="/signup">
