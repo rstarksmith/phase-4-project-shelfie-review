@@ -12,6 +12,7 @@ const Home = () => {
         <h4>Share your TBR shelf and leave review for your fellow readers</h4>
       </div>
       <button onClick={() => navigate("/signup")}>Sign up</button>
+      <br/>
       <img
         src="https://i.imgur.com/ZMtwsZ4.png"
         alt="camera #shelfieshare"

@@ -5,6 +5,7 @@ const BookForm = () => {
 
   return (
     <div>
+      <h1>Add to Bookshelf</h1>
       <form>
         <input
           className="input"
@@ -39,6 +40,7 @@ const BookForm = () => {
           // onChange={handleChange}
           // value={formData.media_condition}
         >
+          <option value="">--Choose Genre--</option>
           <option value="Romance">Romance</option>
           <option value="Fantasy">Fantasy</option>
           <option value="Historical Fiction">Historical Ficion</option>

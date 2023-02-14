@@ -1,8 +1,9 @@
-import React from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const navigate = useNavigate()
+
+ 
 
   return (
     <nav className="navbar">
@@ -14,7 +15,7 @@ const NavBar = () => {
         />
       </Link>
       <div className="nav-links">
-        <NavLink to="#features">Features</NavLink>
+        <NavLink to="/" >Features</NavLink>
         {/* conditional render - features takes to icons on homepage and only shows when not logged in */}
         <NavLink to="/books">Book Reviews</NavLink>
         {/* books shows only when logged in */}
