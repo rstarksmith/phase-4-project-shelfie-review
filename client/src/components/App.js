@@ -1,4 +1,4 @@
-// import { useState } from "react"
+import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
 import NavBar from "./NavBar"
 import Home from "./Home"
@@ -11,14 +11,14 @@ import ShelfieShare from "./ShelfieShare"
 import BookForm from "./BookForm"
 
 function App() {
-  // const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
 
 
 
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />

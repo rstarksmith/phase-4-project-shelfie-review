@@ -1,12 +1,11 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   // errors
   //optional loading
-
 
   return (
     <div>
@@ -45,6 +44,6 @@ const SignIn = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SignIn
+export default SignIn;

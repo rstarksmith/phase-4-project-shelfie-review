@@ -19,7 +19,7 @@ const SignUp = () => {
         className="logo"
       />
       <div>
-        <h3> Sign in to My Shelfie</h3>
+        <h3> Create an account </h3>
         <form>
           <input
             type="text"

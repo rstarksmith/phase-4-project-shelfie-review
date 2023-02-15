@@ -1,7 +1,17 @@
-// import { UseState } from "react"
+import { useState } from "react"
 
 const BookForm = () => {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    genre: "",
+    image_url: ""
+  })
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <div>
@@ -9,36 +19,36 @@ const BookForm = () => {
       <form>
         <input
           className="input"
-          name="artist"
+          name="title"
           type="text"
-          // onChange={handleChange}
-          // value={formData.artist}
+          onChange={handleChange}
+          value={formData.title}
           placeholder="Title..."
         />
         <br />
         <input
           className="input"
-          name="title"
+          name="author"
           type="text"
-          // onChange={handleChange}
-          // value={formData.title}
+          onChange={handleChange}
+          value={formData.author}
           placeholder="Author..."
         />
         <br/>
         <input
           className="input"
-          name="title"
+          name="image_url"
           type="text"
-          // onChange={handleChange}
-          // value={formData.title}
+          onChange={handleChange}
+          value={formData.image_url}
           placeholder="Image URL..."
         />
         <br/>
         <select
           className="input"
-          name="media_condition"
-          // onChange={handleChange}
-          // value={formData.media_condition}
+          name="genre"
+          onChange={handleChange}
+          value={formData.genre}
         >
           <option value="">--Choose Genre--</option>
           <option value="Romance">Romance</option>
