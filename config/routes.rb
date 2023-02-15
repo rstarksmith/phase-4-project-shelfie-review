@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  
   resources :books, only: [:index, :show, :create] do
     resources :reviews
   end
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   get "/myshelfie", to: "users#show"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
