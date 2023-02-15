@@ -1,6 +1,16 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const SignUp = () => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordConfirmation, setPasswordConfirmation] = useState("")
+  const [photoUrl, setPhotoUrl] = useState("")
+  // errors
+  // loading?
+
+
+  
   return (
     <div>
       <img
@@ -14,32 +24,32 @@ const SignUp = () => {
           <input
             type="text"
             name="username"
-            // value={username}
-            // onChange={handleChange}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Create Username..."
           />
           <br />
           <input
             type="text"
             name="password"
-            // value={password}
-            // onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Create Password..."
           />
           <br />
           <input
             type="text"
-            name="password"
-            // value={password}
-            // onChange={handleChange}
+            name="password_confirmation"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
             placeholder="Confirm Password..."
           />
           <br />
           <input
             type="text"
-            name="password"
-            // value={password}
-            // onChange={handleChange}
+            name="photo_url"
+            value={photoUrl}
+            onChange={(e) => setPhotoUrl(e.target.value)}
             placeholder="Photo URL of your current TBR shelf..."
           />
           <br />

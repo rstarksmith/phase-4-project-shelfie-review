@@ -4,7 +4,7 @@ const BookList = () => {
   const navigate = useNavigate()
 
   // const books = () => {
-  //   // map through books card
+  //   // map through book cards
   // }
 
 

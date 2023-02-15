@@ -1,6 +1,13 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const SignIn = () => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  // errors
+  //optional loading
+
+
   return (
     <div>
       <img
@@ -14,20 +21,21 @@ const SignIn = () => {
           <input
             type="text"
             name="username"
-            // value={username}
-            // onChange={handleChange}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Username..."
           />
           <br />
           <input
             type="text"
             name="password"
-            // value={password}
-            // onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter Password..."
           />
           <br />
           <button>Sign in</button>
+          {/* could add optional loading... */}
         </form>
 
         <p>Don't have an account?</p>

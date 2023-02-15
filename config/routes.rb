@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
   
-  get "/myshelfie", to: "users#show"
+  get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
