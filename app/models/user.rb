@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-    validates :username, presence: true, 
+    validates :username, 
+        presence: true, 
+        uniqueness: true,
         length: { in: 3..15 }, 
         format: { without: /\s/, message: "cannot contain whitespace" }
 
