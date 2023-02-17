@@ -1,12 +1,11 @@
 import ReviewForm from "./ReviewForm"
 
-const BookReviewPage = () => {
+const BookReviewPage = ( { books } ) => {
 
   return (
     <div>
       <div>
         <h1>title of book</h1>
-        {/* book image */}
       </div>
       <div>
         <h2>Reviews</h2>
