@@ -3,5 +3,5 @@ class Review < ApplicationRecord
     validates :comment, presence:true, length: { in: 20..300 }
 
     belongs_to :user
-    belongs_to :book
+    belongs_to :book, dependent: :destroy
 end

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const BookForm = () => {
-  const [formData, setFormData] = useState({
+  const [newBook, setNewBook] = useState({
     title: "",
     author: "",
     genre: "",
@@ -10,7 +10,7 @@ const BookForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setNewBook({ ...newBook, [name]: value });
   };
 
   return (
@@ -22,7 +22,7 @@ const BookForm = () => {
           name="title"
           type="text"
           onChange={handleChange}
-          value={formData.title}
+          value={newBook.title}
           placeholder="Title..."
         />
         <br />
@@ -31,7 +31,7 @@ const BookForm = () => {
           name="author"
           type="text"
           onChange={handleChange}
-          value={formData.author}
+          value={newBook.author}
           placeholder="Author..."
         />
         <br/>
@@ -40,7 +40,7 @@ const BookForm = () => {
           name="image_url"
           type="text"
           onChange={handleChange}
-          value={formData.image_url}
+          value={newBook.image_url}
           placeholder="Image URL..."
         />
         <br/>
@@ -48,7 +48,7 @@ const BookForm = () => {
           className="input"
           name="genre"
           onChange={handleChange}
-          value={formData.genre}
+          value={newBook.genre}
         >
           <option value="">--Choose Genre--</option>
           <option value="Romance">Romance</option>

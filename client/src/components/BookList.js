@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import Book from "./Book";
 
-const BookList = () => {
+const BookList = ( { books } ) => {
   const navigate = useNavigate()
 
-  // const books = () => {
-  //   // map through book cards
-  // }
-
-
+  const bookshelf = books.map(book => <Book key={book.id} book={book} />)
+  
   return (
     <div>
       <div>
@@ -19,7 +17,7 @@ const BookList = () => {
       <button onClick={() => navigate("/books/new")}>Add a Book</button>
       {/* onclick show book form */}
       <div>
-        {/* {books} */}
+        {bookshelf}
       </div>
     </div>
   );

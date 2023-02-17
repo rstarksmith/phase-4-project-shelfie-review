@@ -6,10 +6,10 @@ class BooksController < ApplicationController
         render json: books, status: :ok
     end
 
-    #GET /book/:id 
+    #GET /book/:id/reviews 
     def show 
         book = Book.find(params[:id])
-        render json: book, status: :ok
+        render json: book, include: :reviews, status: :ok
     end
 
     #POST /books

@@ -14,14 +14,12 @@ const NavBar = ( user ) => {
         />
       </Link>
       <div className="nav-links">
-        <NavLink to="/">Features</NavLink>
-        {/* conditional render - features takes to icons on homepage and only shows when not logged in */}
+        {/* conditional render- features takes to icons on homepage and only shows when not logged in */}
         <NavLink to="/books">Book Reviews</NavLink>
         {/* books shows only when logged in */}
         <NavLink to="/shelfieshare">#shelfieshare</NavLink>
         {/* conditional render if user is signed in display username and logout button */}
-        {/* <h4>{user.username}</h4>
-        <NavLink to="/myshelfie">My Shelfie</NavLink> */}
+        {/* <h4>{user.username}</h4> */}
       </div>
       <div>
         <button onClick={() => navigate("/signup")}>Sign up</button>
