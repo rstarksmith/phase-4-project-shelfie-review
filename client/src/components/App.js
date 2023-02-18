@@ -13,6 +13,7 @@ import BookForm from "./BookForm"
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [books, setBooks] = useState([])
+  const [users, setUsers ] = useState([])
 
     useEffect(() => {
       fetch("/books")
@@ -33,7 +34,7 @@ function App() {
         <Route path="/books/new" element={<BookForm />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
         {/* conditional */}
-        <Route path="/shelfieshare" element={<ShelfieShare />} />
+        <Route path="/shelfieshare" element={<ShelfieShare users={users} />} />
       </Routes>
     </>
   );

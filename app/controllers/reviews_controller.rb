@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     def index 
         book = Book.find(params[:book_id])
         reviews = book.reviews
-        render json: book, status: :ok
+        render json: reviews, include: [ 'book' ], status: :ok
     end
 
     #GET /books/:id/reviews/:id

@@ -1,5 +1,7 @@
 
-const ShelfieShare = () => {
+const ShelfieShare = ( { users }) => {
+
+  // pass down users, I need to serializer to make sure password isn't fetched
   return (
     <div>
       <h1>#shelfieshare</h1>
