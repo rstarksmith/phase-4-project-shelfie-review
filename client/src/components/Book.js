@@ -1,15 +1,17 @@
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const Book = ( { book } ) => {
-  const navigate = useNavigate()
+const Book = ({ book }) => {
+  
 
   return (
-    <div key={book.id}>
-      <img
-        onClick={() => navigate(`/books/${book.id}/reviews`)}
-        src={book.image_url}
-        alt={book.title}
-      />
+    <div>
+      <Link to={`/books/${book.id}/reviews`}>
+        <img
+          src={book.image_url}
+          alt={book.title}
+        />
+      </Link>
+
       {/* interpolate book title in alt? */}
       <p>{book.title}</p>
     </div>

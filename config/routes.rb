@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   
   get "/me", to: "users#show"
+  get "/shelfieshare", to: "users#index"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

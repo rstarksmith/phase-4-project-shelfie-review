@@ -1,14 +1,25 @@
+import { useState, useEffect } from "react"
+import Shelfie from "./Shelfie";
 
-const ShelfieShare = ( { users }) => {
+const ShelfieShare = () => {
 
-  // pass down users, I need to serializer to make sure password isn't fetched
+  const [userPhotos, setUserPhotos] = useState([]);
+
+  useEffect(() => {
+    fetch("/shelfieshare")
+      .then((resp) => resp.json())
+      .then(resp => setUserPhotos(resp));
+  }, []);
+
+  const displayPhotos = userPhotos.map(userPhoto => <Shelfie key={userPhoto.id} userPhoto={userPhoto}/>)
+
   return (
     <div>
       <h1>#shelfieshare</h1>
       <h4>Browse our readers TBR shelfies</h4>
-      {/* map through user photo urls and display username under */}
+      <div>{displayPhotos}</div>
     </div>
-  )
+  );
 }
 
 export default ShelfieShare

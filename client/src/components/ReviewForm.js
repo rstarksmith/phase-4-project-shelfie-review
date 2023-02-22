@@ -1,10 +1,14 @@
+import { useState } from "react";
 
-const ReviewForm = () => {
+const ReviewForm = ({ currentBook }) => {
+  const [reviewData, setReviewData] = useState({
+
+  })
 
   
   return (
     <div>
-      <h3>Share your thoughts on book title</h3>
+      <h3>Share your thoughts on {currentBook.title}</h3>
       <form>
         <label>Review Title</label>
         <br/>

@@ -1,14 +1,14 @@
 
+const Shelfie = ( { userPhoto }) => {
 
-const Shelfie = () => {
   return (
     <div>
-      {/* <img
-        src={user.photo_url}
+      <img
+        src={userPhoto.photo_url}
         alt="shelfie user TBR shelf"
         className="logo"
       />
-      <h4>{user.username}</h4> */}
+      <h4>@{userPhoto.username}</h4>
     </div>
   );
 }
