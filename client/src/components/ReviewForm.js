@@ -1,11 +1,14 @@
 import { useState } from "react";
 
 const ReviewForm = ({ currentBook }) => {
-  const [reviewData, setReviewData] = useState({
-
+  const [newReview, setNewReview] = useState({
+    header: "",
+    comment: "",
+    book_id: "",
+    user_id: ""
   })
+  // how to link the current user
 
-  
   return (
     <div>
       <h3>Share your thoughts on {currentBook.title}</h3>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import NavBar from "./NavBar"
 import Home from "./Home"
 import SignUp from "./SignUp"
@@ -13,7 +13,7 @@ import BookForm from "./BookForm"
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [books, setBooks] = useState([])
-  const [users, setUsers ] = useState([])
+  const navigate = useNavigate()
 
     useEffect(() => {
       fetch("/books")
@@ -21,7 +21,10 @@ function App() {
       .then(data => setBooks(data))
     }, [])
 
-  
+    const handleAddBook = (newBook) => {
+      setBooks([...books, newBook])
+      navigate("/books")
+    }
 
   return (
     <>
@@ -32,10 +35,10 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList books={books} />} />
         <Route path="/books/:id/reviews" element={<BookReviewPage books={books} />} />
-        <Route path="/books/new" element={<BookForm />} />
-        <Route path="/myshelfie" element={<MyShelfie />} />
+        <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
+        <Route path="/myshelfie" element={<MyShelfie currentUser={currentUser} />} />
         {/* conditional */}
-        <Route path="/shelfieshare" element={<ShelfieShare users={users} />} />
+        <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
   );

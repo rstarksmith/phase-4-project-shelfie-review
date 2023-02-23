@@ -1,22 +1,39 @@
 import { useState } from "react"
 
-const BookForm = () => {
+
+const BookForm = ({ handleAddBook }) => {
   const [newBook, setNewBook] = useState({
     title: "",
     author: "",
     genre: "",
     image_url: ""
   })
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewBook({ ...newBook, [name]: value });
   };
 
+  const addBook = (e) => {
+    e.preventDefault()
+    fetch("/books", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newBook)
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        handleAddBook(data)
+      })
+  }
+
   return (
     <div>
       <h1>Add to Bookshelf</h1>
-      <form>
+      <form onSubmit={addBook}>
         <input
           className="input"
           name="title"
@@ -61,7 +78,7 @@ const BookForm = () => {
           <option value="Nonfiction">Nonfiction</option>
         </select>
         <br/>
-        <button>Add Book</button>
+        <button type="submit">Add Book</button>
       </form>
     </div>
   );

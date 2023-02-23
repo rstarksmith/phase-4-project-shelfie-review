@@ -1,25 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 import ReviewForm from "./ReviewForm"
+import Review from "./Review";
 
 const BookReviewPage = ( { books } ) => {
   const [currentBook, setCurrentBook] = useState({})
   const { id } = useParams()
-  
-  // console.log(books)
-  // console.log(id, typeof id)
-  // const findBook = books.find(book => book.id === +id)
-  // console.log(findBook)
 
 
   useEffect(() => {
     const findBook = books.find(book => book.id === +id)
     setCurrentBook(findBook)
-  }, [])
-
-
+  }, [books, id])
+  
   console.log(currentBook)
-
+  // const displayReviews = currentBook.reviews.map(review => <Review key={review.id} review={review} />)
 
   return (
     <div>
@@ -27,14 +22,11 @@ const BookReviewPage = ( { books } ) => {
         <h1>{currentBook.title}</h1>
       </div>
       <div>
-        <img
-         src={currentBook.image_url} 
-         alt={currentBook.title} 
-         />
+        <img src={currentBook.image_url} alt={currentBook.title} />
       </div>
       <div>
         <h2>Reviews</h2>
-        {/* <p>{currentBook.reviews.map}</p> */}
+        {/* <div>{displayReviews}</div> */}
         {/* showform / hideform */}
       </div>
       <button>Leave a Review</button>
