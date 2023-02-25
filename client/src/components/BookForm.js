@@ -9,7 +9,6 @@ const BookForm = ({ handleAddBook }) => {
     image_url: ""
   })
   
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewBook({ ...newBook, [name]: value });

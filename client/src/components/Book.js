@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
-  
+
 
   return (
     <div>
@@ -12,7 +12,6 @@ const Book = ({ book }) => {
         />
       </Link>
 
-      {/* interpolate book title in alt? */}
       <p>{book.title}</p>
     </div>
   );

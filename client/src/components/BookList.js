@@ -15,7 +15,6 @@ const BookList = ( { books } ) => {
         </h4>
       </div>
       <button onClick={() => navigate("/books/new")}>Add a Book</button>
-      {/* onclick show book form */}
       <div>
         {bookshelf}
       </div>

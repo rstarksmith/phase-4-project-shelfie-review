@@ -15,7 +15,7 @@ const NavBar = ( user ) => {
       </Link>
       <div className="nav-links">
         {/* conditional render- features takes to icons on homepage and only shows when not logged in */}
-        <NavLink to="/books">Book Reviews</NavLink>
+        <NavLink to="/books">Bookshelf</NavLink>
         {/* books shows only when logged in */}
         <NavLink to="/shelfieshare">#shelfieshare</NavLink>
         {/* conditional render if user is signed in display username and logout button */}

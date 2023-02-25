@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const ReviewForm = ({ currentBook }) => {
-  const [newReview, setNewReview] = useState({
-    header: "",
-    comment: "",
-    book_id: "",
-    user_id: ""
-  })
+  // const [newReview, setNewReview] = useState({
+  //   header: "",
+  //   comment: "",
+  //   book_id: "",
+  //   user_id: ""
+  // })
   // how to link the current user
 
   return (
@@ -33,7 +33,7 @@ const ReviewForm = ({ currentBook }) => {
           placeholder="Tell readers what you thought. !No spoilers please!" 
         />
         <br />
-        <button>Post Review</button>
+        <button type="submit">Post Review</button>
       </form>
     </div>
   );

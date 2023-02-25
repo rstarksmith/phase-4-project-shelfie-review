@@ -11,7 +11,7 @@ import ShelfieShare from "./ShelfieShare"
 import BookForm from "./BookForm"
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null)
+  // const [currentUser, setCurrentUser] = useState(null)
   const [books, setBooks] = useState([])
   const navigate = useNavigate()
 
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <>
-      <NavBar currentUser={currentUser} />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
@@ -36,7 +36,7 @@ function App() {
         <Route path="/books" element={<BookList books={books} />} />
         <Route path="/books/:id/reviews" element={<BookReviewPage books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
-        <Route path="/myshelfie" element={<MyShelfie currentUser={currentUser} />} />
+        <Route path="/myshelfie" element={<MyShelfie />} />
         {/* conditional */}
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
