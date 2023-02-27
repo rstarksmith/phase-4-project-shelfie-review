@@ -1,25 +1,24 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList";
 
 const BookReviewPage = ( { books } ) => {
-  const [currentBook, setCurrentBook] = useState({})
-  const [currentReviews, setCurrentReviews] = useState([])
   const [showForm, setShowForm] = useState(false)
   const { id } = useParams()
 
-  useEffect(() => {
-    const findBook = books.find(book => book.id === +id)
-    setCurrentBook(findBook)
-    setCurrentReviews(findBook.reviews)
-  }, [books, id])
+  
+  const currentBook = books.find(book => book.id === +id)
 
-  console.log(currentReviews)
 
   const hideForm = () => setShowForm(false)
 
   const showReviewForm = () => setShowForm(true)
+
+  
+  if (books.length === 0) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div>
@@ -30,12 +29,14 @@ const BookReviewPage = ( { books } ) => {
         <img src={currentBook.image_url} alt={currentBook.title} />
       </div>
       <div>
-        <ReviewList currentReviews={currentReviews} />
+        <ReviewList currentReviews={currentBook.reviews} />
       </div>
       {showForm ? (
         <ReviewForm currentBook={currentBook} />
       ) : (
-        <button onClick={showReviewForm}>Leave a Review</button>
+        <button onClick={showReviewForm}>
+          Leave a Review
+        </button>
       )}
     </div>
   );
