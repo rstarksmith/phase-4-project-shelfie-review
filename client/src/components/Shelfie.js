@@ -8,7 +8,7 @@ const Shelfie = ( { userPhoto }) => {
         alt="shelfie user TBR shelf"
         className="logo"
       />
-      <h4>@{userPhoto.username}</h4>
+      <h4>📖 {userPhoto.username}</h4>
     </div>
   );
 }

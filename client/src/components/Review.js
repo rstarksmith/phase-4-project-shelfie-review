@@ -1,8 +1,7 @@
 
-
 const Review = ({ review } ) => {
 
-  
+
   return (
     <div>
       <h4>{review.header}</h4>

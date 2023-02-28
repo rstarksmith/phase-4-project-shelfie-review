@@ -7,12 +7,11 @@ const Book = ({ book }) => {
   return (
     <div>
       <img
+        className="card-img"
         onClick={() => navigate(`/books/${book.id}/reviews`)}
         src={book.image_url}
         alt={book.title}
       />
-
-      <p>{book.title}</p>
     </div>
   );
 };

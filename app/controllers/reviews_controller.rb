@@ -2,11 +2,11 @@ class ReviewsController < ApplicationController
 
     
     #GET /books/:id/reviews
-    # def index 
-    #     book = Book.find(params[:book_id])
-    #     reviews = book.reviews
-    #     render json: reviews, status: :ok
-    # end
+    def index 
+        book = Book.find(params[:book_id])
+        reviews = book.reviews
+        render json: reviews, status: :ok
+    end
 
     # #GET /books/:id/reviews/:id
     # def show

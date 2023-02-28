@@ -7,12 +7,18 @@ const ReviewForm = ({ currentBook }) => {
   //   book_id: "",
   //   user_id: ""
   // })
-  // how to link the current user
+  // how to link the currentuser, passdown currentuser
+
+  const addReview = (e) => {
+    e.preventDefault()
+    
+  }
+
 
   return (
     <div>
       <h3>Share your thoughts on {currentBook.title}</h3>
-      <form>
+      <form onSubmit={addReview}>
         <label>Review Title</label>
         <br/>
         <input

@@ -67,7 +67,23 @@ nav a.active {
   transition: .7s;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* book card */
+.card-img {
+  border-radius: 30px;
+  max-height: 225px;
+  padding: 30px;
+  width: 150px;
+}
 
+/* book review page */
+.book-img {
+  border-radius: 5px;
+  width: 300px;
+}
 
 /* -------------------------------------------- */
 /* .list-bttn {

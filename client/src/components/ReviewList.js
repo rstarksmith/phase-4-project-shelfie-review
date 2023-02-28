@@ -4,8 +4,6 @@ const ReviewList = ({ currentReviews }) => {
 
 
 
-//   const list = currentBook.reviews
-//   console.log(list, typeof list)  
   const displayReviews = currentReviews.map(review => <Review key={review.id} review={review} />)
 
   return (

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import Shelfie from "./Shelfie";
 
 const ShelfieShare = () => {
-
   const [userPhotos, setUserPhotos] = useState([]);
 
   useEffect(() => {
@@ -10,6 +9,7 @@ const ShelfieShare = () => {
       .then((resp) => resp.json())
       .then(resp => setUserPhotos(resp));
   }, []);
+  // make sure new shelfies show up as users sign up
 
   const displayPhotos = userPhotos.map(userPhoto => <Shelfie key={userPhoto.id} userPhoto={userPhoto}/>)
 

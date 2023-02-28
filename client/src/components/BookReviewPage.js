@@ -10,15 +10,16 @@ const BookReviewPage = ( { books } ) => {
   
   const currentBook = books.find(book => book.id === +id)
 
-
   const hideForm = () => setShowForm(false)
 
   const showReviewForm = () => setShowForm(true)
 
+  if(!currentBook) return <h1>Book not found</h1>
   
   if (books.length === 0) {
     return <h1>Loading...</h1>;
   }
+  // can change this to error state?
 
   return (
     <div>
@@ -26,7 +27,11 @@ const BookReviewPage = ( { books } ) => {
         <h1>{currentBook.title}</h1>
       </div>
       <div>
-        <img src={currentBook.image_url} alt={currentBook.title} />
+        <img
+          className="book-img"
+          src={currentBook.image_url}
+          alt={currentBook.title}
+        />
       </div>
       <div>
         <ReviewList currentReviews={currentBook.reviews} />
@@ -34,9 +39,7 @@ const BookReviewPage = ( { books } ) => {
       {showForm ? (
         <ReviewForm currentBook={currentBook} />
       ) : (
-        <button onClick={showReviewForm}>
-          Leave a Review
-        </button>
+        <button onClick={showReviewForm}>Leave a Review</button>
       )}
     </div>
   );
