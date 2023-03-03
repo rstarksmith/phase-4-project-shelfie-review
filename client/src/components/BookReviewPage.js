@@ -3,7 +3,7 @@ import { useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList";
 
-const BookReviewPage = ( { books } ) => {
+const BookReviewPage = ( { books, handleAddReview } ) => {
   const [showForm, setShowForm] = useState(false)
   const { id } = useParams()
 
@@ -37,7 +37,7 @@ const BookReviewPage = ( { books } ) => {
         <ReviewList currentReviews={currentBook.reviews} />
       </div>
       {showForm ? (
-        <ReviewForm currentBook={currentBook} id={id} />
+        <ReviewForm hideForm={hideForm} handleAddReview={handleAddReview} currentBook={currentBook} id={id} />
       ) : (
         <button onClick={showReviewForm}>Leave a Review</button>
       )}

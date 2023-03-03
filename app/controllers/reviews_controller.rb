@@ -1,14 +1,10 @@
 class ReviewsController < ApplicationController
 
 
-    #GET /reviews
-    def index
-        reviews = Review.all
-        render json: reviews, status: :ok
-    end
-
-    # #GET /books/:id/reviews/:id
-    # def show
+    # #GET /reviews
+    # def index
+    #     reviews = Review.all
+    #     render json: reviews, status: :ok
     # end
 
     #POST /books/:book_id/reviews

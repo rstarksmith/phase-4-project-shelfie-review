@@ -26,6 +26,13 @@ function App() {
       navigate("/books")
     }
 
+    const handleAddReview = (newReview, id) => {
+      const getBook = books.find(book => book.id === +id)
+      const addNewReview = [...getBook.reviews, newReview] 
+      setBooks(prevState => ([...prevState, addNewReview]))
+     
+    }
+
   return (
     <>
       <NavBar />
@@ -34,7 +41,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id" element={<BookReviewPage books={books} />} />
+        <Route path="/books/:id" element={<BookReviewPage handleAddReview={handleAddReview} books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
         {/* conditional */}
