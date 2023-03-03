@@ -6,15 +6,16 @@ class UsersController < ApplicationController
         render json: users, status: :ok
     end
 
-    # def create 
-    #     user = User.create!(user_params)
-    #     session[user.id] = user.id
-    #     render json: user, status: :created
-    # end
+       def show
+        render json: current_user, status: :ok
+    end
+    
+    def create 
+        user = User.create!(user_params)
+        session[user.id] = user.id
+        render json: user, status: :created
+    end
 
-    # def show
-    #     render json: @current_user
-    # end
 
     private
 

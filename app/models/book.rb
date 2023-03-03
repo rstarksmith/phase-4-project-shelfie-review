@@ -5,7 +5,7 @@ class Book < ApplicationRecord
     validates :author, length: { maximum: 50 }
     # would like to add a default image for any book without?
     
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
 
 end

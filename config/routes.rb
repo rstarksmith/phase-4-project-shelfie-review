@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :books, only: [:index, :create] do
-    resources :reviews
+  resources :books, only: [:index, :show, :create] do
+    resources :reviews, only: [:create]
   end
+
+  resources :reviews, only: [:update, :destroy]
   
-  get "/me", to: "users#show"
+  
+  get "/authorized", to: "users#show"
   get "/shelfieshare", to: "users#index"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"

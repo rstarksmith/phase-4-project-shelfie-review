@@ -37,7 +37,7 @@ const BookReviewPage = ( { books } ) => {
         <ReviewList currentReviews={currentBook.reviews} />
       </div>
       {showForm ? (
-        <ReviewForm currentBook={currentBook} />
+        <ReviewForm currentBook={currentBook} id={id} />
       ) : (
         <button onClick={showReviewForm}>Leave a Review</button>
       )}

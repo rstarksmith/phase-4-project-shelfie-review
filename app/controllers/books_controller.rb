@@ -6,7 +6,7 @@ class BooksController < ApplicationController
         render json: books, status: :ok
     end
 
-    # GET /book/:id/reviews
+    # GET /book/:id
     def show 
         book = Book.find(params[:id])
         render json: book, status: :ok

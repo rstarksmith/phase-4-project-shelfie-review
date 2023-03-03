@@ -34,7 +34,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id/reviews" element={<BookReviewPage books={books} />} />
+        <Route path="/books/:id" element={<BookReviewPage books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
         {/* conditional */}

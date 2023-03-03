@@ -1,17 +1,31 @@
 import { useState } from "react";
 
-const ReviewForm = ({ currentBook }) => {
-  // const [newReview, setNewReview] = useState({
-  //   header: "",
-  //   comment: "",
-  //   book_id: "",
-  //   user_id: ""
-  // })
-  // how to link the currentuser, passdown currentuser
+const ReviewForm = ({ currentBook, id }) => {
+  const [formData, setFormData] = useState({
+    header: "",
+    comment: "",
+    book_id: +id,
+    user_id: 2
+  })
+  // link the currentuser now hardcoded, passdown currentuser
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
 
   const addReview = (e) => {
     e.preventDefault()
-    
+    console.log("formData", formData);
+
+    fetch(`/books/${id}/reviews`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((resp) => resp.json())
+      .then((resp) => console.log(resp));
   }
 
 
@@ -24,8 +38,8 @@ const ReviewForm = ({ currentBook }) => {
         <input
           type="text"
           name="header"
-          // value={header}
-          // onChange={handleChange}
+          value={formData.header}
+          onChange={handleChange}
           placeholder="Example: Couldn't put it down!"
         />
         <br />
@@ -34,8 +48,8 @@ const ReviewForm = ({ currentBook }) => {
         <input
           type="text"
           name="comment"
-          // value={comment}
-          // onChange={handleChange}
+          value={formData.comment}
+          onChange={handleChange}
           placeholder="Tell readers what you thought. !No spoilers please!" 
         />
         <br />

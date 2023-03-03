@@ -1,37 +1,45 @@
 class ReviewsController < ApplicationController
 
-    
-    #GET /books/:id/reviews
-    def index 
-        book = Book.find(params[:book_id])
-        reviews = book.reviews
+
+    #GET /reviews
+    def index
+        reviews = Review.all
         render json: reviews, status: :ok
     end
 
     # #GET /books/:id/reviews/:id
     # def show
-    #     # How do i make sure it shows the correct review?
-    #     # book = Book.find(params[:book_id])
-    #     review = Review.find(params[:id])
-    #     render json: review, status: :ok
     # end
 
-    #POST /books/:id/reviews
-    def create
+    #POST /books/:book_id/reviews
+    def create 
+        book = Book.find(params[:book_id])
+        review = book.reviews.create!(review_params)
+        render json: review, status: :created
     end
 
-    #PATCH /books/:id/reviews/:id
+    #PATCH /reviews/:id
     def update
+        review = Review.find(params[:id])
+        review.update!(review_params)
+        render json: review, status: :ok
     end
 
-    #DELETE /books/:id/reviews/:id
+    # #DELETE /reviews/:id
     def destroy
+        review = Review.find(params[:id])
+        review.destroy
+        head :no_content
     end
 
     private
 
+    # def get_book
+    #     book = Book.find(params[:book_id])
+    # end
+
     def review_params
-        params.permit(:header, :commment)
+        params.permit(:header, :comment, :book_id, :user_id)
     end
 
 end

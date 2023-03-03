@@ -8,7 +8,7 @@ const Book = ({ book }) => {
     <div>
       <img
         className="card-img"
-        onClick={() => navigate(`/books/${book.id}/reviews`)}
+        onClick={() => navigate(`/books/${book.id}`)}
         src={book.image_url}
         alt={book.title}
       />
