@@ -1,6 +1,6 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-const NavBar = ( user ) => {
+const NavBar = ({ user }) => {
   const navigate = useNavigate()
 
 
@@ -13,19 +13,22 @@ const NavBar = ( user ) => {
           className="logo"
         />
       </Link>
+      {/* refactor */}
       <div className="nav-links">
-        {/* conditional render- features takes to icons on homepage and only shows when not logged in */}
-        <NavLink to="/books">Bookshelf</NavLink>
-        {/* books shows only when logged in */}
-        <NavLink to="/shelfieshare">#shelfieshare</NavLink>
-        {/* conditional render if user is signed in display username and logout button */}
-        {/* <h4>{user.username}</h4> */}
+        {user ? (<NavLink to="/books">Bookshelf</NavLink>) : null}
+        <NavLink to="/shelfieshare">#shelfieshare</NavLink> 
       </div>
       <div>
-        <button onClick={() => navigate("/signup")}>Sign up</button>
-        <button onClick={() => navigate("/myshelfie")}>My Shelfie</button>
-        <button onClick={() => navigate("/signin")}>Sign in</button>
-        <button>Log out</button>
+        {user ? (
+          <button onClick={() => navigate("/myshelfie")}>My Shelfie</button>
+        ) : (
+          <button onClick={() => navigate("/signup")}>Sign up</button>
+        )}
+        {user ? (
+          <button>Log out</button>
+        ) : (
+          <button onClick={() => navigate("/signin")}>Sign in</button>
+        )}
       </div>
     </nav>
   );

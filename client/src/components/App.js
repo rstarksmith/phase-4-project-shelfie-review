@@ -11,7 +11,7 @@ import ShelfieShare from "./ShelfieShare"
 import BookForm from "./BookForm"
 
 function App() {
-  // const [currentUser, setCurrentUser] = useState(null)
+  const [user, setUser] = useState(true)
   const [books, setBooks] = useState([])
   const navigate = useNavigate()
 
@@ -28,23 +28,46 @@ function App() {
 
     const handleAddReview = (newReview, id) => {
       const getBook = books.find(book => book.id === +id)
-      const addNewReview = [...getBook.reviews, newReview] 
-      setBooks(prevState => ([...prevState, addNewReview]))
-     
+      const addNewReview = [...getBook.reviews, newReview]
+      const updatedReviews = books.map((book) => {
+        if (book.id === +id) {
+          return {
+            ...book,
+            reviews: addNewReview
+          };
+        } else return book;
+      });
+      setBooks(updatedReviews);
     }
+
+    const deleteReview = (deletedReview, book_id) => {
+       const getBook = books.find((book) => book.id === book_id);
+       const removeReview = getBook.reviews.filter((review) => 
+          review.id !== deletedReview
+       )
+       const adjustedReview = books.map((book) => {
+         if (book.id === book_id) {
+           return {
+             ...book,
+             reviews: removeReview
+           };
+         } else return book
+       })
+       setBooks(adjustedReview)
+    }
+    
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home user={user} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id" element={<BookReviewPage handleAddReview={handleAddReview} books={books} />} />
+        <Route path="/books/:id" element={<BookReviewPage deleteReview={deleteReview} handleAddReview={handleAddReview} books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
-        {/* conditional */}
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ user }) => {
   const navigate = useNavigate()
 
   return (
     <div>
       <div>
-        {/* Conditional render, different text if user logged in */}
         <h1>Join the Shelfie Community!</h1>
         <br />
         <h4>Share your TBR shelf and leave review for your fellow readers</h4>
       </div>
+      {user ? ( 
+      <button className="bttn" onClick={() => navigate("/myshelfie")}>My Shelfie</button>
+      ) : (
       <button className="bttn" onClick={() => navigate("/signup")}>Sign up</button>
+      )}
       <br/>
       <img
         src="https://i.imgur.com/ZMtwsZ4.png"

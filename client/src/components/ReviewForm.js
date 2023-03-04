@@ -17,19 +17,18 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
 
   const addReview = (e) => {
     e.preventDefault()
-    console.log("formData", formData);
-
     fetch(`/books/${id}/reviews`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
-      .then((resp) => resp.json())
-      .then((newReview) => {
+      .then(resp => resp.json())
+      .then(newReview => {
         handleAddReview(newReview, id)
         hideForm()
       });
   }
+  
 
 
   return (
