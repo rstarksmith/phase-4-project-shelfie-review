@@ -30,7 +30,7 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
           hideForm()
         })
       }else {
-        resp.json().then(resp => setErrors(Object.entries(resp.errors).map(e => `${e[0]} ${e[1]}`)))
+        resp.json().then(resp => setErrors(resp.errors))
       }
     });
   }
@@ -38,11 +38,10 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
 
   return (
     <div>
-      {errors ? (<h3>{errors}</h3>) : null}
       <h3>Share your thoughts on {currentBook.title}</h3>
       <form onSubmit={addReview}>
         <label>Review Title</label>
-        <br/>
+        <br />
         <input
           type="text"
           name="header"
@@ -52,17 +51,24 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
         />
         <br />
         <label>Review</label>
-        <br/>
+        <br />
         <input
           type="text"
           name="comment"
           value={formData.comment}
           onChange={handleChange}
-          placeholder="Tell readers what you thought. !No spoilers please!" 
+          placeholder="Tell readers what you thought. !No spoilers please!"
         />
         <br />
         <button type="submit">Post Review</button>
       </form>
+      {errors
+        ? Object.entries(errors).map(([key, value]) => (
+            <p>
+              {key} {value}
+            </p>
+          ))
+        : null}
     </div>
   );
 }

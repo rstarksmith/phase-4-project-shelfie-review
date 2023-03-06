@@ -7,6 +7,7 @@ const BookForm = ({ handleAddBook }) => {
     genre: "",
     image_url: ""
   })
+  const [errors, setErrors] = useState(false)
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,11 +23,17 @@ const BookForm = ({ handleAddBook }) => {
       },
       body: JSON.stringify(newBook)
       })
-      .then(resp => resp.json())
-      .then(data => {
-        handleAddBook(data)
-      })
+      .then(resp => {
+        if(resp.ok) {
+          resp.json().then(newBook => handleAddBook(newBook))
+        }else {
+          resp.json().then(resp => {
+            setErrors(resp.errors)
+          })
+        }
+    })
   }
+  
 
   return (
     <div>
@@ -78,6 +85,7 @@ const BookForm = ({ handleAddBook }) => {
         <br/>
         <button type="submit">Add Book</button>
       </form>
+      {errors ? (Object.entries(errors).map(([key, value]) => <p>{key} {value}</p>)) : null}
     </div>
   );
 }

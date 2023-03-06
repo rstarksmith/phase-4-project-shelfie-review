@@ -18,6 +18,12 @@ class BooksController < ApplicationController
         render json: book, status: :created
     end
 
+    # def destroy
+    #     book = Book.find(params[:id])
+    #     book.destroy
+    #     head :no_content
+    # end
+
     private
 
     def book_params
