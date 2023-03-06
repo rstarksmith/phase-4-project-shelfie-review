@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import ReviewEditForm from "./ReviewEditForm";
 
-const Review = ({ review, deleteReview, handleEditReview } ) => {
+const Review = ({ user, review, deleteReview, handleEditReview } ) => {
   const [showEditForm, setShowEditForm] = useState(false)
+  // const [showButtons, setShowButtons] = useState(false)
   const [errors, setErrors] = useState(false)
 
   const handleDeleteReview = () => {
@@ -23,12 +24,21 @@ const Review = ({ review, deleteReview, handleEditReview } ) => {
     setShowEditForm(!showEditForm)
   }
 
+  // const showButtons = (review) => {
+  //   if (review.user_id === user.id) {
+  //     setShowButtons(true)
+  //   }else {
+  //     setShowButtons(false)
+  //   }
+  // };
+
   if(errors) return <h1>{errors}</h1>
 
   return (
     <div>
       {showEditForm ? (
         <ReviewEditForm
+          user={user}
           review={review}
           toggleEditForm={toggleEditForm}
           handleEditReview={handleEditReview}
@@ -37,6 +47,8 @@ const Review = ({ review, deleteReview, handleEditReview } ) => {
         <>
           <h4>{review.header}</h4>
           <p>{review.comment}</p>
+          <p></p>
+
           <button onClick={toggleEditForm}>edit</button>
           <button onClick={handleDeleteReview}>delete</button>
         </>

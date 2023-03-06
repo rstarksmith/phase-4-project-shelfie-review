@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action :authorized
 
     #GET /books
     def index 

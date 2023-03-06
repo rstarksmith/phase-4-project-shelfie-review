@@ -1,20 +1,23 @@
 
-const MyShelfie = () => {
+const MyShelfie = ({ user }) => {
+
+  if (!user) return <h1>user not found</h1>
   
   return (
     <div>
-      <h1>Username</h1>
-      {/* {currentUser.username} */}
+      <h1>@{user.username}</h1>
       <div>
         <h3>My Shelfie</h3>
-        {/* <img
-          src={currentUser.photo_url}
+        <img
+          src={user.photo_url}
           alt="shelfie user TBR shelf"
           className="logo"
-        /> */}
+        />
       </div>
       <div>
         <h3>My Reviews</h3>
+        {user.reviews.map((review) => (<p>{review.header}</p>))}
+        
         {/* map through users reveiws, reviews.map..user_id === currentUser.id */}
       </div>
       <div>

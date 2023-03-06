@@ -11,14 +11,25 @@ import ShelfieShare from "./ShelfieShare"
 import BookForm from "./BookForm"
 
 function App() {
-  const [user, setUser] = useState(true)
+  const [user, setUser] = useState(null)
   const [books, setBooks] = useState([])
   const [errors, setErrors] = useState(false)
   const navigate = useNavigate()
 
     useEffect(() => {
-      fetchBooks()
+      fetch('/myshelfie')
+      .then(resp => {
+        if(resp.ok) {
+          resp.json().then(user => setUser(user))
+        }
+      }) 
     }, [])
+
+    const logInUser = (newUser) => {
+      fetchBooks();
+      setUser(newUser)
+      navigate('/myshelfie')
+    }
 
     const fetchBooks = () => {
       fetch("/books").then((resp) => {
@@ -28,6 +39,14 @@ function App() {
           resp.json().then((resp) => setErrors(resp.errors));
         }
       });
+    }
+
+    const logOut = () => {
+      setUser(null)
+      fetch('/logout', {
+        method: 'DELETE'
+      })
+      navigate('/')
     }
 
     const handleAddBook = (newBook) => {
@@ -89,17 +108,20 @@ function App() {
     }
   
   if(errors) return <h1>{errors}</h1>
+
+  
+
   return (
     <>
-      <NavBar user={user} />
+      <NavBar user={user} logOut={logOut} />
       <Routes>
         <Route path="/" element={<Home user={user} />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp logInUser={logInUser}/>} />
+        <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id" element={<BookReviewPage deleteReview={deleteReview} handleAddReview={handleAddReview} handleEditReview={handleEditReview} books={books} />} />
+        <Route path="/books/:id" element={<BookReviewPage user={user} deleteReview={deleteReview} handleAddReview={handleAddReview} handleEditReview={handleEditReview} books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
-        <Route path="/myshelfie" element={<MyShelfie />} />
+        <Route path="/myshelfie" element={<MyShelfie user={user} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

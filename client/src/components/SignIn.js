@@ -1,11 +1,32 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = ({ logInUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  // errors
+  const [errors, setErrors] = useState(false)
   //optional loading
+
+  const handleSignIn = (e) => {
+    e.preventDefault()
+    setErrors(false)
+    fetch('/signin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+    }).then(resp => {
+      if(resp.ok) {
+        resp.json().then(resp => logInUser(resp))
+      } else {
+        resp.json().then(resp => setErrors(resp.errors))
+      }
+    })
+  }
+
 
   return (
     <div>
@@ -15,8 +36,8 @@ const SignIn = () => {
         className="logo"
       />
       <div>
-        <h3> Sign in to My Shelfie</h3>
-        <form>
+        <h3>Sign in to My Shelfie</h3>
+        <form onSubmit={handleSignIn}>
           <input
             type="text"
             name="username"
@@ -33,9 +54,16 @@ const SignIn = () => {
             placeholder="Enter Password..."
           />
           <br />
-          <button>Sign in</button>
+          <button type="submit">Sign in</button>
           {/* could add optional loading... */}
         </form>
+        {errors
+          ? Object.entries(errors).map(([key, value]) => (
+              <p>
+                {key} {value}
+              </p>
+            ))
+          : null}
 
         <p>Don't have an account?</p>
         <Link to="/signup">

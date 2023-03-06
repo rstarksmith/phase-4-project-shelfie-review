@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
+const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
   const { id, book_id } = review
   const [editFormData, setEditFormData] = useState(review)
   const [errors, setErrors] = useState(false)

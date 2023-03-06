@@ -1,6 +1,6 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user, logOut }) => {
   const navigate = useNavigate()
 
 
@@ -25,7 +25,7 @@ const NavBar = ({ user }) => {
           <button onClick={() => navigate("/signup")}>Sign up</button>
         )}
         {user ? (
-          <button>Log out</button>
+          <button onClick={() => {logOut()}}>Log out</button>
         ) : (
           <button onClick={() => navigate("/signin")}>Sign in</button>
         )}

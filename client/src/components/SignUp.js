@@ -1,14 +1,35 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const SignUp = () => {
+const SignUp = ({ logInUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [photoUrl, setPhotoUrl] = useState("")
-  // errors
+  const [errors, setErrors] = useState(false)
   // loading?
 
+  const handleSignUp = (e) => {
+    e.preventDefault()
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passwordConfirmation,
+        photo_url: photoUrl,
+      }),
+    }).then(resp => {
+      if(resp.ok) {
+        resp.json().then(newUser => logInUser(newUser))
+      }else{
+        resp.json().then(resp => setErrors(resp.errors))
+      }
+    })
+  }
 
   
   return (
@@ -20,7 +41,7 @@ const SignUp = () => {
       />
       <div>
         <h3> Create an account </h3>
-        <form>
+        <form onSubmit={handleSignUp}>
           <input
             type="text"
             name="username"
@@ -53,8 +74,15 @@ const SignUp = () => {
             placeholder="Photo URL of your current TBR shelf..."
           />
           <br />
-          <button>Sign up</button>
+          <button type="submit">Sign up</button>
         </form>
+        {errors
+          ? Object.entries(errors).map(([key, value]) => (
+              <p>
+                {key} {value}
+              </p>
+            ))
+          : null}
 
         <p>Already have an account?</p>
         <Link to="/signin">

@@ -1,15 +1,16 @@
 import { useState } from "react";
 
-const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
+const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
   const [formData, setFormData] = useState({
     header: "",
     comment: "",
     book_id: +id,
-    user_id: 2
+    user_id: user.id,
   })
   // link the currentuser now hardcoded, passdown currentuser
   const [errors, setErrors] = useState(false)
 
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
