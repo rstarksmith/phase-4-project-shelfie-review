@@ -9,7 +9,6 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
   })
   // link the currentuser now hardcoded, passdown currentuser
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

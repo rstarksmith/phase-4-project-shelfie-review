@@ -1,9 +1,9 @@
 import Review from "./Review"
 
-const ReviewList = ({ currentReviews, deleteReview }) => { 
+const ReviewList = ({ currentReviews, deleteReview, handleEditReview }) => { 
 
 
-  const displayReviews = currentReviews.map(review => <Review key={review.id} review={review} deleteReview={deleteReview} />)
+  const displayReviews = currentReviews.map(review => <Review key={review.id} review={review} deleteReview={deleteReview} handleEditReview={handleEditReview} />)
 
   return (
     <div>

@@ -27,8 +27,8 @@ function App() {
     }
 
     const handleAddReview = (newReview, id) => {
-      const getBook = books.find(book => book.id === +id)
-      const addNewReview = [...getBook.reviews, newReview]
+      const theBook = books.find(book => book.id === +id)
+      const addNewReview = [...theBook.reviews, newReview]
       const updatedReviews = books.map((book) => {
         if (book.id === +id) {
           return {
@@ -55,7 +55,26 @@ function App() {
        })
        setBooks(adjustedReview)
     }
-    
+
+    const handleEditReview = (updatedReview, book_id) => {
+      const getBook = books.find((book) => book.id === book_id);
+      const editReviews = getBook.reviews.map((review) => {
+        if (review.id === updatedReview.id) {
+          return updatedReview
+        } else {
+          return review
+        }
+      })
+       const changeReview = books.map((book) => {
+         if (book.id === book_id) {
+           return {
+             ...book,
+             reviews: editReviews,
+           };
+         } else return book;
+       });
+       setBooks(changeReview);
+    }
 
   return (
     <>
@@ -65,7 +84,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id" element={<BookReviewPage deleteReview={deleteReview} handleAddReview={handleAddReview} books={books} />} />
+        <Route path="/books/:id" element={<BookReviewPage deleteReview={deleteReview} handleAddReview={handleAddReview} handleEditReview={handleEditReview} books={books} />} />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
         <Route path="/myshelfie" element={<MyShelfie />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />

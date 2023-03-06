@@ -1,13 +1,27 @@
 import { useState } from "react"
 
-const ReviewEditForm = ({ review }) => {
+const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
+  const { id, book_id } = review
   const [editFormData, setEditFormData] = useState(review)
 
-  const handleEditChange = () => {
-
+  const handleEditChange = (e) => {
+    const { name, value } = e.target
+    setEditFormData({...editFormData, [name]: value})
   }
 
-  const editReview = () => {
+  const editReview = (e) => {
+    e.preventDefault()
+    fetch(`/reviews/${id}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(editFormData),
+    })
+    .then(resp => resp.json())
+    .then(updatedReview => {
+      handleEditReview(updatedReview, book_id)
+      toggleEditForm()
+    })
+
 
   }
 
@@ -35,6 +49,7 @@ const ReviewEditForm = ({ review }) => {
         <br />
         <button type="submit">Update Review</button>
       </form>
+      <button onClick={toggleEditForm}>Cancel</button>
     </div>
   );
 }

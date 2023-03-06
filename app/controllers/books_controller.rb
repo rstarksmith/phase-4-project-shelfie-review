@@ -7,10 +7,10 @@ class BooksController < ApplicationController
     end
 
     # GET /book/:id
-    def show 
-        book = Book.find(params[:id])
-        render json: book, status: :ok
-    end
+    # def show 
+    #     book = Book.find(params[:id])
+    #     render json: book, status: :ok
+    # end
 
     #POST /books
     def create 
