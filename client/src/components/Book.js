@@ -19,19 +19,3 @@ const Book = ({ book }) => {
 export default Book;
 
 
-
-//   return (
-//     <div>
-//       <Link to={`/books/${book.id}/reviews`}>
-//         <img
-//           src={book.image_url}
-//           alt={book.title}
-//         />
-//       </Link>
-
-//       <p>{book.title}</p>
-//     </div>
-//   );
-// };
-
-// export default Book;

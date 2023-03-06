@@ -13,13 +13,22 @@ import BookForm from "./BookForm"
 function App() {
   const [user, setUser] = useState(true)
   const [books, setBooks] = useState([])
+  const [errors, setErrors] = useState(false)
   const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("/books")
-      .then(resp => resp.json())
-      .then(data => setBooks(data))
+      fetchBooks()
     }, [])
+
+    const fetchBooks = () => {
+      fetch("/books").then((resp) => {
+        if (resp.ok) {
+          resp.json().then(setBooks);
+        } else {
+          resp.json().then((resp) => setErrors(resp.errors));
+        }
+      });
+    }
 
     const handleAddBook = (newBook) => {
       setBooks([...books, newBook])
@@ -27,6 +36,9 @@ function App() {
     }
 
     const handleAddReview = (newReview, id) => {
+      // const book_id = +id
+      // take get books out of code block so all functions can use it
+      // create funtion that will take a variable and map through
       const theBook = books.find(book => book.id === +id)
       const addNewReview = [...theBook.reviews, newReview]
       const updatedReviews = books.map((book) => {
@@ -75,7 +87,8 @@ function App() {
        });
        setBooks(changeReview);
     }
-
+  
+  if(errors) return <h1>{errors}</h1>
   return (
     <>
       <NavBar user={user} />

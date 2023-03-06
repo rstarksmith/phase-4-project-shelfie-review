@@ -13,7 +13,7 @@ const BookReviewPage = ( { books, handleAddReview, deleteReview, handleEditRevie
 
   const showReviewForm = () => setShowForm(true)
 
-  if(!currentBook) return <h1>Book not found</h1>
+  // if(!currentBook) return <h1>Book not found</h1>
   
   if (books.length === 0) {
     return <h1>Loading...</h1>;

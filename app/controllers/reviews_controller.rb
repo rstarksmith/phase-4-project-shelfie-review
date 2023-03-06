@@ -8,7 +8,8 @@ class ReviewsController < ApplicationController
     # end
 
     #POST /books/:book_id/reviews
-    def create 
+    def create
+        # user_id passed in with review params using current_user
         book = Book.find(params[:book_id])
         review = book.reviews.create!(review_params)
         render json: review, status: :created

@@ -3,6 +3,7 @@ import { useState } from "react"
 const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
   const { id, book_id } = review
   const [editFormData, setEditFormData] = useState(review)
+  const [errors, setErrors] = useState(false)
 
   const handleEditChange = (e) => {
     const { name, value } = e.target
@@ -16,17 +17,22 @@ const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(editFormData),
     })
-    .then(resp => resp.json())
-    .then(updatedReview => {
-      handleEditReview(updatedReview, book_id)
-      toggleEditForm()
+    .then(resp => {
+      if(resp.ok){
+        resp.json().then(updatedReview => {
+          handleEditReview(updatedReview, book_id)
+          toggleEditForm()
+        })
+      }else {
+        resp.json().then(resp => setErrors(Object.entries(resp.errors).map(e => `${e[0]} ${e[1]}`)))
+      }
     })
-
-
   }
+
 
   return (
     <div>
+      {errors ? (<h1>{errors}</h1>) : null}
       <h3>Edit your Review:</h3>
       <form onSubmit={editReview}>
         <label>Review Title</label>

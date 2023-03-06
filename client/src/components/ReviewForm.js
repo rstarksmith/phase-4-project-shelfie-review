@@ -8,6 +8,8 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
     user_id: 2
   })
   // link the currentuser now hardcoded, passdown currentuser
+  const [errors, setErrors] = useState(false)
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,17 +23,22 @@ const ReviewForm = ({ currentBook, id, handleAddReview, hideForm }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
-      .then(resp => resp.json())
-      .then(newReview => {
-        handleAddReview(newReview, id)
-        hideForm()
-      });
+    .then(resp => {
+      if(resp.ok){
+        resp.json().then(newReview => {
+          handleAddReview(newReview, id)
+          hideForm()
+        })
+      }else {
+        resp.json().then(resp => setErrors(Object.entries(resp.errors).map(e => `${e[0]} ${e[1]}`)))
+      }
+    });
   }
   
 
-
   return (
     <div>
+      {errors ? (<h3>{errors}</h3>) : null}
       <h3>Share your thoughts on {currentBook.title}</h3>
       <form onSubmit={addReview}>
         <label>Review Title</label>

@@ -3,21 +3,28 @@ import ReviewEditForm from "./ReviewEditForm";
 
 const Review = ({ review, deleteReview, handleEditReview } ) => {
   const [showEditForm, setShowEditForm] = useState(false)
+  const [errors, setErrors] = useState(false)
 
   const handleDeleteReview = () => {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
-      headers: {'Content-Tpe': 'application/json'}
+      headers: {'Content-Type': 'application/json'}
     })
     .then(resp => {
-      // add errors
-      deleteReview(review.id, review.book_id)
+      if(resp.ok) {
+        deleteReview(review.id, review.book_id)
+      } else {
+        resp.json().then(resp => setErrors(resp.errors))
+      } 
     })
   }
 
   const toggleEditForm = () => {
     setShowEditForm(!showEditForm)
   }
+
+  if(errors) return <h1>{errors}</h1>
+
   return (
     <div>
       {showEditForm ? (
