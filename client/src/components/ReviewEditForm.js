@@ -31,13 +31,14 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
 
 
   return (
-    <div>
+    <div className="form-block-r">
       <h3>Edit your Review:</h3>
       <form onSubmit={editReview}>
         <label>Review Title</label>
         <br />
         <input
           type="text"
+          autoComplete="off"
           name="header"
           value={editFormData.header}
           onChange={handleEditChange}
@@ -47,14 +48,19 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
         <br />
         <input
           type="text"
+          autoComplete="off"
           name="comment"
           value={editFormData.comment}
           onChange={handleEditChange}
         />
         <br />
-        <button type="submit">Update Review</button>
+        <button className="bttn" type="submit">
+          Update Review
+        </button>
       </form>
-      <button onClick={toggleEditForm}>Cancel</button>
+      <button onClick={toggleEditForm} className="bttn">
+        Cancel
+      </button>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
             <p>

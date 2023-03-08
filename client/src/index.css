@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,6 +10,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* . {
+  font-family: 'Monstserrat';
+} */
 
 
 /* NavBar*/
@@ -25,6 +28,7 @@ code {
 
 .nav-links a {
   color: rgb(4, 4, 4);
+  font-weight:400;
   padding: 15px;
   text-decoration: none;
 }
@@ -51,8 +55,59 @@ nav a.active {
   padding: 5px 14px;
 }
 
+/* home */
+.header {
+  font-size: 45px;
+  font-weight: 400;
+}
+
+.sub-head {
+  font-size: 33px;
+  font-weight: 400;
+}
+
+
+.infographic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px
+}
+
+/* signin / signup  / bookform */
+.form-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 260px;
+}
+
+.form-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border: 2px solid #309898;
+  padding: 50px;
+}
+
+/* review forms */
+.form-block-r {
+  width: 300px;
+  border: 2px solid #309898;
+  padding: 50px;
+  margin: 50px;
+}
+
+
 .bttn{
   background-color: #309898;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 16px;
   position: flex;
   width: 130px;
   height: 40px;
@@ -61,10 +116,10 @@ nav a.active {
 }
 
 .bttn:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: rgb(237, 236, 236);
+  color:#309898;
   cursor: pointer;
-  transition: .7s;
+  transition: .8s;
 }
 
 .card-container {
@@ -104,3 +159,4 @@ nav a.active {
   cursor: pointer;
   transition: .7s;
 } */
+

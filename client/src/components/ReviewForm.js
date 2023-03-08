@@ -38,13 +38,14 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
   
 
   return (
-    <div>
+    <div className="form-block-r">
       <h3>Share your thoughts on {currentBook.title}</h3>
       <form onSubmit={addReview}>
         <label>Review Title</label>
         <br />
         <input
           type="text"
+          autoComplete="off"
           name="header"
           value={formData.header}
           onChange={handleChange}
@@ -55,13 +56,16 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
         <br />
         <input
           type="text"
+          autoComplete="off"
           name="comment"
           value={formData.comment}
           onChange={handleChange}
           placeholder="Tell readers what you thought. !No spoilers please!"
         />
         <br />
-        <button type="submit">Post Review</button>
+        <button className="bttn" type="submit">
+          Post Review
+        </button>
       </form>
       {errors
         ? Object.entries(errors).map(([key, value]) => (

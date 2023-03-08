@@ -37,9 +37,9 @@ const SignUp = ({ logInUser }) => {
       <img
         src="https://i.imgur.com/pxg3tZ9.png"
         alt="shelfie share logo"
-        className="logo"
+        className="form-logo"
       />
-      <div>
+      <div className="form-block">
         <h3> Create an account </h3>
         <form onSubmit={handleSignUp}>
           <input
@@ -74,7 +74,9 @@ const SignUp = ({ logInUser }) => {
             placeholder="Photo URL of your current TBR shelf..."
           />
           <br />
-          <button type="submit">Sign up</button>
+          <button className="bttn" type="submit">
+            Sign up
+          </button>
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (

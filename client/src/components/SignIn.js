@@ -33,9 +33,9 @@ const SignIn = ({ logInUser }) => {
       <img
         src="https://i.imgur.com/pxg3tZ9.png"
         alt="shelfie share logo"
-        className="logo"
+        className="form-logo"
       />
-      <div>
+      <div className="form-block">
         <h3>Sign in to My Shelfie</h3>
         <form onSubmit={handleSignIn}>
           <input
@@ -54,7 +54,9 @@ const SignIn = ({ logInUser }) => {
             placeholder="Enter Password..."
           />
           <br />
-          <button type="submit">Sign in</button>
+          <button className="bttn" type="submit">
+            Sign in
+          </button>
           {/* could add optional loading... */}
         </form>
         {errors

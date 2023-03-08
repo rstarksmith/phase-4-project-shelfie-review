@@ -22,7 +22,7 @@ const NavBar = ({ user, logOut }) => {
         {user ? (
           <button onClick={() => navigate("/myshelfie")}>My Shelfie</button>
         ) : (
-          <button onClick={() => navigate("/signup")}>Sign up</button>
+          <button onClick={() => navigate("/signup")} className='bttn'>Sign up</button>
         )}
         {user ? (
           <button onClick={() => {logOut()}}>Log out</button>
