@@ -42,29 +42,31 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
           name="header"
           value={editFormData.header}
           onChange={handleEditChange}
+          className="input"
         />
         <br />
         <label>Review</label>
         <br />
-        <input
+        <textarea
           type="text"
           autoComplete="off"
           name="comment"
           value={editFormData.comment}
           onChange={handleEditChange}
+          className="input"
         />
         <br />
         <button className="bttn" type="submit">
           Update Review
         </button>
       </form>
-      <button onClick={toggleEditForm} className="bttn">
+      <button onClick={toggleEditForm} className="bttn-flip">
         Cancel
       </button>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
-            <p>
-              {key} {value}
+            <p className="err">
+              ▸ {key} {value}
             </p>
           ))
         : null}

@@ -37,8 +37,13 @@ const BookForm = ({ handleAddBook }) => {
 
   return (
     <div>
-      <h1>Add to Bookshelf</h1>
+      <img
+        src="https://i.imgur.com/269cNk6.png"
+        alt="open book"
+        className="bookform"
+      />
       <div className="form-block">
+        <h1 className="sub-head">Add to Bookshelf</h1>
         <form onSubmit={addBook}>
           <input
             className="input"
@@ -85,12 +90,14 @@ const BookForm = ({ handleAddBook }) => {
             <option value="Nonfiction">Nonfiction</option>
           </select>
           <br />
-          <button className="bttn" type="submit">Add Book</button>
+          <button className="bttn" type="submit">
+            Add Book
+          </button>
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p>
-                {key} {value}
+              <p className="err">
+                ▸ {key} {value}
               </p>
             ))
           : null}

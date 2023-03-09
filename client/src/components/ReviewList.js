@@ -7,10 +7,7 @@ const ReviewList = ({ user, currentReviews, deleteReview, handleEditReview }) =>
 
   return (
     <div>
-      <h2>Reviews</h2>
-      <div>
-        {displayReviews}
-      </div>
+      {displayReviews}
     </div>
   );
 }

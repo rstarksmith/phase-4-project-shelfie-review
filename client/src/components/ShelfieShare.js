@@ -23,9 +23,9 @@ const ShelfieShare = () => {
   
   return (
     <div>
-      <h1>#shelfieshare</h1>
-      <h4>Browse our readers TBR shelfies</h4>
-      <div>{displayPhotos}</div>
+      <h1 className="header">#shelfieshare</h1>
+      <h4 className="sub-head">Browse our readers shelfies</h4>
+      <div className="card-container">{displayPhotos}</div>
     </div>
   );
 }

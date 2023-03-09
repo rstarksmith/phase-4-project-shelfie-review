@@ -9,15 +9,17 @@ const BookList = ( { books } ) => {
   return (
     <div>
       <div>
-        <h1>Review a Book</h1>
-        <h4>
+        <h1 className="header">Bookshelf</h1>
+        <h4 className="sub-head">
           Leave a book review to help your fellow readers grow their TBR shelf!
         </h4>
       </div>
-      <button onClick={() => navigate("/books/new")}>Add a Book</button>
-      <div className="card-container">
-        {bookshelf}
+      <div className="center-bttn">
+        <button onClick={() => navigate("/books/new")} className="bttn">
+          Add a Book
+        </button>
       </div>
+      <div className="card-container">{bookshelf}</div>
     </div>
   );
 }

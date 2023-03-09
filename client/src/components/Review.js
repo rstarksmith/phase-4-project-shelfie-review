@@ -44,18 +44,16 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
           handleEditReview={handleEditReview}
         />
       ) : (
-        <>
+        <div>
           <h4>{review.header}</h4>
           <p>{review.comment}</p>
-          <p></p>
-
-          <button onClick={toggleEditForm} className="bttn">
+          <button onClick={toggleEditForm} className="rev-bttn">
             edit
           </button>
-          <button onClick={handleDeleteReview} className="bttn">
+          <button onClick={handleDeleteReview} className="rev-bttn">
             delete
           </button>
-        </>
+        </div>
       )}
     </div>
   );

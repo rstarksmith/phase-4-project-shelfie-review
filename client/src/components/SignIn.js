@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ logInUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState(false)
   //optional loading
+
+  const navigate = useNavigate()
 
   const handleSignIn = (e) => {
     e.preventDefault()
@@ -44,6 +46,7 @@ const SignIn = ({ logInUser }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Username..."
+            className="input"
           />
           <br />
           <input
@@ -52,6 +55,7 @@ const SignIn = ({ logInUser }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter Password..."
+            className="input"
           />
           <br />
           <button className="bttn" type="submit">
@@ -61,16 +65,12 @@ const SignIn = ({ logInUser }) => {
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p>
-                {key} {value}
+              <p className="err">
+                ▸ {key} {value}
               </p>
             ))
           : null}
-
-        <p>Don't have an account?</p>
-        <Link to="/signup">
-          <p>Sign up</p>
-        </Link>
+        <p>Don't have an account? <span onClick={()=> navigate('/signup')} className="line-link">Sign up</span></p>
       </div>
     </div>
   );

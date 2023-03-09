@@ -19,23 +19,23 @@ code {
 /* NavBar*/
 .navbar {
   align-items: center;
-  background-color: rgb(255, 255, 255);
-  color: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 5px;
 }
 
 .nav-links a {
-  color: rgb(4, 4, 4);
-  font-weight:400;
-  padding: 15px;
+  color:#309898;
+  /* font-size: 15px; */
+  font-weight: 400;
+  margin: 20px;
+  padding: 10px;
   text-decoration: none;
 }
 
 nav a.active {
-  background-color: rgba(241, 241, 241, 0.923);
-  border-radius: 3px;
+  background-color:#f7f7f7;
+  border-radius: 8px;
 }
 
 /* LOGO */
@@ -59,47 +59,149 @@ nav a.active {
 .header {
   font-size: 45px;
   font-weight: 400;
+  text-align: center;
 }
 
 .sub-head {
-  font-size: 33px;
+  font-size: 25px;
   font-weight: 400;
+  text-align: center;
 }
 
+.center-bttn {
+  text-align: center;
+}
 
 .infographic {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  margin-bottom: 80px;
   width: 1000px
 }
 
-/* signin / signup  / bookform */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 60px;
+  margin: 175px;
+  margin-top: 20px;
+  place-items: center;
+}
+
+
+/* signin / signup / bookform */
 .form-logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 40px;
   width: 260px;
+}
+
+.bookform {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  width: 200px;
 }
 
 .form-block {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
+  margin: auto;
+  margin-bottom: 50px;
+  width: 375px;
   border: 2px solid #309898;
-  padding: 50px;
+  padding: 10px 50px;
+}
+
+.line-link {
+  color:#3329aa;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+::placeholder {
+  color:#3f3f3f;
+}
+
+.input {
+  font-family: 'Montserrat';
+  width: 100%;
+  padding: 12px 12px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #3f3f3f;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  outline:none;
+}
+
+.input:focus {
+  border: 2px solid #309898;
 }
 
 /* review forms */
+
 .form-block-r {
-  width: 300px;
+  width: 700px;
   border: 2px solid #309898;
   padding: 50px;
   margin: 50px;
 }
 
+.err {
+  /* background-color: #ececed; */
+  color: #000000;
+}
 
+/* book review page */
+.rev-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 2.1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "book-container rev-container";
+}
+
+.book-con {
+  grid-area: book-container;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.rev-con {
+  grid-area: rev-container;
+  margin: auto;
+  width: 100%;
+}
+
+.rev-bttn {
+  background-color: #edecec;
+  border: none;
+  border-radius: 6px;
+  color: #309898;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 15px;
+  position: flex;
+  width: 60px;
+  height: 25px;
+}
+  
+.rev-bttn:hover {
+  background-color: #309898;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .8s;
+}
+
+/* ///Buttons/// */
 .bttn{
   background-color: #309898;
   border: none;
@@ -107,25 +209,49 @@ nav a.active {
   color: white;
   font-family: 'Montserrat';
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   position: flex;
   width: 130px;
   height: 40px;
-  left: 691px;
-  top: 402px;
 }
 
 .bttn:hover {
   background-color: rgb(237, 236, 236);
   color:#309898;
   cursor: pointer;
+  font-weight: 400;
   transition: .8s;
 }
 
+.bttn-flip {
+  background-color: #edecec;
+  border: none;
+  border-radius: 6px;
+  color:#309898;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 15px;
+  position: flex;
+  width: 130px;
+  height: 40px;
+}
+
+.bttn-flip:hover {
+  background-color:#309898;
+  color:#fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .8s;
+}
+
+
+/* Bookshelf and shelfieshare */
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  margin: 50px;
 }
+
 /* book card */
 .card-img {
   border-radius: 30px;
@@ -133,6 +259,29 @@ nav a.active {
   padding: 30px;
   width: 150px;
 }
+
+.card-img:hover {
+  cursor: pointer;
+}
+
+/* shelfie card */
+.shelf-img {
+  border-radius: 30px;
+  height: auto;
+  padding: 30px;
+  width: 200px;
+}
+
+.shelf-img:hover {
+  transform: scale(2);
+}
+
+.img {
+  width: 200px;
+  height: 150px;
+  margin: 20px;
+}
+
 
 /* book review page */
 .book-img {

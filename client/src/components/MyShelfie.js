@@ -5,9 +5,9 @@ const MyShelfie = ({ user }) => {
   
   return (
     <div>
-      <h1>@{user.username}</h1>
+      <h1 className="header">@{user.username}</h1>
       <div>
-        <h3>My Shelfie</h3>
+        <h3 className="sub-head">My Shelfie</h3>
         <img
           src={user.photo_url}
           alt="shelfie user TBR shelf"
@@ -15,13 +15,14 @@ const MyShelfie = ({ user }) => {
         />
       </div>
       <div>
-        <h3>My Reviews</h3>
+        <h3 className="sub-head">My Reviews</h3>
         {user.reviews.map((review) => (<p>{review.header}</p>))}
         
         {/* map through users reveiws, reviews.map..user_id === currentUser.id */}
       </div>
       <div>
-        <h3>My Books</h3>
+        <h3 className="sub-head">My Books</h3>
+        {/* {user.books.map(book => (<p>{book.image_url}</p>))} */}
         {/* has many books through reviews, show through relationship by
         mapping throught book photos */}
       </div>

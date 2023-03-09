@@ -50,17 +50,19 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
           value={formData.header}
           onChange={handleChange}
           placeholder="Example: Couldn't put it down!"
+          className="input"
         />
         <br />
         <label>Review</label>
         <br />
-        <input
+        <textarea
           type="text"
           autoComplete="off"
           name="comment"
           value={formData.comment}
           onChange={handleChange}
           placeholder="Tell readers what you thought. !No spoilers please!"
+          className="input"
         />
         <br />
         <button className="bttn" type="submit">
@@ -69,8 +71,8 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
       </form>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
-            <p>
-              {key} {value}
+            <p className="err">
+             ▸ {key} {value}
             </p>
           ))
         : null}

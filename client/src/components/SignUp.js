@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const SignUp = ({ logInUser }) => {
   const [username, setUsername] = useState("")
@@ -8,6 +8,8 @@ const SignUp = ({ logInUser }) => {
   const [photoUrl, setPhotoUrl] = useState("")
   const [errors, setErrors] = useState(false)
   // loading?
+
+  const navigate = useNavigate()
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -40,7 +42,7 @@ const SignUp = ({ logInUser }) => {
         className="form-logo"
       />
       <div className="form-block">
-        <h3> Create an account </h3>
+        <h3>Sign up for a free shelfie account</h3>
         <form onSubmit={handleSignUp}>
           <input
             type="text"
@@ -48,6 +50,7 @@ const SignUp = ({ logInUser }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Create Username..."
+            className="input"
           />
           <br />
           <input
@@ -56,6 +59,7 @@ const SignUp = ({ logInUser }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Create Password..."
+            className="input"
           />
           <br />
           <input
@@ -64,6 +68,7 @@ const SignUp = ({ logInUser }) => {
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
             placeholder="Confirm Password..."
+            className="input"
           />
           <br />
           <input
@@ -72,6 +77,7 @@ const SignUp = ({ logInUser }) => {
             value={photoUrl}
             onChange={(e) => setPhotoUrl(e.target.value)}
             placeholder="Photo URL of your current TBR shelf..."
+            className="input"
           />
           <br />
           <button className="bttn" type="submit">
@@ -80,16 +86,15 @@ const SignUp = ({ logInUser }) => {
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p>
-                {key} {value}
+              <p className="err">
+                ▸ {key} {value}
               </p>
             ))
           : null}
 
-        <p>Already have an account?</p>
-        <Link to="/signin">
-          <p>Sign in</p>
-        </Link>
+        <p>
+          Already have an account? <span onClick={()=> navigate('/signin')}className="line-link">Sign in</span>
+        </p>
       </div>
     </div>
   );

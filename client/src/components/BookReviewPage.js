@@ -21,41 +21,47 @@ const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEdi
   // can change this to error state?
 
   return (
-    <div>
-      <div>
-        <h1>{currentBook.title}</h1>
-        <h5>{currentBook.author}</h5>
-        <h5>{currentBook.genre}</h5>
-
+    <div className="rev-grid">
+      <div className="book-con">
+        <div>
+          <img
+            className="book-img"
+            src={currentBook.image_url}
+            alt={currentBook.title}
+          />
+        </div>
+        <div>
+          <h1 className="sub-head">{currentBook.title}</h1>
+          <h5>{currentBook.author}</h5>
+          <h5>{currentBook.genre}</h5>
+        </div>
       </div>
-      <div>
-        <img
-          className="book-img"
-          src={currentBook.image_url}
-          alt={currentBook.title}
-        />
-      </div>
-      <div>
+      <div className="rev-con">
+        <div>
+          
+          {showForm ? (
+            <ReviewForm
+              user={user}
+              hideForm={hideForm}
+              handleAddReview={handleAddReview}
+              currentBook={currentBook}
+              id={id}
+            />
+          ) : (
+            <div>
+            <h2 className="sub-head">Reviews</h2>
+            <button onClick={showReviewForm} className="bttn">
+              Leave a Review
+            </button>
+            </div>
+          )}
+        </div>
         <ReviewList
           user={user}
           handleEditReview={handleEditReview}
           currentReviews={currentBook.reviews}
           deleteReview={deleteReview}
         />
-      </div>
-      <br/>
-      <div>
-        {showForm ? (
-          <ReviewForm
-            user={user}
-            hideForm={hideForm}
-            handleAddReview={handleAddReview}
-            currentBook={currentBook}
-            id={id}
-          />
-        ) : (
-          <button onClick={showReviewForm}>Leave a Review</button>
-        )}
       </div>
     </div>
   );

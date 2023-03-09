@@ -20,14 +20,14 @@ const NavBar = ({ user, logOut }) => {
       </div>
       <div>
         {user ? (
-          <button onClick={() => navigate("/myshelfie")}>My Shelfie</button>
+          <button onClick={() => navigate("/myshelfie")} className="bttn-flip">My Shelfie</button>
         ) : (
           <button onClick={() => navigate("/signup")} className='bttn'>Sign up</button>
         )}
         {user ? (
-          <button onClick={() => {logOut()}}>Log out</button>
+          <button onClick={() => {logOut()}} className="bttn-flip">Log out</button>
         ) : (
-          <button onClick={() => navigate("/signin")}>Sign in</button>
+          <button onClick={() => navigate("/signin")} className="bttn-flip">Sign in</button>
         )}
       </div>
     </nav>
