@@ -25,20 +25,19 @@ function App() {
       }) 
     }, [])
 
-    const logInUser = (newUser) => {
-      fetchBooks();
-      setUser(newUser)
-      navigate('/myshelfie')
-    }
-
-    const fetchBooks = () => {
+    useEffect(() => {
       fetch("/books").then((resp) => {
         if (resp.ok) {
           resp.json().then(setBooks);
         } else {
           resp.json().then((resp) => setErrors(resp.errors));
         }
-      });
+      })
+    }, [user])
+
+    const logInUser = (newUser) => {
+      setUser(newUser)
+      navigate('/myshelfie')
     }
 
     const logOut = () => {
@@ -108,6 +107,7 @@ function App() {
     }
   
   if(errors) return <h1>{errors}</h1>
+  
 
   
 

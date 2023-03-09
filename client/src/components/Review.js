@@ -3,7 +3,6 @@ import ReviewEditForm from "./ReviewEditForm";
 
 const Review = ({ user, review, deleteReview, handleEditReview } ) => {
   const [showEditForm, setShowEditForm] = useState(false)
-  // const [showButtons, setShowButtons] = useState(false)
   const [errors, setErrors] = useState(false)
 
   const handleDeleteReview = () => {
@@ -24,15 +23,17 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
     setShowEditForm(!showEditForm)
   }
 
-  // const showButtons = (review) => {
-  //   if (review.user_id === user.id) {
-  //     setShowButtons(true)
-  //   }else {
-  //     setShowButtons(false)
-  //   }
-  // };
+  
 
   if(errors) return <h1>{errors}</h1>
+
+  if (review.user_id !== user.id)
+    return (
+      <div>
+        <h4>{review.header}</h4>
+        <p>{review.comment}</p>
+      </div>
+    );
 
   return (
     <div>
@@ -47,12 +48,12 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
         <div>
           <h4>{review.header}</h4>
           <p>{review.comment}</p>
-          <button onClick={toggleEditForm} className="rev-bttn">
-            edit
-          </button>
-          <button onClick={handleDeleteReview} className="rev-bttn">
-            delete
-          </button>
+            <button onClick={toggleEditForm} className="rev-bttn">
+              edit
+            </button>
+            <button onClick={handleDeleteReview} className="rev-bttn">
+              delete
+            </button> 
         </div>
       )}
     </div>

@@ -31,10 +31,6 @@ class ReviewsController < ApplicationController
 
     private
 
-    # def get_book
-    #     book = Book.find(params[:book_id])
-    # end
-
     def review_params
         params.permit(:header, :comment, :book_id, :user_id)
     end

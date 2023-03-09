@@ -25,7 +25,9 @@ const ShelfieShare = () => {
     <div>
       <h1 className="header">#shelfieshare</h1>
       <h4 className="sub-head">Browse our readers shelfies</h4>
-      <div className="card-container">{displayPhotos}</div>
+      <div className="card-container">
+        {displayPhotos}
+      </div>
     </div>
   );
 }
