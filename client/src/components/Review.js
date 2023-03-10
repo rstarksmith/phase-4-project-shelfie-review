@@ -23,15 +23,14 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
     setShowEditForm(!showEditForm)
   }
 
-  
-
   if(errors) return <h1>{errors}</h1>
 
   if (review.user_id !== user.id)
     return (
-      <div>
+      <div className="rev-block">
         <h4>{review.header}</h4>
         <p>{review.comment}</p>
+        <p>{review.user_id}</p>
       </div>
     );
 
@@ -45,15 +44,15 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
           handleEditReview={handleEditReview}
         />
       ) : (
-        <div>
+        <div className="rev-block">
           <h4>{review.header}</h4>
           <p>{review.comment}</p>
-            <button onClick={toggleEditForm} className="rev-bttn">
-              edit
-            </button>
-            <button onClick={handleDeleteReview} className="rev-bttn">
-              delete
-            </button> 
+          <button onClick={toggleEditForm} className="rev-bttn">
+            edit
+          </button>
+          <button onClick={handleDeleteReview} className="rev-bttn">
+            delete
+          </button>
         </div>
       )}
     </div>

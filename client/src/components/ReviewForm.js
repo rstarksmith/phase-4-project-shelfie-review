@@ -41,7 +41,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
     <div className="form-block-r">
       <h3>Share your thoughts on {currentBook.title}</h3>
       <form onSubmit={addReview}>
-        <label>Review Title</label>
+        <label>Review Title:</label>
         <br />
         <input
           type="text"
@@ -49,11 +49,11 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
           name="header"
           value={formData.header}
           onChange={handleChange}
-          placeholder="Example: Couldn't put it down!"
+          placeholder="Example: Couldn't put it down..."
           className="input"
         />
         <br />
-        <label>Review</label>
+        <label>Review:</label>
         <br />
         <textarea
           type="text"
@@ -61,7 +61,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
           name="comment"
           value={formData.comment}
           onChange={handleChange}
-          placeholder="Tell readers what you thought. !No spoilers please!"
+          placeholder="Tell readers what you thought. No spoilers please..."
           className="input"
         />
         <br />
@@ -69,10 +69,11 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
           Post Review
         </button>
       </form>
+      <button onClick={hideForm} className="bttn-flip">Cancel</button>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
             <p className="err">
-             ▸ {key} {value}
+              ▸ {key} {value}
             </p>
           ))
         : null}

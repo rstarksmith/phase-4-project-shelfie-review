@@ -11,10 +11,10 @@ code {
     monospace;
 }
 
-/* . {
-  font-family: 'Monstserrat';
-} */
-
+h4 {
+  font-family: 'Montserrat';
+  font-weight: 400;
+}
 
 /* NavBar*/
 .navbar {
@@ -44,6 +44,17 @@ nav a.active {
   width: 175px;
 }
 
+/* Footer */
+
+hr {
+  display: block;
+  height: 30px;
+  border: 0;
+  border-top: 1px solid #309898;
+  margin: 300px 100px 100px 100px;
+  
+}
+
 /* NAVBAR MENU */
 .menu {
   display: flex;
@@ -55,8 +66,9 @@ nav a.active {
   padding: 5px 14px;
 }
 
-/* home */
+/* Home ----------------------*/
 .header {
+  color: #363636;
   font-size: 45px;
   font-weight: 400;
   text-align: center;
@@ -83,7 +95,7 @@ nav a.active {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 5px;
+  grid-column-gap: 10px;
   grid-row-gap: 60px;
   margin: 175px;
   margin-top: 20px;
@@ -91,7 +103,7 @@ nav a.active {
 }
 
 
-/* signin / signup / bookform */
+/* signin / signup / bookform ----------------*/
 .form-logo {
   display: block;
   margin-left: auto;
@@ -109,6 +121,7 @@ nav a.active {
 }
 
 .form-block {
+  border-radius: 4px;
   display: block;
   margin: auto;
   margin-bottom: 50px;
@@ -143,21 +156,35 @@ nav a.active {
   border: 2px solid #309898;
 }
 
-/* review forms */
+/* review forms ----------------------*/
 
 .form-block-r {
-  width: 700px;
   border: 2px solid #309898;
-  padding: 50px;
-  margin: 50px;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 28px 20px 20px 0px;
+}
+
+.form-block-r-b{
+  border: 2px solid #309898;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 0px 20px 20px 0px;
+}
+
+.rev-block {
+  background-color: #f9f9f9;
+  border: 2px solid #f9f9f9;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px 20px 20px 0px;
 }
 
 .err {
-  /* background-color: #ececed; */
   color: #000000;
 }
 
-/* book review page */
+/* book review page --------------------------*/
 .rev-grid {
   display: grid;
   grid-template-columns: 1.2fr 2.1fr;
@@ -177,7 +204,40 @@ nav a.active {
 .rev-con {
   grid-area: rev-container;
   margin: auto;
+  margin-top: 75px;
   width: 100%;
+}
+
+.rev-header {
+  font-size: 25px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.book-img {
+  border-radius: 5px;
+  width: 300px;
+}
+
+.add-rev-bttn {
+  background-color: #309898;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 15px;
+  width: 140px;
+  height: 40px;
+  vertical-align: auto;
+}
+
+.add-rev-bttn:hover {
+  background-color: rgb(237, 236, 236);
+  color: #309898;
+  cursor: pointer;
+  font-weight: 400;
+  transition: .8s;
 }
 
 .rev-bttn {
@@ -187,7 +247,8 @@ nav a.active {
   color: #309898;
   font-family: 'Montserrat';
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12px;
+  margin: 5px;
   position: flex;
   width: 60px;
   height: 25px;
@@ -201,7 +262,7 @@ nav a.active {
   transition: .8s;
 }
 
-/* ///Buttons/// */
+/* ///Buttons///-------------------- */
 .bttn{
   background-color: #309898;
   border: none;
@@ -210,9 +271,8 @@ nav a.active {
   font-family: 'Montserrat';
   font-weight: 600;
   font-size: 15px;
-  position: flex;
-  width: 130px;
-  height: 40px;
+  width: 120px;
+  height: 38px;
 }
 
 .bttn:hover {
@@ -231,9 +291,9 @@ nav a.active {
   font-family: 'Montserrat';
   font-weight: 400;
   font-size: 15px;
-  position: flex;
-  width: 130px;
-  height: 40px;
+  /* position: flex; */
+  width: 120px;
+  height: 38px;
 }
 
 .bttn-flip:hover {
@@ -245,7 +305,7 @@ nav a.active {
 }
 
 
-/* Bookshelf and shelfieshare */
+/* Bookshelf and shelfieshare ----------- */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -281,31 +341,3 @@ nav a.active {
   height: 150px;
   margin: 20px;
 }
-
-
-/* book review page */
-.book-img {
-  border-radius: 5px;
-  width: 300px;
-}
-
-/* -------------------------------------------- */
-/* .list-bttn {
-  background-color: rgb(0, 0, 0);
-  border-width: 1px;
-  border-radius: 5px;
-  color: rgb(255, 255, 255);
-  display: block;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  margin: auto;
-  padding: 10px;
-}
-
-.list-bttn:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  transition: .7s;
-} */
-

@@ -47,9 +47,9 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Share a photo of your TBR</p>
+            <p>Share a photo of your</p>
             <p onClick={() => navigate("/shelfieshare")}>
-              (to be read) #shelfieshare
+              bookshelf ▷#shelfieshare
             </p>
           </div>
         </div>
@@ -62,8 +62,8 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Explore our bookshelf for</p>
-            <p>recommendations</p>
+            <p>Find a new book from</p>
+            <p>our Bookshelf</p>
           </div>
         </div>
         <div>
@@ -75,8 +75,8 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Leave reviews for your</p>
-            <p>fellow readers!</p>
+            <p>Review your recent reads</p>
+            <p>for fellow readers </p>
           </div>
         </div>
         <div>

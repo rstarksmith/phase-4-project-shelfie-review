@@ -31,10 +31,9 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
 
 
   return (
-    <div className="form-block-r">
-      <h3>Edit your Review:</h3>
+    <div className="form-block-r-b">
       <form onSubmit={editReview}>
-        <label>Review Title</label>
+        <label>Review Title:</label>
         <br />
         <input
           type="text"
@@ -45,7 +44,7 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
           className="input"
         />
         <br />
-        <label>Review</label>
+        <label>Review:</label>
         <br />
         <textarea
           type="text"
