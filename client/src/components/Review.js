@@ -30,7 +30,7 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
       <div className="rev-block">
         <h4>{review.header}</h4>
         <p>{review.comment}</p>
-        <p>{review.user}</p>
+        <p>@{review.owner}</p>
       </div>
     );
 

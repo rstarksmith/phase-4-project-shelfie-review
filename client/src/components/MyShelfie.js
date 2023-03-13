@@ -4,11 +4,6 @@ const MyShelfie = ({ user }) => {
   const navigate = useNavigate()
 
 
-
-
-
-
-
   if (!user) return <h1>User not found</h1>
   
   return (
@@ -26,19 +21,19 @@ const MyShelfie = ({ user }) => {
         <h3 className="sub-head">My Reviews</h3>
         {user.reviews.map((review) => (
           <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
-            {review.my_list}
+            {review.header} | {review.book.title}
           </p>
         ))}
       </div>
       <div>
         <h3 className="sub-head">My Books</h3>
-        {user.books.map((book) => (
+        {user.reviews.map((review) => (
           <img
-            key={book.id}
-            onClick={() => navigate(`/books/${book.id}`)}
-            src={book.image_url}
+            key={review.id}
+            onClick={() => navigate(`/books/${review.book_id}`)}
+            src={review.book.image_url}
             className="card-img"
-            alt={book.title}
+            alt={review.book.title}
           />
         ))}
       </div>
