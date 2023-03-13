@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 const MyShelfie = ({ user }) => {
   const navigate = useNavigate()
 
-  if (!user) return <h1>user not found</h1>
+
+
+
+
+
+
+  if (!user) return <h1>User not found</h1>
   
   return (
     <div>
@@ -20,11 +26,9 @@ const MyShelfie = ({ user }) => {
         <h3 className="sub-head">My Reviews</h3>
         {user.reviews.map((review) => (
           <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
-            {review.header}
+            {review.my_list}
           </p>
         ))}
-
-        {/* map through users reveiws, reviews.map..user_id === currentUser.id */}
       </div>
       <div>
         <h3 className="sub-head">My Books</h3>

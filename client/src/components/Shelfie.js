@@ -2,19 +2,18 @@
 const Shelfie = ( { userPhoto }) => {
 
   return (
-    <div>
-      <div>
+    <div className="card">
         <img
           src={userPhoto.photo_url}
-          alt="shelfie user TBR shelf"
+          alt="shelfie TBR shelf"
           className="shelf-img"
         />
-      </div>
-      <div>
-        <h4>@{userPhoto.username}</h4>
+      <div className="container">
+        <h2 className="user">@{userPhoto.username}</h2>
       </div>
     </div>
   );
 }
 
 export default Shelfie
+

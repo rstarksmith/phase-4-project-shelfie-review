@@ -3,9 +3,10 @@ class Book < ApplicationRecord
     validates :title, uniqueness: true, length: { maximum: 50 }
     # custom validation -maybe have a special function saying that if the author and title match an existing instance, then not valid
     validates :author, length: { maximum: 50 }
-    # would like to add a default image for any book without?
-    
+
     has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
+
+    # scope :by_title, -> { order(title: :asc) }
 
 end
