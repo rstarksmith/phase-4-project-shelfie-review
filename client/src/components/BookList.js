@@ -19,7 +19,7 @@ const BookList = ( { books } ) => {
           Add a Book
         </button>
       </div>
-      <div className="card-container">{bookshelf}</div>
+      <div className="book-container">{bookshelf}</div>
     </div>
   );
 }

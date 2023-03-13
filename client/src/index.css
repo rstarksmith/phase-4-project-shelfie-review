@@ -16,7 +16,7 @@ h4 {
   font-weight: 400;
 }
 
-/* NavBar*/
+/* NavBar---------------------*/
 .navbar {
   align-items: center;
   display: flex;
@@ -38,24 +38,12 @@ nav a.active {
   border-radius: 8px;
 }
 
-/* LOGO */
 .logo {
-  margin: 0px 0px 0px 10px;
+  margin: 3px 0px 0px 10px;
   width: 175px;
 }
 
-/* Footer */
-
-hr {
-  display: block;
-  height: 30px;
-  border: 0;
-  border-top: 1px solid #309898;
-  margin: 300px 100px 100px 100px;
-  
-}
-
-/* NAVBAR MENU */
+/* NAVBAR MENU -*/
 .menu {
   display: flex;
   font-size: 18px;
@@ -66,7 +54,16 @@ hr {
   padding: 5px 14px;
 }
 
-/* Home ----------------------*/
+/* Footer */
+hr {
+  display: block;
+  height: 30px;
+  border: 0;
+  border-top: 1px solid #309898;
+  margin: 300px 100px 100px 100px;
+}
+
+/* Home -----------------------------*/
 .header {
   color: #363636;
   font-size: 45px;
@@ -156,7 +153,7 @@ hr {
   border: 2px solid #309898;
 }
 
-/* review forms ----------------------*/
+/* review forms ------------------------*/
 
 .form-block-r {
   border: 2px solid #309898;
@@ -305,10 +302,11 @@ hr {
 }
 
 
-/* Bookshelf and shelfieshare ----------- */
-.card-container {
+/* Bookshelf ---------------------- */
+.book-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 50px;
 }
 
@@ -324,18 +322,42 @@ hr {
   cursor: pointer;
 }
 
-/* shelfie card */
+/* shelfieshare ------------------------*/
 .shelf-img {
-  border-radius: 30px;
-  height: auto;
-  padding: 30px;
-  width: 200px;
+  border-radius: 3px;
+  width: 100%;
 }
 
-.shelf-img:hover {
-  transform: scale(2);
+.card {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: 25%;
+  transition: transform .7s;
 }
 
+.card:hover {
+  -webkit-transform: scale(1.5);/* Safari 3-8 */
+  transform: scale(1.5);
+}
+
+.container {
+  padding: 2px 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.user {
+  font-weight:300;
+}
+
+/* -------------------------------- */
 .img {
   width: 200px;
   height: 150px;
