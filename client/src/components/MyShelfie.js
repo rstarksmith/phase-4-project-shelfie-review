@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const MyShelfie = ({ user, books }) => {
+const MyShelfie = ({ user }) => {
   const navigate = useNavigate();
 
   if (!user) return <h1>User not found</h1>;
