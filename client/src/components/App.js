@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import Footer from "./Footer"
 import Home from "./Home";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
@@ -134,10 +133,9 @@ function App() {
           path="/books/new"
           element={<BookForm handleAddBook={handleAddBook} />}
         />
-        <Route path="/myshelfie" element={<MyShelfie user={user} />} />
+        <Route path="/myshelfie" element={<MyShelfie user={user} books={books} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
-      <Footer />
     </>
   );
 }
