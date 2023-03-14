@@ -9,7 +9,7 @@ const Home = ({ user }) => {
     <div>
       <div>
         {user ? (
-          <h1 className="header">Welcome back!</h1>
+          <h1 className="header">Welcome {user.username}!</h1>
         ) : (
           <h1 className="header">Join the Shelfie Community!</h1>
         )}

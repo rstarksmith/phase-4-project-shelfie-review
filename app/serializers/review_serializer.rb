@@ -4,8 +4,6 @@ class ReviewSerializer < ActiveModel::Serializer
   # def owner
   #   "@#{self.object.user.username}"
   # end
-
-
   belongs_to :user
   belongs_to :book
 

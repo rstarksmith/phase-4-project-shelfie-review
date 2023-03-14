@@ -28,7 +28,6 @@ const SignIn = ({ logInUser }) => {
     })
   }
 
-
   return (
     <div>
       <img
