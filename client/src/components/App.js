@@ -16,23 +16,27 @@ function App() {
   const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
 
+  // auto login
   useEffect(() => {
-    fetch("/myshelfie").then((resp) => {
+    fetch("/myshelfie")
+    .then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) => setUser(user));
-      }
+        resp.json()
+        .then((user) => setUser(user))
+      } 
     });
   }, []);
 
   useEffect(() => {
-    fetch("/books").then((resp) => {
-      if (resp.ok) {
-        resp.json().then(setBooks);
-      } else {
-        resp.json().then((resp) => setErrors(resp.errors));
-      }
-    });
-  }, [user]);
+    fetch("/books")
+      .then((resp) => {
+        if (resp.ok) {
+          resp.json().then(setBooks);
+        } else {
+          resp.json().then((resp) => setErrors(resp.errors));
+        }
+      });
+  }, []);
 
   const logInUser = (newUser) => {
     setUser(newUser);
@@ -40,10 +44,10 @@ function App() {
   };
 
   const logOut = () => {
-    setUser(null);
     fetch("/logout", {
       method: "DELETE",
     });
+    setUser(null);
     navigate("/");
   };
 
@@ -70,6 +74,7 @@ function App() {
     setBooks(updatedReviews);
   };
 
+  
   const deleteReview = (deletedReview, book_id) => {
     const getBook = books.find((book) => book.id === book_id);
     const removeReview = getBook.reviews.filter(
@@ -133,7 +138,7 @@ function App() {
           path="/books/new"
           element={<BookForm handleAddBook={handleAddBook} />}
         />
-        <Route path="/myshelfie" element={<MyShelfie user={user} books={books} />} />
+        <Route path="/myshelfie" element={<MyShelfie user={user} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

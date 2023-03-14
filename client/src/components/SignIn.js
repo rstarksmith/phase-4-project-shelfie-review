@@ -5,7 +5,6 @@ const SignIn = ({ logInUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState(false)
-  //optional loading
 
   const navigate = useNavigate()
 
@@ -61,7 +60,6 @@ const SignIn = ({ logInUser }) => {
           <button className="bttn" type="submit">
             Sign in
           </button>
-          {/* could add optional loading... */}
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (

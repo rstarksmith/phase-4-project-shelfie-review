@@ -25,7 +25,7 @@ const NavBar = ({ user, logOut }) => {
           <button onClick={() => navigate("/signup")} className='bttn'>Sign up</button>
         )}
         {user ? (
-          <button onClick={() => {logOut()}} className="bttn-flip">Log out</button>
+          <button onClick={logOut} className="bttn-flip">Log out</button>
         ) : (
           <button onClick={() => navigate("/signin")} className="bttn-flip">Sign in</button>
         )}

@@ -7,12 +7,12 @@ const SignUp = ({ logInUser }) => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [photoUrl, setPhotoUrl] = useState("")
   const [errors, setErrors] = useState(false)
-  // loading?
 
   const navigate = useNavigate()
 
   const handleSignUp = (e) => {
     e.preventDefault()
+    setErrors(false)
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -24,9 +24,9 @@ const SignUp = ({ logInUser }) => {
         password_confirmation: passwordConfirmation,
         photo_url: photoUrl,
       }),
-    }).then(resp => {
-      if(resp.ok) {
-        resp.json().then(newUser => logInUser(newUser))
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then(resp => logInUser(resp))
       }else{
         resp.json().then(resp => setErrors(resp.errors))
       }

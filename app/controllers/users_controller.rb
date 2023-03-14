@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: current_user, include: ['reviews', 'reviews.book'], status: :ok
+        render json: current_user, status: :ok
     end
     
     def create 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    
+
     private
 
     def user_params
