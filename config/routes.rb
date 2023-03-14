@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:update, :destroy]
   
   
-  get "/myshelfie", to: "users#show"
+  get "/auth", to: "users#show"
   get "/shelfieshare", to: "users#index"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"

@@ -40,7 +40,7 @@ function App() {
 
   const logInUser = (newUser) => {
     setUser(newUser);
-    navigate("/myshelfie");
+    navigate("/");
   };
 
   const logOut = () => {
@@ -138,7 +138,7 @@ function App() {
           path="/books/new"
           element={<BookForm handleAddBook={handleAddBook} />}
         />
-        <Route path="/myshelfie" element={<MyShelfie user={user} />} />
+        <Route path="/profile" element={<MyShelfie user={user} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
