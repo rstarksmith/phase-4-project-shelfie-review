@@ -1,22 +1,35 @@
 import { useParams } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList"
 
-const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEditReview } ) => {
+const BookReviewPage = ( { user, /*books, handleAddReview, deleteReview, handleEditReview */} ) => {
   const [showForm, setShowForm] = useState(false)
   const { id } = useParams();
+  const [book, setBook] = useState();
 
-  const currentBook = books.find((book) => book.id === +id);
+  useEffect(() => {
+    if (user) {
+      fetch(`/books/${id}`).then((resp) => {
+        if (resp.ok) {
+          resp.json().then((bookData) => setBook(bookData));
+        } else {
+          //resp.json().then((resp) => setErrors(resp.errors));
+        }
+      });
+    }
+  }, [user, id])
+  //const currentBook = books.find((book) => book.id === +id);
+
+  console.log(book)
  
   const hideForm = () => setShowForm(false)
 
   const showReviewForm = () => setShowForm(true)
 
-
   // if(!currentBook) return <h1>Book not found</h1>
   
-  if (books.length === 0) {
+  if (!book) {
     return <h1>Loading...</h1>;
   }
   // can change this to error state?
@@ -27,14 +40,14 @@ const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEdi
         <div>
           <img
             className="book-img"
-            src={currentBook.image_url}
-            alt={currentBook.title}
+            src={book.image_url}
+            alt={book.title}
           />
         </div>
         <div>
-          <h1 className="rev-header">{currentBook.title}</h1>
-          <h4>Author: {currentBook.author}</h4>
-          <h4>Genre: {currentBook.genre}</h4>
+          <h1 className="rev-header">{book.title}</h1>
+          <h4>Author: {book.author}</h4>
+          <h4>Genre: {book.genre}</h4>
         </div>
       </div>
       <div className="rev-con">
@@ -43,8 +56,8 @@ const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEdi
             <ReviewForm
               user={user}
               hideForm={hideForm}
-              handleAddReview={handleAddReview}
-              currentBook={currentBook}
+              //handleAddReview={handleAddReview}
+              currentBook={book}
               id={id}
             />
           ) : (
@@ -56,12 +69,12 @@ const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEdi
             </div>
           )}
         </div>
-        <ReviewList
+        {/*<ReviewList
           user={user}
           handleEditReview={handleEditReview}
           currentReviews={currentBook.reviews}
           deleteReview={deleteReview}
-        />
+          />*/}
       </div>
     </div>
   );

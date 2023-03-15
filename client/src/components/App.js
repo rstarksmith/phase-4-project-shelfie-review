@@ -4,30 +4,14 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import ShelfieShare from "./ShelfieShare";
 import BookList from "./BookList";
 import BookReviewPage from "./BookReviewPage";
 import MyShelfie from "./MyShelfie";
-import ShelfieShare from "./ShelfieShare";
-import BookForm from "./BookForm";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [books, setBooks] = useState([]);
-  const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
-
-
- useEffect(() => {
-  if (user) {
-   fetch("/books").then((resp) => {
-     if (resp.ok) {
-       resp.json().then((bookData) => setBooks(bookData));
-     } else {
-       resp.json().then((resp) => setErrors(resp.errors));
-     }
-   });
-  }
- }, [user]);
 
   useEffect(() => {
     fetch("/auth")
@@ -43,7 +27,6 @@ function App() {
 
   const logInUser = (userObj) => {
     console.log(userObj)
-    console.log(books)
     setUser(userObj);
     navigate("/");
   };
@@ -60,67 +43,7 @@ function App() {
     navigate("/");
   };
 
-  const handleAddBook = (newBook) => {
-    setBooks((prevState) => [newBook, ...prevState]);
-    navigate("/books");
-  };
-
-  const handleAddReview = (newReview, id) => {
-    const theBook = books.find((book) => book.id === +id);
-    const addNewReview = [ newReview, ...theBook.reviews];
-    const updatedReviews = books.map((book) => {
-      if (book.id === +id) {
-        return {
-          ...book,
-          reviews: addNewReview,
-        };
-      } else return book;
-    });
-    setBooks(updatedReviews);
-  };
-
-  const deleteReview = (deletedReview, book_id) => {
-    const getBook = books.find((book) => book.id === book_id);
-    const removeReview = getBook.reviews.filter(
-      (review) => review.id !== deletedReview
-    );
-    const adjustedReview = books.map((book) => {
-      if (book.id === book_id) {
-        return {
-          ...book,
-          reviews: removeReview,
-        };
-      } else return book;
-    });
-    setBooks(adjustedReview);
-  };
-
-  // const deleteRevUser = (deletedReview) => {
-  //  const removeRev = user.reviews.filter(review => review.id !== deletedReview)
-  //  setUser((prevState) =>({...prevState, reviews: removeRev }))
-  // }
-
-  const handleEditReview = (updatedReview, book_id) => {
-    const getBook = books.find((book) => book.id === book_id);
-    const editReviews = getBook.reviews.map((review) => {
-      if (review.id === updatedReview.id) {
-        return updatedReview;
-      } else {
-        return review;
-      }
-    });
-    const changeReview = books.map((book) => {
-      if (book.id === book_id) {
-        return {
-          ...book,
-          reviews: editReviews,
-        };
-      } else return book;
-    });
-    setBooks(changeReview);
-  };
-
-  if (errors) return <h1>{errors}</h1>;
+  
 
   return (
     <>
@@ -129,20 +52,9 @@ function App() {
         <Route path="/" element={<Home user={user} />} />
         <Route path="/signup" element={<SignUp logInUser={logInUser} />} />
         <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
-        <Route path="/books" element={<BookList books={books} />} />
-        <Route path="/books/:id" 
-          element={
-            <BookReviewPage
-              user={user}
-              deleteReview={deleteReview}
-              handleAddReview={handleAddReview}
-              handleEditReview={handleEditReview}
-              books={books}
-            />
-          }
-        />
-        <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
-        <Route path="/mybooks" element={<MyShelfie user={user} books={books} />} />
+        <Route path="/books" element={<BookList user={user} />} />
+        <Route path="/books/:id" element={<BookReviewPage user={user} /> } />
+        <Route path="/mybooks" element={<MyShelfie user={user} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
