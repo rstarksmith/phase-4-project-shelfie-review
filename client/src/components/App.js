@@ -138,7 +138,7 @@ function App() {
           }
         />
         <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
-        <Route path="/mybooks" element={<MyShelfie user={user} books={books} />} />
+        <Route path="/mybooks" element={<MyShelfie user={user} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
