@@ -1,21 +1,10 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useState } from "react"
 
 const MyShelfie = ({ user }) => {
-  
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // ?add use effect to run any time this page is loaded?
-
-  // const myBooks = user.reviews.map((review) => (
-  //   <img
-  //     key={review.id}
-  //     onClick={() => navigate(`/books/${review.book_id}`)}
-  //     src={review.book?.image_url}
-  //     className="card-img"
-  //     alt={review.book?.title}
-  //   />
-  // ));
+  console.log('user', user)
 
   // const myReviews = user.reviews.map((review) => (
   //   <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
@@ -34,9 +23,17 @@ const MyShelfie = ({ user }) => {
   // console.log(myReviews)
 
 
+  if (!user) return <h1>Loading...</h1>;
 
-  if (!user) return <h1>User not found</h1>;
-
+   const myBooks = user.books.map((book) => (
+     <img
+       key={book.id}
+       onClick={() => navigate(`/books/${book.id}`)}
+       src={book.image_url}
+       className="card-img"
+       alt={book.title}
+     />
+   ));
 
   return (
     <div className="shelf-container">
@@ -61,7 +58,7 @@ const MyShelfie = ({ user }) => {
       <div className="my-books">
         <h3 className="sub-head">My Books</h3>
         <div className="book-scroll">
-          {/* {myBooks} */}
+          {myBooks}
         </div>
       </div>
       <div className="my-revs">

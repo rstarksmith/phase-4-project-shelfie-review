@@ -18,6 +18,7 @@ function App() {
 
 
  useEffect(() => {
+  if (user) {
    fetch("/books").then((resp) => {
      if (resp.ok) {
        resp.json().then((bookData) => setBooks(bookData));
@@ -25,9 +26,10 @@ function App() {
        resp.json().then((resp) => setErrors(resp.errors));
      }
    });
+  }
  }, [user]);
 
-  // auto login
+ 
   useEffect(() => {
     fetch("/auth")
     .then((resp) => {
@@ -42,6 +44,7 @@ function App() {
 
   const logInUser = (userObj) => {
     console.log(userObj)
+    console.log(books)
     setUser(userObj);
     navigate("/");
   };
@@ -59,7 +62,8 @@ function App() {
   };
 
   const handleAddBook = (newBook) => {
-    setBooks([...books, newBook]);
+    // setBooks([newBook, ...books]);
+    setBooks((prevState) => [newBook, ...prevState]);
     navigate("/books");
   };
 
