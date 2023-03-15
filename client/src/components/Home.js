@@ -19,7 +19,7 @@ const Home = ({ user }) => {
       </div>
       <div className="center-bttn">
         {user ? (
-          <button className="bttn" onClick={() => navigate("/myshelfie")}>
+          <button className="bttn" onClick={() => navigate("/mybooks")}>
             My Shelfie
           </button>
         ) : (

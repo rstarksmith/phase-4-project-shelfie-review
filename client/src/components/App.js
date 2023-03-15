@@ -13,41 +13,48 @@ import BookForm from "./BookForm";
 function App() {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
+
+
+ useEffect(() => {
+   fetch("/books").then((resp) => {
+     if (resp.ok) {
+       resp.json().then((bookData) => setBooks(bookData));
+     } else {
+       resp.json().then((resp) => setErrors(resp.errors));
+     }
+   });
+ }, [user]);
 
   // auto login
   useEffect(() => {
-    fetch("/myshelfie")
+    fetch("/auth")
     .then((resp) => {
       if (resp.ok) {
         resp.json()
-        .then((user) => setUser(user))
-      } 
-    });
+        .then((newUser) => {
+          setUser(newUser)
+        })
+      }
+    })
   }, []);
 
-  useEffect(() => {
-    fetch("/books")
-      .then((resp) => {
-        if (resp.ok) {
-          resp.json().then(setBooks);
-        } else {
-          resp.json().then((resp) => setErrors(resp.errors));
-        }
-      });
-  }, []);
-
-  const logInUser = (newUser) => {
-    setUser(newUser);
+  const logInUser = (userObj) => {
+    console.log(userObj)
+    setUser(userObj);
     navigate("/");
   };
 
   const logOut = () => {
     fetch("/logout", {
       method: "DELETE",
-    });
-    setUser(null);
+    })
+    .then(resp => {
+      if(resp.ok){
+        setUser(null)
+      }
+    })
     navigate("/");
   };
 
@@ -56,7 +63,6 @@ function App() {
     navigate("/books");
   };
 
-  
   const handleAddReview = (newReview, id) => {
     // const book_id = +id
     // take get books out of code block so all functions can use it
@@ -74,7 +80,6 @@ function App() {
     setBooks(updatedReviews);
   };
 
-  
   const deleteReview = (deletedReview, book_id) => {
     const getBook = books.find((book) => book.id === book_id);
     const removeReview = getBook.reviews.filter(
@@ -111,7 +116,6 @@ function App() {
     setBooks(changeReview);
   };
 
-
   if (errors) return <h1>{errors}</h1>;
 
   return (
@@ -122,8 +126,7 @@ function App() {
         <Route path="/signup" element={<SignUp logInUser={logInUser} />} />
         <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
         <Route path="/books" element={<BookList books={books} />} />
-        <Route
-          path="/books/:id"
+        <Route path="/books/:id" 
           element={
             <BookReviewPage
               user={user}
@@ -134,11 +137,8 @@ function App() {
             />
           }
         />
-        <Route
-          path="/books/new"
-          element={<BookForm handleAddBook={handleAddBook} />}
-        />
-        <Route path="/profile" element={<MyShelfie user={user} />} />
+        <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
+        <Route path="/mybooks" element={<MyShelfie user={user} books={books} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true
     validates :photo_url, presence: true    
 
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     has_many :books, through: :reviews
 
     has_secure_password

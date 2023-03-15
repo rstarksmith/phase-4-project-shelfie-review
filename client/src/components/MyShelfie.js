@@ -1,18 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react"
+// import { useNavigate } from "react-router-dom";
+// import { useState } from "react"
 
-const MyShelfie = ({ user }) => {
-  // const [profile, setProfile] = useState("")
+const MyShelfie = ({ user, books }) => {
+  
   // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch()
-  // })
-
-  
-
-  
- 
 
   // ?add use effect to run any time this page is loaded?
 
@@ -31,6 +22,17 @@ const MyShelfie = ({ user }) => {
   //     {review.header} | {review.book?.title}
   //   </p>
   // ));
+  // const filterReviews = books.map(book => book.reviews)
+  // console.log(filterReviews)
+  // const allReviews = filterReviews.flat(Infinity)
+  // console.log(allReviews)
+  // const myReviews = allReviews.filter(review => {
+  //   if (review.user_id === user.id) {
+  //     return review
+  //   }
+  // })
+  // console.log(myReviews)
+
 
 
   if (!user) return <h1>User not found</h1>;

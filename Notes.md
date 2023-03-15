@@ -17,7 +17,17 @@
 - User
 - Review
 - Book
-    
-### Stretch would need a Post model 
+
+
+get "/mybooks", to: user#mybooks
+
+can I have two that go to the show route?
+
+in users controller
+
+def my_books
+    current user
+    render json: user.. 
+end
 
 

@@ -20,7 +20,7 @@ const NavBar = ({ user, logOut }) => {
       </div>
       <div>
         {user ? (
-          <button onClick={() => navigate("/myshelfie")} className="bttn-flip">My Shelfie</button>
+          <button onClick={() => navigate("/mybooks")} className="bttn-flip">My Shelfie</button>
         ) : (
           <button onClick={() => navigate("/signup")} className='bttn'>Sign up</button>
         )}

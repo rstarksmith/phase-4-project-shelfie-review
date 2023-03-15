@@ -15,8 +15,7 @@ const ShelfieShare = () => {
         }
       })
   }, []);
-  // make sure new shelfies show up as users sign up
-
+  
   const displayPhotos = userPhotos.map(userPhoto => <Shelfie key={userPhoto.id} userPhoto={userPhoto}/>)
 
   if(errors) return <h1>{errors}</h1>;

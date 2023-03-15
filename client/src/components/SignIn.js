@@ -5,7 +5,6 @@ const SignIn = ({ logInUser }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState(false)
-
   const navigate = useNavigate()
 
   const handleSignIn = (e) => {
@@ -21,7 +20,7 @@ const SignIn = ({ logInUser }) => {
     })
     }).then(resp => {
       if(resp.ok) {
-        resp.json().then(resp => logInUser(resp))
+        resp.json().then(userObj => logInUser(userObj))
       } else {
         resp.json().then(resp => setErrors(resp.errors))
       }
