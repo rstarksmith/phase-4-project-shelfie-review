@@ -1,7 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 // import { useState } from "react"
 
-const MyShelfie = ({ user, books }) => {
+const MyShelfie = ({ user }) => {
   
   // const navigate = useNavigate();
 

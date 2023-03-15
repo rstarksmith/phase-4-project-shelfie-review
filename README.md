@@ -1,40 +1,38 @@
-# Shelfie Review - book share built by readers
-
+# ShelfieShare
 --------------------
 ## Description
+ShelfieShare is an application for readers, built by readers. Share your current books with your fellow readers and keep track of you past reads.a
+
+## Features
+- Community Homepage with navigation
+- Sign up  |  Join community by signing up with a new user account
+- Sign in  |  Using secure password and sign out
+- Bookshelf  |  Browse and create books | Post, update, delete actions for your reviews
+- Share  |  ShelfieShare page displays users "shelfies" they create at sign up
+-  
+
 
 ## Requirements
 
 - Ruby 2.7.4
-- NodeJS (v16), and npm
-- Render account
+- NodeJS v16.14.0
+- npm 8.11.0
 - Postgresql
+- React Router 6.8.0
 
-
-
+------------------------
 ```console
 $ git clone git@github.com:learn-co-curriculum/project-template-react-rails-api.git your-project-name
 $ cd your-project-name
 $ git remote rm origin
 ```
 
-# Fox Vinyl Record Collections
-Fox Vinyl Record Collections helps the user keep track of their collection inventory and allows them to share their collection. User can browse other collectors inventory. 
-
-### Requirements
-* Uses Node v16.14.0
-* Uses npm 8.11.0
-* Uses React Router ^6.4.1
-* Must use phase-3-project-backend repository on GitHub.
-    `https://github.com/rstarksmith/phase-3-project-backend`
-
-## Installation - Frontend
+## Installation
 - Fork and clone phase-3-project-frontend -
     `https://github.com/rstarksmith/phase-3-project-frontend`
 - Open project, run `npm install`
 - Run `npm start`
 
-## Installation - Backend
 - Fork and clone phase-3-project-backend -  
     `https://github.com/rstarksmith/phase-3-project-backend`
 - Open project, run `bundle install`
@@ -46,11 +44,15 @@ $ bundle exec rake server
 ```
 
 ## Resources
-- Photos of general records sourced from - [Canva] 
-- Record images sourced from - [Discogs]
-- Grading information sourced from - [Record Collector Magazine]
+- Graphics, logo and icons created with Adobe Photoshop and Canva -[Canva] 
+- Image hosting with [Imgur]
+- Book images  - []
+- Grading information sourced from - []
 
 
 [Canva]: https://www.canva.com/
-[Discogs]: https://www.discogs.com/
-[Record Collector Magazine]: https://recordcollectormag.com/
+[Imgur]: https://imgur.com/
+[]: https://www.discogs.com/
+[]: https://recordcollectormag.com/
+
+Fair use, a provision of U.S. copyright law, gives users the right to use copyrighted material without permission under certain circumstances. If a use is fair, the user need not notify or seek permission from the copyright holder.
