@@ -1,30 +1,27 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import { useState } from "react"
 
-const MyShelfie = ({ user }) => {
-  const navigate = useNavigate();
-
-  console.log(user)
-
+const MyShelfie = ({ user, books }) => {
   
+  // const navigate = useNavigate();
 
-  // const myBooks = user.books.map((book) => (
+  // ?add use effect to run any time this page is loaded?
+
+  // const myBooks = user.reviews.map((review) => (
   //   <img
-  //     key={book.id}
-  //     // onClick={() => navigate(`/books/${book?.id}`)}
-  //     src={book.image_url}
+  //     key={review.id}
+  //     onClick={() => navigate(`/books/${review.book_id}`)}
+  //     src={review.book?.image_url}
   //     className="card-img"
-  //     alt={book.title}
+  //     alt={review.book?.title}
   //   />
   // ));
 
   // const myReviews = user.reviews.map((review) => (
   //   <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
-  //     {review.header} 
+  //     {review.header} | {review.book?.title}
   //   </p>
   // ));
-
-
   // const filterReviews = books.map(book => book.reviews)
   // console.log(filterReviews)
   // const allReviews = filterReviews.flat(Infinity)
@@ -39,6 +36,7 @@ const MyShelfie = ({ user }) => {
 
 
   if (!user) return <h1>User not found</h1>;
+
 
   return (
     <div className="shelf-container">

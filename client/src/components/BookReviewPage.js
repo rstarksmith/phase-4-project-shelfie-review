@@ -1,32 +1,19 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import ReviewForm from "./ReviewForm"
-import Review from "./Review"
+import ReviewList from "./ReviewList"
 
 const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEditReview } ) => {
   const [showForm, setShowForm] = useState(false)
   const { id } = useParams();
 
   const currentBook = books.find((book) => book.id === +id);
-
-  const currentReviews = currentBook.reviews;
  
   const hideForm = () => setShowForm(false)
 
   const showReviewForm = () => setShowForm(true)
 
-  
 
-  const displayReviews = currentReviews.map((review) => (
-    <Review
-      key={review.id}
-      user={user}
-      review={review}
-      deleteReview={deleteReview}
-      handleEditReview={handleEditReview}
-    />
-  ));
-  
   // if(!currentBook) return <h1>Book not found</h1>
   
   if (books.length === 0) {
@@ -62,14 +49,19 @@ const BookReviewPage = ( { user, books, handleAddReview, deleteReview, handleEdi
             />
           ) : (
             <div>
-              <h2 className="rev-header">Reviews</h2>
-              <button onClick={showReviewForm} className="add-rev-bttn">
-                Leave a Review
-              </button>
+            <h2 className="rev-header">Reviews</h2>
+            <button onClick={showReviewForm} className="add-rev-bttn">
+              Leave a Review
+            </button>
             </div>
           )}
         </div>
-        <div>{displayReviews}</div>
+        <ReviewList
+          user={user}
+          handleEditReview={handleEditReview}
+          currentReviews={currentBook.reviews}
+          deleteReview={deleteReview}
+        />
       </div>
     </div>
   );
