@@ -29,7 +29,6 @@ function App() {
   }
  }, [user]);
 
- 
   useEffect(() => {
     fetch("/auth")
     .then((resp) => {
@@ -62,15 +61,11 @@ function App() {
   };
 
   const handleAddBook = (newBook) => {
-    // setBooks([newBook, ...books]);
     setBooks((prevState) => [newBook, ...prevState]);
     navigate("/books");
   };
 
   const handleAddReview = (newReview, id) => {
-    // const book_id = +id
-    // take get books out of code block so all functions can use it
-    // create funtion that will take a variable and map through
     const theBook = books.find((book) => book.id === +id);
     const addNewReview = [ newReview, ...theBook.reviews];
     const updatedReviews = books.map((book) => {
@@ -99,6 +94,11 @@ function App() {
     });
     setBooks(adjustedReview);
   };
+
+  // const deleteRevUser = (deletedReview) => {
+  //  const removeRev = user.reviews.filter(review => review.id !== deletedReview)
+  //  setUser((prevState) =>({...prevState, reviews: removeRev }))
+  // }
 
   const handleEditReview = (updatedReview, book_id) => {
     const getBook = books.find((book) => book.id === book_id);
