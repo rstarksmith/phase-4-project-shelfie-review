@@ -19,15 +19,33 @@
 - Book
 
 
-get "/mybooks", to: user#mybooks
+route
+get "/mybooks", to: reviews#mybooks
 
-can I have two that go to the show route?
+or 
 
-in users controller
+class MyBooksSerializer
+    attributes: :id, :summary, 
+
+    def summary
+        "#{self.object.header} - #{self.object.book.title}
+    end
+    <!-- you would want to map through user.id reviews in order to make display happen -->
+
+    belongs_to :user
+    belongs_to :book
+
+
 
 def my_books
-    current user
-    render json: user.. 
+    
+    render json:  .., serializer: MyBooksSerializer
 end
+
+
+React state
+myBooks, setMyBooks
+
+fetch('/mybooks)
 
 

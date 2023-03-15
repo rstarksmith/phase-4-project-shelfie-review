@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-
     # #GET /reviews
     # def index
     #     reviews = Review.all

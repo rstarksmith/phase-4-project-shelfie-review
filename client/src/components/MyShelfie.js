@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router-dom";
-// import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const MyShelfie = ({ user }) => {
   const navigate = useNavigate();
+
+
 
   console.log('user', user)
 
 
   if (!user) return <h1>Loading...</h1>;
+
+  // books index with user_id params
+  // custom route called my_books in users_controller
 
    const myBooks = user.books.map((book) => (
      <img
