@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const BookForm = ({ handleAddBook }) => {
+const BookForm = ({ handleAddBook, noBookForm }) => {
   const [newBook, setNewBook] = useState({
     title: "",
     author: "",
@@ -101,6 +101,9 @@ const BookForm = ({ handleAddBook }) => {
               </p>
             ))
           : null}
+        <button onClick={noBookForm} className="bttn">
+          Cancel
+        </button>
       </div>
     </div>
   );

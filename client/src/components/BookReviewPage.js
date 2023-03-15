@@ -3,10 +3,12 @@ import { useEffect, useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList"
 
-const BookReviewPage = ( { user, /*books, handleAddReview, deleteReview, handleEditReview */} ) => {
-  const [showForm, setShowForm] = useState(false)
-  const { id } = useParams();
+const BookReviewPage = ( { user, /* handleAddReview, deleteReview, handleEditReview */} ) => {
   const [book, setBook] = useState();
+  const [showForm, setShowForm] = useState(false)
+  const [errors, setErrors] = useState(false)
+  const { id } = useParams();
+  
 
   useEffect(() => {
     if (user) {
@@ -14,26 +16,48 @@ const BookReviewPage = ( { user, /*books, handleAddReview, deleteReview, handleE
         if (resp.ok) {
           resp.json().then((bookData) => setBook(bookData));
         } else {
-          //resp.json().then((resp) => setErrors(resp.errors));
+          resp.json().then((resp) => setErrors(resp.errors));
         }
       });
     }
   }, [user, id])
-  //const currentBook = books.find((book) => book.id === +id);
-
-  console.log(book)
  
   const hideForm = () => setShowForm(false)
 
   const showReviewForm = () => setShowForm(true)
-
-  // if(!currentBook) return <h1>Book not found</h1>
   
   if (!book) {
     return <h1>Loading...</h1>;
-  }
-  // can change this to error state?
+  } 
+  // loading state?
 
+   const handleAddReview = (newReview) => {
+    setBook((prevState) => ({...prevState, reviews: [newReview, ...book.reviews]}))
+   }
+   
+   const handleDeleteReview = (deletedRevId) => {
+     const removeReview = book.reviews.filter(
+       (review) => review.id !== deletedRevId
+     );
+     setBook((prevState) => ({ ...prevState, reviews: removeReview }));
+   };
+
+  //  // const deleteRevUser = (deletedReview) => {
+  //  //  const removeRev = user.reviews.filter(review => review.id !== deletedReview)
+  //  //  setUser((prevState) =>({...prevState, reviews: removeRev }))
+  //  // }
+
+  const handleEditReview = (updatedReview) => {
+    const updateReviews = book.reviews.map((review) => {
+      if (review.id === updatedReview.id) {
+        return updatedReview 
+      }else {
+        return review
+      }
+    })
+    setBook((prevState) => ({...prevState, reviews: updateReviews}))
+  }
+  
   return (
     <div className="rev-grid">
       <div className="book-con">
@@ -56,7 +80,7 @@ const BookReviewPage = ( { user, /*books, handleAddReview, deleteReview, handleE
             <ReviewForm
               user={user}
               hideForm={hideForm}
-              //handleAddReview={handleAddReview}
+              handleAddReview={handleAddReview}
               currentBook={book}
               id={id}
             />
@@ -69,12 +93,12 @@ const BookReviewPage = ( { user, /*books, handleAddReview, deleteReview, handleE
             </div>
           )}
         </div>
-        {/*<ReviewList
+        <ReviewList
           user={user}
           handleEditReview={handleEditReview}
-          currentReviews={currentBook.reviews}
-          deleteReview={deleteReview}
-          />*/}
+          currentReviews={book.reviews}
+          handleDeleteReview={handleDeleteReview}
+          />
       </div>
     </div>
   );

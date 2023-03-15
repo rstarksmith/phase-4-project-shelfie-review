@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
-  const { id, book_id } = review
+const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
+  const { id } = review
   const [editFormData, setEditFormData] = useState(review)
   const [errors, setErrors] = useState(false)
 
@@ -20,7 +20,7 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
     .then(resp => {
       if(resp.ok){
         resp.json().then(updatedReview => {
-          handleEditReview(updatedReview, book_id)
+          handleEditReview(updatedReview)
           toggleEditForm()
         })
       }else {
@@ -28,7 +28,6 @@ const ReviewEditForm = ({ user, review, handleEditReview, toggleEditForm }) => {
       }
     })
   }
-
 
   return (
     <div className="form-block-r-b">

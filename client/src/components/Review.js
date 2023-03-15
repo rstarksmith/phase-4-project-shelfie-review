@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import ReviewEditForm from "./ReviewEditForm";
 
-const Review = ({ user, review, deleteReview, handleEditReview } ) => {
+const Review = ({ user, review, handleDeleteReview, handleEditReview } ) => {
   const [showEditForm, setShowEditForm] = useState(false)
   const [errors, setErrors] = useState(false)
 
-  const handleDeleteReview = () => {
+  const deleteReview = () => {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
     })
     .then(resp => {
       if(resp.ok) {
-        deleteReview(review.id, review.book_id)
+        handleDeleteReview(review.id)
       } else {
         resp.json().then(resp => setErrors(resp.errors))
       } 
@@ -50,7 +50,7 @@ const Review = ({ user, review, deleteReview, handleEditReview } ) => {
           <button onClick={toggleEditForm} className="rev-bttn">
             edit
           </button>
-          <button onClick={handleDeleteReview} className="rev-bttn">
+          <button onClick={deleteReview} className="rev-bttn">
             delete
           </button>
         </div>

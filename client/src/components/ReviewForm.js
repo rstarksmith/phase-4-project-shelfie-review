@@ -25,7 +25,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
     .then(resp => {
       if(resp.ok){
         resp.json().then(newReview => {
-          handleAddReview(newReview, id)
+          handleAddReview(newReview)
           hideForm()
         })
       }else {
