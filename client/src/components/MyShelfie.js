@@ -6,22 +6,6 @@ const MyShelfie = ({ user }) => {
 
   console.log('user', user)
 
-  // const myReviews = user.reviews.map((review) => (
-  //   <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
-  //     {review.header} | {review.book?.title}
-  //   </p>
-  // ));
-  // const filterReviews = books.map(book => book.reviews)
-  // console.log(filterReviews)
-  // const allReviews = filterReviews.flat(Infinity)
-  // console.log(allReviews)
-  // const myReviews = allReviews.filter(review => {
-  //   if (review.user_id === user.id) {
-  //     return review
-  //   }
-  // })
-  // console.log(myReviews)
-
 
   if (!user) return <h1>Loading...</h1>;
 
@@ -33,6 +17,12 @@ const MyShelfie = ({ user }) => {
        className="card-img"
        alt={book.title}
      />
+   ));
+
+   const myReviews = user.reviews.map((review) => (
+     <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
+       {review.header} | {}
+     </p>
    ));
 
   return (
@@ -64,7 +54,7 @@ const MyShelfie = ({ user }) => {
       <div className="my-revs">
         <h3 className="sub-head">My Reviews</h3>
         <div className="rev-scroll">
-          {/* {myReviews} */}
+          {myReviews}
         </div>
       </div>
     </div>

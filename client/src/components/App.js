@@ -72,7 +72,7 @@ function App() {
     // take get books out of code block so all functions can use it
     // create funtion that will take a variable and map through
     const theBook = books.find((book) => book.id === +id);
-    const addNewReview = [...theBook.reviews, newReview];
+    const addNewReview = [ newReview, ...theBook.reviews];
     const updatedReviews = books.map((book) => {
       if (book.id === +id) {
         return {
