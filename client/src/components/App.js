@@ -54,7 +54,7 @@ function App() {
         <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
         <Route path="/books" element={<BookList user={user} />} />
         <Route path="/books/:id" element={<BookReviewPage user={user} /> } />
-        <Route path="/profile" element={<MyShelfie user={user} />} />
+        <Route path="/profile" element={<MyShelfie user={user} closeAccount={setUser} />} />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

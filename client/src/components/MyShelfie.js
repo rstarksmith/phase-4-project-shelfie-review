@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"
 
-const MyShelfie = ({ user }) => {
+const MyShelfie = ({ user, closeAccount }) => {
   const [profile, setProfile] = useState([])
   const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
@@ -25,23 +25,27 @@ const MyShelfie = ({ user }) => {
    const myBooks = profile.map((book) => (
      <img
        key={book.id}
-      //  onClick={() => navigate(`/books/${book.id}`)}
+       onClick={() => navigate(`/books/${book.id}`)}
        src={book.image_url}
        className="card-img"
        alt={book.title}
      />
    ));
 
+   const editShelfie = (e) => {
+    e.preventDefault()
+    fetch()
 
-   
-  //  fetch('reviews/${id}')
+   }
 
-   
-
-  //  const deleteUser = () => {
-  //    (alert ("Warning your user account and book reviews will be deleted. Press ok to continue...")) 
-  //  }
-
+   const deleteUser = () => {
+    fetch('/closeaccount', {
+      method: 'DELETE'
+    })
+    closeAccount(null)
+    navigate('/')
+   }
+  
   return (
     <div className="shelf-container">
       <div className="my-account">
@@ -53,15 +57,15 @@ const MyShelfie = ({ user }) => {
             className="my-shelfie"
           />
           <br />
-          <form>
+          <form className="shelfie-border" onSubmit={editShelfie}>
             <label>Is it time to update your shelfie?</label>
-            <input className="input" placeholder="Photo URL..." />
+            <input className="input" placeholder="New Shelfie Photo URL..." />
             <button className="bttn" type="submit">
               Update my Shelfie
             </button>
           </form>
           <br/>
-          <button className="bttn">delete account</button>
+          <button onClick={deleteUser} className="bttn">delete account</button>
         </div>
       </div>
       <div className="my-books">
