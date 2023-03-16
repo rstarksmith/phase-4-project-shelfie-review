@@ -2,33 +2,45 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 const MyShelfie = ({ user }) => {
+  const [profile, setProfile] = useState([])
+  const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      fetch(`/profile`).then((resp) => {
+        if (resp.ok) {
+          resp.json().then((myData) => setProfile(myData));
+        } else {
+          resp.json().then((resp) => setErrors(resp.errors));
+        }
+      });
+    }
+  }, [user]);
 
-
-  console.log('user', user)
-
+  console.log(profile)
 
   if (!user) return <h1>Loading...</h1>;
 
-  // books index with user_id params
-  // custom route called my_books in users_controller
-
-   const myBooks = user.books.map((book) => (
+   const myBooks = profile.map((book) => (
      <img
        key={book.id}
-       onClick={() => navigate(`/books/${book.id}`)}
+      //  onClick={() => navigate(`/books/${book.id}`)}
        src={book.image_url}
        className="card-img"
        alt={book.title}
      />
    ));
 
-   const myReviews = user.reviews.map((review) => (
-     <p key={review.id} onClick={() => navigate(`/books/${review.book_id}`)}>
-       {review.header} | {}
-     </p>
-   ));
+
+   
+  //  fetch('reviews/${id}')
+
+   
+
+  //  const deleteUser = () => {
+  //    (alert ("Warning your user account and book reviews will be deleted. Press ok to continue...")) 
+  //  }
 
   return (
     <div className="shelf-container">
@@ -38,7 +50,7 @@ const MyShelfie = ({ user }) => {
           <img
             src={user.photo_url}
             alt="shelfie user TBR shelf"
-            className="logo"
+            className="my-shelfie"
           />
           <br />
           <form>
@@ -48,19 +60,13 @@ const MyShelfie = ({ user }) => {
               Update my Shelfie
             </button>
           </form>
+          <br/>
+          <button className="bttn">delete account</button>
         </div>
       </div>
       <div className="my-books">
         <h3 className="sub-head">My Books</h3>
-        <div className="book-scroll">
-          {myBooks}
-        </div>
-      </div>
-      <div className="my-revs">
-        <h3 className="sub-head">My Reviews</h3>
-        <div className="rev-scroll">
-          {myReviews}
-        </div>
+        <div className="book-scroll">{myBooks}</div>
       </div>
     </div>
   );

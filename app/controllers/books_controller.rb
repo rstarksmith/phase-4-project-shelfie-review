@@ -6,6 +6,11 @@ class BooksController < ApplicationController
         render json: books, status: :ok
     end
 
+    #GET /profile
+    def profile
+        render json: current_user.books, status: :ok
+    end
+
     # GET /book/:id
     def show 
          book = Book.find(params[:id])

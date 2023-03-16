@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:update, :destroy]
   
+  get '/profile', to: "books#profile"
   
   get "/auth", to: "users#show"
   get "/shelfieshare", to: "users#index"

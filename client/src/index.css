@@ -361,42 +361,39 @@ nav a.active {
 
 .shelf-container {
   display: grid;
-  /* grid-auto-flow:column; */
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1.2fr .8fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 15px 20px;
+  grid-template-columns: 1.2fr 2.1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 15px;
+  grid-auto-flow: row;
   grid-template-areas:
-    "my_account my_books"
-    "my_account my_revs";
+    "my_account my_books";
+  place-items: center;
 }
 
 .my_books {
   grid-area: my_books;
-
+  margin-top: 100px;
 }
 
-.my_revs {
-  grid-area: my_revs;
+.my-shelfie {
+  display:block;
+  margin: auto;
+  width: auto;
 }
 
 .my_account {
   grid-area: my_account;
-}
-
-.rev-scroll {
-  background-color: #edecec;
-  /* border: 1px solid #309898; */
-  overflow: auto;
-  width: auto;
+  margin: 50px;
+  width: 100%;
 }
 
 .book-scroll {
   background-color: #edecec;
   /* border: 1px solid #309898; */
-  height: 285px;
+  height: 600px;
   overflow: auto;
-  width: 450px;
+  margin: 50px;
+  width: 700px;
 }
 
 
