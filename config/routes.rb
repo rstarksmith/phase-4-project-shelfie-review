@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:update, :destroy]
+
+  
   
   get '/profile', to: "books#profile"
   
   get "/auth", to: "users#show"
   get "/shelfieshare", to: "users#index"
+  patch "/users/:id", to: "users#update"
   delete "/closeaccount", to: "users#destroy"
   post "/signup", to: "users#create"
   post "/signin", to: "sessions#create"
