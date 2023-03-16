@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:update, :destroy]
-
-  
   
   get '/profile', to: "books#profile"
   

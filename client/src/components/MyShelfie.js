@@ -33,6 +33,11 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
      />
    ));
 
+   const handleChange = (e) => {
+     const { name, value } = e.target;
+     setPhotoUpdate(prevState => ({...prevState, [name]: value }));
+   };
+
    const editShelfie = (e) => {
     e.preventDefault()
     setErrors(null)
@@ -47,7 +52,6 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
         if(resp.ok) {
           resp.json().then(userObj => {
             updateUserPhoto(userObj)
-            
           })
         }else {
           resp.json().then(resp => {
@@ -57,20 +61,21 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
     })
     }
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setPhotoUpdate((prevState) => ({...prevState, [name]: value }))
-    };
-  
-    console.log(photoUpdate)
-
    const deleteUser = () => {
     fetch('/closeaccount', {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
     })
-    closeAccount(null)
-    navigate('/')
-   }
+    .then(resp => {
+      if(resp.ok) {
+       closeAccount(null)
+       navigate('/')
+      } else {
+        resp.json().then(resp => setErrors(resp.errors))
+      } 
+    })
+  }
+   
   
   return (
     <div className="shelf-container">

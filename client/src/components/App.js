@@ -43,13 +43,11 @@ function App() {
     navigate("/");
   };
 
-  const updateUserPhoto = (userObj) => {
-    console.log(userObj, "useronj")
+
+  const updateUserPhoto = (userObj) => {  
     setUser(userObj)
   }
- 
-  console.log(user, "user")
-
+  
   return (
     <>
       <NavBar user={user} logOut={logOut} />
