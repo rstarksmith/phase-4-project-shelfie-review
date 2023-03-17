@@ -2,28 +2,29 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
-  const [profile, setProfile] = useState([])
+  // const [profile, setProfile] = useState([])
   const [photoUpdate, setPhotoUpdate] = useState({
     photo_url: "",
   })
   const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      fetch(`/profile`).then((resp) => {
-        if (resp.ok) {
-          resp.json().then((myData) => setProfile(myData));
-        } else {
-          resp.json().then((resp) => setErrors(resp.errors));
-        }
-      });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`/profile`).then((resp) => {
+  //       if (resp.ok) {
+  //         resp.json().then((myData) => setProfile(myData));
+  //       } else {
+  //         resp.json().then((resp) => setErrors(resp.errors));
+  //       }
+  //     });
+  //   }
+  // }, [user]);
 
   if (!user) return <h1>Loading...</h1>;
 
-   const myBooks = profile.map((book) => (
+
+   const myBooks = user.books.map((book) => (
      <img
        key={book.id}
        onClick={() => navigate(`/books/${book.id}`)}
@@ -35,12 +36,13 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
 
    const handleChange = (e) => {
      const { name, value } = e.target;
-     setPhotoUpdate(prevState => ({...prevState, [name]: value }));
+     setPhotoUpdate({ [name]: value });
    };
 
    const editShelfie = (e) => {
     e.preventDefault()
     setErrors(null)
+    console.log(photoUpdate)
     fetch(`/users/${user.id}}`, {
         method: "PATCH",
         headers: {
@@ -50,8 +52,9 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
     })
     .then(resp => {
         if(resp.ok) {
-          resp.json().then(userObj => {
-            updateUserPhoto(userObj)
+          resp.json().then((pic) => {
+            console.log(pic)
+            updateUserPhoto(pic)
           })
         }else {
           resp.json().then(resp => {
@@ -75,7 +78,6 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
       } 
     })
   }
-   
   
   return (
     <div className="shelf-container">

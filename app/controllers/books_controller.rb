@@ -7,9 +7,9 @@ class BooksController < ApplicationController
     end
 
     #GET /profile
-    def profile
-        render json: current_user.books, status: :ok
-    end
+    # def profile
+    #     render json: current_user.books, status: :ok
+    # end
 
     # GET /book/:id
     def show 

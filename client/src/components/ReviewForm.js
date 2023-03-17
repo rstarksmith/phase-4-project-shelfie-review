@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
+const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm, addBookRev }) => {
   const [formData, setFormData] = useState({
     header: "",
     comment: "",
@@ -26,6 +26,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm }) => {
       if(resp.ok){
         resp.json().then(newReview => {
           handleAddReview(newReview)
+          addBookRev(newReview)
           hideForm()
         })
       }else {

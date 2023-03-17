@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-    before_action :find_review, :authorize_owner, only: [:update, :destroy]
+    # before_action :find_review, :authorize_owner, only: [:update, :destroy]
     # #GET /reviews
     # def index
     #     reviews = Review.all
@@ -16,29 +16,31 @@ class ReviewsController < ApplicationController
 
     #PATCH /reviews/:id
     def update
+        review = Review.find(params[:id])
         review.update!(review_params)
         render json: review, status: :ok
     end
 
     # #DELETE /reviews/:id
     def destroy
+        review = Review.find(params[:id])
         review.destroy!
         head :no_content
     end
 
     private
 
-    def find_review
-        review = Review.find(params[:id])
-    end
+    # def find_review
+    #     review = Review.find(params[:id])
+    # end
 
     def review_params
         params.permit(:header, :comment, :book_id, :user_id)
     end
 
-    def authorize_owner
-        raise "Unauthorized" if review.user_id != current_user.id
-    end
+    # def authorize_owner
+    #     raise "Unauthorized" if review.user_id != current_user.id
+    # end
 
     # render json: { error: "Not authorized" }, status: :unauthorized
 end

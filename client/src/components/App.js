@@ -14,19 +14,17 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/auth")
-    .then((resp) => {
+    fetch("/auth").then((resp) => {
       if (resp.ok) {
-        resp.json()
-        .then((newUser) => {
-          setUser(newUser)
-        })
+        resp.json().then((newUser) => {
+          setUser(newUser);
+        });
       }
-    })
+    });
   }, []);
-  
+
   const logInUser = (userObj) => {
-    console.log(userObj)
+    console.log(userObj);
     setUser(userObj);
     navigate("/");
   };
@@ -34,20 +32,34 @@ function App() {
   const logOut = () => {
     fetch("/logout", {
       method: "DELETE",
-    })
-    .then(resp => {
-      if(resp.ok){
-        setUser(null)
+    }).then((resp) => {
+      if (resp.ok) {
+        setUser(null);
       }
-    })
+    });
     navigate("/");
   };
 
 
-  const updateUserPhoto = (userObj) => {  
-    setUser(userObj)
+  const addBookToShelf = (book) => {
+     setUser((prevState) => ({...prevState, books: [book, ...user.books]}))
   }
-  
+
+  const addBookRev = (newReview) => { 
+    setUser((prevState) => ({ ...prevState, reviews: [...user.reviews, newReview]}));
+  }
+
+  const removeFromShelf = (deletedBook) => {
+    const editedBooks = user.books.filter((book) => book.id !== deletedBook.id)
+    setUser((prevState) => ({...prevState, books: editedBooks}))
+  }
+
+  //add code to change user state for review updates for possible future use on profile
+
+  const updateUserPhoto = (userObj) => {
+    setUser(userObj);
+  };
+
   return (
     <>
       <NavBar user={user} logOut={logOut} />
@@ -56,8 +68,22 @@ function App() {
         <Route path="/signup" element={<SignUp logInUser={logInUser} />} />
         <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
         <Route path="/books" element={<BookList user={user} />} />
-        <Route path="/books/:id" element={<BookReviewPage user={user} /> } />
-        <Route path="/profile" element={<MyShelfie user={user} closeAccount={setUser} updateUserPhoto={updateUserPhoto} />} />
+        <Route
+          path="/books/:id"
+          element={
+            <BookReviewPage user={user} removeFromShelf={removeFromShelf} addBookToShelf={addBookToShelf} addBookRev={addBookRev}/>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <MyShelfie
+              user={user}
+              closeAccount={setUser}
+              updateUserPhoto={updateUserPhoto}
+            />
+          }
+        />
         <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>

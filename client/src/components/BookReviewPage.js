@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList"
 
-const BookReviewPage = ( { user} ) => {
+const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf } ) => {
   const [book, setBook] = useState();
   const [showForm, setShowForm] = useState(false)
   const [errors, setErrors] = useState(false)
@@ -36,13 +36,16 @@ const BookReviewPage = ( { user} ) => {
 
    const handleAddReview = (newReview) => {
     setBook((prevState) => ({...prevState, reviews: [newReview, ...book.reviews]}))
+    addBookToShelf(book)
    }
+
    
    const handleDeleteReview = (deletedRevId) => {
      const removeReview = book.reviews.filter(
        (review) => review.id !== deletedRevId
      );
      setBook((prevState) => ({ ...prevState, reviews: removeReview }));
+     removeFromShelf(book)
    };
 
   const handleEditReview = (updatedReview) => {
@@ -81,6 +84,8 @@ const BookReviewPage = ( { user} ) => {
               handleAddReview={handleAddReview}
               currentBook={book}
               id={id}
+              addBookToShelf={addBookToShelf}
+              addBookRev={addBookRev}
             />
           ) : (
             <div>
