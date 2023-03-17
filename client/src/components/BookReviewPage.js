@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewList from "./ReviewList"
 
-const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf } ) => {
+const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, updateUserRev } ) => {
   const [book, setBook] = useState();
   const [showForm, setShowForm] = useState(false)
   const [errors, setErrors] = useState(false)
@@ -101,6 +101,7 @@ const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf } )
           handleEditReview={handleEditReview}
           currentReviews={book.reviews}
           handleDeleteReview={handleDeleteReview}
+          updateUserRev={updateUserRev}
           />
       </div>
     </div>

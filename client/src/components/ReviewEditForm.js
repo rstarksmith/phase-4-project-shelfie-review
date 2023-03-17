@@ -1,33 +1,38 @@
-import { useState } from "react"
+import { useState } from "react";
 
-const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
-  const { id } = review
-  const [editFormData, setEditFormData] = useState(review)
-  const [errors, setErrors] = useState(false)
+const ReviewEditForm = ({
+  review,
+  handleEditReview,
+  toggleEditForm,
+  updateUserRev,
+}) => {
+  const { id } = review;
+  const [editFormData, setEditFormData] = useState(review);
+  const [errors, setErrors] = useState(false);
 
   const handleEditChange = (e) => {
-    const { name, value } = e.target
-    setEditFormData({...editFormData, [name]: value})
-  }
+    const { name, value } = e.target;
+    setEditFormData({ ...editFormData, [name]: value });
+  };
 
   const editReview = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     fetch(`/reviews/${id}`, {
-      method: 'PATCH',
-      headers: {'Content-Type': 'application/json'},
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editFormData),
-    })
-    .then(resp => {
-      if(resp.ok){
-        resp.json().then(updatedReview => {
-          handleEditReview(updatedReview)
-          toggleEditForm()
-        })
-      }else {
-        resp.json().then(resp => setErrors(resp.errors))
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((updatedReview) => {
+          handleEditReview(updatedReview);
+          updateUserRev(updatedReview);
+          toggleEditForm();
+        });
+      } else {
+        resp.json().then((resp) => setErrors(resp.errors));
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className="form-block-r-b">
@@ -70,6 +75,6 @@ const ReviewEditForm = ({ review, handleEditReview, toggleEditForm }) => {
         : null}
     </div>
   );
-}
+};
 
-export default ReviewEditForm
+export default ReviewEditForm;

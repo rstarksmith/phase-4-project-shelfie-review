@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ReviewEditForm from "./ReviewEditForm";
 
-const Review = ({ user, review, handleDeleteReview, handleEditReview } ) => {
+const Review = ({ user, review, handleDeleteReview, handleEditReview, updateUserRev} ) => {
   const [showEditForm, setShowEditForm] = useState(false)
   const [errors, setErrors] = useState(false)
 
@@ -42,6 +42,7 @@ const Review = ({ user, review, handleDeleteReview, handleEditReview } ) => {
           review={review}
           toggleEditForm={toggleEditForm}
           handleEditReview={handleEditReview}
+          updateUserRev={updateUserRev}
         />
       ) : (
         <div className="rev-block">

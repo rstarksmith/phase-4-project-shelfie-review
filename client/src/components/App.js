@@ -55,6 +55,18 @@ function App() {
   }
 
   //add code to change user state for review updates for possible future use on profile
+  const updateUserRev = (updatedRev) => {
+    const updatedReviews = user.reviews.map((review) => {
+      if(review.id === updatedRev.id) {
+        return updatedRev
+      } else {
+        return review
+      }
+    })
+    setUser(prevState => ({...prevState, reviews: updatedReviews}))
+    console.log(updatedReviews)
+  }
+
 
   const updateUserPhoto = (userObj) => {
     setUser(userObj);
@@ -71,7 +83,7 @@ function App() {
         <Route
           path="/books/:id"
           element={
-            <BookReviewPage user={user} removeFromShelf={removeFromShelf} addBookToShelf={addBookToShelf} addBookRev={addBookRev}/>
+            <BookReviewPage user={user} removeFromShelf={removeFromShelf} updateUserRev={updateUserRev} addBookToShelf={addBookToShelf} addBookRev={addBookRev}/>
           }
         />
         <Route
