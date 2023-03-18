@@ -5,47 +5,33 @@
 - Log in & remain logged in
 - Log out
 - View list of books and their reviews
-- CRUD - create, update, delete review they left
-- Create book post
+- View users shared photos
+- CRUD - create, update, delete review 
+- Create book
+- Update user photo
 
 ## Stretch
 - Share shelfie post - likes
 - Search books by name
 - Filter books genre
+- Option not to share photo
 
 ## Models - See ERD.drawio
 - User
 - Review
 - Book
 
+ 
+custom serializer
+class UserPhotoSerializer
+    attributes: :id, :username, :photo_url
 
-route
-get "/mybooks", to: reviews#mybooks
-
-or 
-
-class MyBooksSerializer
-    attributes: :id, :summary, 
-
-    def summary
-        "#{self.object.header} - #{self.object.book.title}
-    end
-    <!-- you would want to map through user.id reviews in order to make display happen -->
-
-    belongs_to :user
-    belongs_to :book
-
-
-
-def my_books
-    
-    render json:  .., serializer: MyBooksSerializer
+def index
+    users = User.all
+    render json: users, serializer: UserPhotoSerializer
 end
 
+alphabetic order for books(scope?)
 
-React state
-myBooks, setMyBooks
-
-fetch('/mybooks)
 
 

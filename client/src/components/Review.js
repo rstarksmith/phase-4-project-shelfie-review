@@ -48,6 +48,7 @@ const Review = ({ user, review, handleDeleteReview, handleEditReview, updateUser
         <div className="rev-block">
           <h4>{review.header}</h4>
           <p>{review.comment}</p>
+          <p>{review.owner}</p>
           <button onClick={toggleEditForm} className="rev-bttn">
             edit
           </button>

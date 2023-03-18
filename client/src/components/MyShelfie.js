@@ -42,7 +42,6 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
    const editShelfie = (e) => {
     e.preventDefault()
     setErrors(null)
-    console.log(photoUpdate)
     fetch(`/users/${user.id}}`, {
         method: "PATCH",
         headers: {
@@ -53,7 +52,6 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
     .then(resp => {
         if(resp.ok) {
           resp.json().then((pic) => {
-            console.log(pic)
             updateUserPhoto(pic)
           })
         }else {

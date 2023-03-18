@@ -54,7 +54,6 @@ function App() {
     setUser((prevState) => ({...prevState, books: editedBooks}))
   }
 
-  //add code to change user state for review updates for possible future use on profile
   const updateUserRev = (updatedRev) => {
     const updatedReviews = user.reviews.map((review) => {
       if(review.id === updatedRev.id) {
@@ -64,9 +63,7 @@ function App() {
       }
     })
     setUser(prevState => ({...prevState, reviews: updatedReviews}))
-    console.log(updatedReviews)
   }
-
 
   const updateUserPhoto = (userObj) => {
     setUser(userObj);

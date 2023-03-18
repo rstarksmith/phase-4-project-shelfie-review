@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    # #PATCH /user/:id
+    #PATCH /user/:id
     def update
         current_user.update!(user_update_params)
         render json: current_user, status: :ok
