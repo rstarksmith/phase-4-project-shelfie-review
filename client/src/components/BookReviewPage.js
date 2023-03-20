@@ -38,7 +38,6 @@ const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, up
     setBook((prevState) => ({...prevState, reviews: [newReview, ...book.reviews]}))
     addBookToShelf(book)
    }
-
    
    const handleDeleteReview = (deletedRevId) => {
      const removeReview = book.reviews.filter(

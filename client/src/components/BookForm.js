@@ -25,7 +25,10 @@ const BookForm = ({ handleAddBook, noBookForm }) => {
       })
       .then(resp => {
         if(resp.ok) {
-          resp.json().then(newBook => handleAddBook(newBook))
+          resp.json().then((newBook) => 
+            handleAddBook(newBook),
+            noBookForm()
+            )
         }else {
           resp.json().then(resp => {
             setErrors(resp.errors)
