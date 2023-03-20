@@ -67,8 +67,10 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm, addBookR
         <button className="bttn" type="submit">
           Post Review
         </button>
+        <button onClick={hideForm} className="bttn-flip">
+          Cancel
+        </button>
       </form>
-      <button onClick={hideForm} className="bttn-flip">Cancel</button>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
             <p className="err">

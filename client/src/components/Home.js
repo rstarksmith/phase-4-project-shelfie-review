@@ -45,9 +45,9 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Share a photo of your</p>
-            <p onClick={() => navigate("/shelfieshare")}>
-              bookshelf ▷#shelfieshare
+            <p className="feature">Share a photo of your</p>
+            <p className="feature" onClick={() => navigate("/shelfieshare")}>
+              bookshelf #shelfieshare
             </p>
           </div>
         </div>
@@ -60,8 +60,8 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Find a new book from</p>
-            <p>our Bookshelf</p>
+            <p className="feature">Find a new book from</p>
+            <p className="feature">our Bookshelf</p>
           </div>
         </div>
         <div>
@@ -73,8 +73,8 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Review your recent reads</p>
-            <p>for fellow readers </p>
+            <p className="feature">Review your recent reads</p>
+            <p className="feature">for fellow readers </p>
           </div>
         </div>
         <div>
@@ -86,8 +86,8 @@ const Home = ({ user }) => {
             />
           </div>
           <div>
-            <p>Join our community &</p>
-            <p>open a shelfie account</p>
+            <p className="feature">Join our community &</p>
+            <p className="feature">open a shelfie account</p>
           </div>
         </div>
       </div>

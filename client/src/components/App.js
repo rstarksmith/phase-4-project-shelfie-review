@@ -40,7 +40,6 @@ function App() {
     navigate("/");
   };
 
-
   const addBookToShelf = (book) => {
      setUser((prevState) => ({...prevState, books: [book, ...user.books]}))
   }

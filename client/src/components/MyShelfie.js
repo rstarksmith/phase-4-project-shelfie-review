@@ -1,25 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
-  // const [profile, setProfile] = useState([])
   const [photoUpdate, setPhotoUpdate] = useState({
     photo_url: "",
   })
+  const [hideConfirm, setHideConfirm] = useState(false)
   const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`/profile`).then((resp) => {
-  //       if (resp.ok) {
-  //         resp.json().then((myData) => setProfile(myData));
-  //       } else {
-  //         resp.json().then((resp) => setErrors(resp.errors));
-  //       }
-  //     });
-  //   }
-  // }, [user]);
 
   if (!user) return <h1>Loading...</h1>;
 
@@ -53,6 +42,7 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
         if(resp.ok) {
           resp.json().then((pic) => {
             updateUserPhoto(pic)
+            setPhotoUpdate({ photo_url: "" })
           })
         }else {
           resp.json().then(resp => {
@@ -79,9 +69,9 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
   
   return (
     <div className="shelf-container">
-      <div className="my-account">
-        <div>
-          <h3 className="sub-head">@{user.username}</h3>
+      <div>
+        <div className="my-account">
+          <h3 className="shelf-head">@{user.username}</h3>
           <img
             src={user.photo_url}
             alt="shelfie user TBR shelf"
@@ -89,14 +79,19 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
           />
           <br />
           <form className="shelfie-border" onSubmit={editShelfie}>
-            <label>Is it time to update your shelfie?</label>
+            <label className="shelf-txt">
+              Is it time to update your shelfie?
+            </label>
             <input
-              className="input"
+              className="shelf-input"
               name="photo_url"
               onChange={handleChange}
               value={photoUpdate.photo_url}
               placeholder="New Shelfie Photo URL..."
             />
+            <button className="shelf-bttn" type="submit">
+              Update Shelfie
+            </button>
             {errors
               ? Object.entries(errors).map(([key, value]) => (
                   <p className="err">
@@ -104,19 +99,17 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
                   </p>
                 ))
               : null}
-            <button className="bttn" type="submit">
-              Update my Shelfie
-            </button>
           </form>
-          <br />
-          <button onClick={deleteUser} className="bttn">
-            delete account
-          </button>
         </div>
       </div>
       <div className="my-books">
         <h3 className="sub-head">My Books</h3>
-        <div className="book-scroll">{myBooks}</div>
+        <div className="book-scroll">
+          {myBooks}
+          <button onClick={deleteUser} className="shelf-bttn-flip">
+            Delete Account
+          </button>
+        </div>
       </div>
     </div>
   );

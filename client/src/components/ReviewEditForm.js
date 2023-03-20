@@ -60,12 +60,9 @@ const ReviewEditForm = ({
         />
         <br />
         <button className="bttn" type="submit">
-          Update Review
+          Edit Review
         </button>
       </form>
-      <button onClick={toggleEditForm} className="bttn-flip">
-        Cancel
-      </button>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
             <p className="err">
@@ -73,6 +70,9 @@ const ReviewEditForm = ({
             </p>
           ))
         : null}
+      <button onClick={toggleEditForm} className="cancel-bttn">
+        Cancel
+      </button>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:index, :create]
 
-    #GET /shelfieshare  ---serializer?
+    #GET /shelfieshare
     def index
         users = User.all 
-        render json: users, status: :ok
+        render json: users, include: [], status: :ok
     end
 
     #GET /auth
