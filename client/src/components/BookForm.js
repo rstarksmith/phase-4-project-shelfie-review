@@ -96,6 +96,9 @@ const BookForm = ({ handleAddBook, noBookForm }) => {
           <button className="bttn" type="submit">
             Add Book
           </button>
+          <button onClick={noBookForm} className="bttn-flip" type="button">
+            Cancel
+          </button>
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
@@ -104,9 +107,6 @@ const BookForm = ({ handleAddBook, noBookForm }) => {
               </p>
             ))
           : null}
-        <button onClick={noBookForm} className="bttn">
-          Cancel
-        </button>
       </div>
     </div>
   );

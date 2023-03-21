@@ -33,7 +33,7 @@ const Home = ({ user }) => {
         className="infographic"
       />
       <div>
-        <h2 className="header">Features</h2>
+        <h2 className="feature-head">Features</h2>
       </div>
       <div className="feature-grid">
         <div>

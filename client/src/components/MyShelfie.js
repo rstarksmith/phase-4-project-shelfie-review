@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"
+import ConfirmDelete from "./ConfirmDelete";
 
 const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
   const [photoUpdate, setPhotoUpdate] = useState({
@@ -66,8 +67,16 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
       } 
     })
   }
+
+  const changePage = () => {
+    setHideConfirm(!hideConfirm)
+  }
   
   return (
+    <>
+    {hideConfirm ? ( 
+      <ConfirmDelete deleteUser={deleteUser} closeConfirm={changePage} /> 
+    ) : ( 
     <div className="shelf-container">
       <div>
         <div className="my-account">
@@ -106,12 +115,13 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
         <h3 className="sub-head">My Books</h3>
         <div className="book-scroll">
           {myBooks}
-          <button onClick={deleteUser} className="shelf-bttn-flip">
+          <button onClick={changePage} className="shelf-bttn-flip">
             Delete Account
           </button>
         </div>
       </div>
-    </div>
+    </div>)}
+  </>
   );
 };
 

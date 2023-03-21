@@ -80,6 +80,13 @@ nav a.active {
   width: 1000px
 }
 
+.feature-head {
+  color: #363636;
+  font-size: 45px;
+  font-weight: 300;
+  text-align: center;
+}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -303,28 +310,6 @@ nav a.active {
   transition: .8s;
 }
 
-.cancel-bttn {
-  background-color: #edecec;
-  border: none;
-  border-radius: 6px;
-  color: #309898;
-  font-family: 'Montserrat';
-  font-weight: 400;
-  font-size: 15px;
-  /* position: flex; */
-  margin-top: 10px;
-  width: 125px;
-  height: 38px;
-}
-
-.cancel-bttn:hover {
-  background-color: #309898;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  transition: .8s;
-}
-
 
 /* Bookshelf ---------------------- */
 .book-container {
@@ -491,6 +476,62 @@ nav a.active {
   width: 700px;
 }
 
+/* confirm------------------ */
+.confirm-block {
+  border-radius: 4px;
+  display: block;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 50px;
+  width: 375px;
+  border: 2px solid #309898;
+  padding: 10px 50px;
+}
+
+.bttn {
+  background-color: #309898;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  display: inline;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 15px;
+  justify-content: center;
+  width: 125px;
+  height: 38px;
+}
+
+.bttn:hover {
+  background-color: rgb(237, 236, 236);
+  color: #309898;
+  cursor: pointer;
+  font-weight: 400;
+  transition: .8s;
+}
+
+.bttn-flip {
+  align-items: center;
+  background-color: #edecec;
+  border: none;
+  border-radius: 6px;
+  color: #309898;
+  display: inline-block;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 15px;
+  margin-left: 15px;
+  width: 120px;
+  height: 38px;
+}
+
+.bttn-flip:hover {
+  background-color: #309898;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .8s;
+}
 
 /* -------------------------------- */
 .img {
@@ -498,4 +539,6 @@ nav a.active {
   height: 150px;
   margin: 20px;
 }
+
+
 

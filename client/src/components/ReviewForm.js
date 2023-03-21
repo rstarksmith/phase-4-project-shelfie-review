@@ -67,7 +67,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm, addBookR
         <button className="bttn" type="submit">
           Post Review
         </button>
-        <button onClick={hideForm} className="bttn-flip">
+        <button onClick={hideForm} className="bttn-flip" type="button">
           Cancel
         </button>
       </form>
