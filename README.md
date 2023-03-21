@@ -13,6 +13,9 @@ ShelfieShare is an application for readers, built by readers. Share your current
 - **Profile** - User has a profile with list of books they have reviewed and ability to update their user photo
 - **Delete** - User can delete their account 
 
+Entity Relationship diagram file:
+ERD.drawio
+
 ## Tech Stack
 ---
 - ReactJS
@@ -46,14 +49,20 @@ Frontend on http://localhost:4000
 $ npm start --prefix client
 ``` 
 ## Resources
----
-- Graphics, logo and icons created with Adobe Photoshop and Canva -[Canva] 
+ ___
+- Graphics, logo and icons created with Adobe Photoshop and [Canva] 
 - Image hosting with [Imgur]
-- Seeding book and shelf images  - []
+- Seeding book data:
+    - https://sarahjmaas.com
+    - https://anahuang.com/
+    - https://www.lucyscore.net/
+    - https://dunenovels.com/frank-herbert/
+    - https://www.theandydavidson.com/
+    - https://www.hernandiaz.net/bio      
 
 
 [Canva]: https://www.canva.com/
 [Imgur]: https://imgur.com/
 
 
-Fair use, a provision of U.S. copyright law, gives users the right to use copyrighted material without permission under certain circumstances. If a use is fair, the user need not notify or seek permission from the copyright holder.
+
