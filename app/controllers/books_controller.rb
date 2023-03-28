@@ -18,6 +18,14 @@ class BooksController < ApplicationController
         render json: book, status: :created
     end
 
+    #PATCH /books/:id
+    def liked_it
+        book = Book.find(params[:id])
+        book.likes += 1 
+        book.save!
+        render json: book.likes, status: :ok
+    end
+
     # def destroy
     #     book = Book.find(params[:id])
     #     book.destroy
@@ -27,7 +35,11 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.permit(:title, :author, :genre, :image_url)
+        params.permit(:title, :author, :genre, :image_url, :likes)
+    end
+
+    def like_params
+        params.permit(:likes)
     end
 
 end

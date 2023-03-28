@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   # get '/profile', to: "books#profile"
   
+  patch '/books/:id', to: "books#liked_it"
+
   get "/auth", to: "users#show"
   get "/shelfieshare", to: "users#index"
   patch "/users/:id", to: "users#update"

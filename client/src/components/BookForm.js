@@ -5,7 +5,8 @@ const BookForm = ({ handleAddBook, noBookForm }) => {
     title: "",
     author: "",
     genre: "",
-    image_url: ""
+    image_url: "",
+    likes: 0
   })
   const [errors, setErrors] = useState(false)
   
