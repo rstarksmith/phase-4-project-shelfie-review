@@ -44,6 +44,7 @@ const SignIn = ({ logInUser }) => {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Username..."
             className="input"
+            autoComplete="off"
           />
           <br />
           <input
@@ -53,6 +54,7 @@ const SignIn = ({ logInUser }) => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter Password..."
             className="input"
+            autoComplete="off"
           />
           <br />
           <button className="bttn" type="submit">
@@ -66,7 +68,12 @@ const SignIn = ({ logInUser }) => {
               </p>
             ))
           : null}
-        <p>Don't have an account? <span onClick={()=> navigate('/signup')} className="line-link">Sign up</span></p>
+        <p>
+          Don't have an account?{" "}
+          <span onClick={() => navigate("/signup")} className="line-link">
+            Sign up
+          </span>
+        </p>
       </div>
     </div>
   );

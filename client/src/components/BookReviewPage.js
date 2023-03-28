@@ -1,14 +1,19 @@
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
-import ReviewForm from "./ReviewForm"
-import ReviewList from "./ReviewList"
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import ReviewForm from "./ReviewForm";
+import ReviewList from "./ReviewList";
 
-const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, updateUserRev } ) => {
+const BookReviewPage = ({
+  user,
+  addBookToShelf,
+  addBookRev,
+  removeFromShelf,
+  updateUserRev,
+}) => {
   const [book, setBook] = useState();
-  const [showForm, setShowForm] = useState(false)
-  const [errors, setErrors] = useState(false)
+  const [showForm, setShowForm] = useState(false);
+  const [errors, setErrors] = useState(false);
   const { id } = useParams();
-  
 
   useEffect(() => {
     if (user) {
@@ -20,53 +25,52 @@ const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, up
         }
       });
     }
-  }, [user, id])
- 
-  const hideForm = () => setShowForm(false)
+  }, [user, id]);
 
-  const showReviewForm = () => setShowForm(true)
-  
+  const hideForm = () => setShowForm(false);
+
+  const showReviewForm = () => setShowForm(true);
+
   if (errors) {
-     return <h1>{errors}</h1> 
-  } 
+    return <h1>{errors}</h1>;
+  }
   if (!book) {
     return <h1>Loading...</h1>;
-  } 
+  }
   // loading state?
 
-   const handleAddReview = (newReview) => {
-    setBook((prevState) => ({...prevState, reviews: [newReview, ...book.reviews]}))
-    addBookToShelf(book)
-   }
-   
-   const handleDeleteReview = (deletedRevId) => {
-     const removeReview = book.reviews.filter(
-       (review) => review.id !== deletedRevId
-     );
-     setBook((prevState) => ({ ...prevState, reviews: removeReview }));
-     removeFromShelf(book)
-   };
+  const handleAddReview = (newReview) => {
+    setBook((prevState) => ({
+      ...prevState,
+      reviews: [newReview, ...book.reviews],
+    }));
+    addBookToShelf(book);
+  };
+
+  const handleDeleteReview = (deletedRevId) => {
+    const removeReview = book.reviews.filter(
+      (review) => review.id !== deletedRevId
+    );
+    setBook((prevState) => ({ ...prevState, reviews: removeReview }));
+    removeFromShelf(book);
+  };
 
   const handleEditReview = (updatedReview) => {
     const updateReviews = book.reviews.map((review) => {
       if (review.id === updatedReview.id) {
-        return updatedReview 
-      }else {
-        return review
+        return updatedReview;
+      } else {
+        return review;
       }
-    })
-    setBook((prevState) => ({...prevState, reviews: updateReviews}))
-  }
-  
+    });
+    setBook((prevState) => ({ ...prevState, reviews: updateReviews }));
+  };
+
   return (
     <div className="rev-grid">
       <div className="book-con">
         <div>
-          <img
-            className="book-img"
-            src={book.image_url}
-            alt={book.title}
-          />
+          <img className="book-img" src={book.image_url} alt={book.title} />
         </div>
         <div>
           <h1 className="rev-header">{book.title}</h1>
@@ -88,10 +92,10 @@ const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, up
             />
           ) : (
             <div>
-            <h2 className="rev-header">Reviews</h2>
-            <button onClick={showReviewForm} className="add-rev-bttn">
-              Leave a Review
-            </button>
+              <h2 className="rev-header">Reviews</h2>
+              <button onClick={showReviewForm} className="add-rev-bttn">
+                Leave a Review
+              </button>
             </div>
           )}
         </div>
@@ -101,10 +105,10 @@ const BookReviewPage = ( { user, addBookToShelf, addBookRev, removeFromShelf, up
           currentReviews={book.reviews}
           handleDeleteReview={handleDeleteReview}
           updateUserRev={updateUserRev}
-          />
+        />
       </div>
     </div>
   );
-}
+};
 
-export default BookReviewPage
+export default BookReviewPage;
