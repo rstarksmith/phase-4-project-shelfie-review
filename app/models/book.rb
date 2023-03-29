@@ -3,9 +3,12 @@ class Book < ApplicationRecord
     validates :title, uniqueness: true, length: { maximum: 50 }
     validates :author, length: { maximum: 50 }
 
-    has_many :reviews, dependent: :destroy
+    # scope :find_author, -> { where(:author => 'Sarah J. Maas')}
+
+    has_many :reviews, -> { order(created_at: :desc)}, dependent: :destroy
+    # scope keeps order of reviews current at the top
     has_many :users, through: :reviews
 
-    # scope :by_title, -> { order(title: :asc) }
+    
 
 end

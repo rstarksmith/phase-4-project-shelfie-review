@@ -6,6 +6,13 @@ class BooksController < ApplicationController
         render json: books, status: :ok
     end
 
+    # could insert button to find certain author with method
+    #GET /books/sarahmaas
+    # def find_maas 
+    #     books = Book.find_author
+    #     render json: books, status: :ok
+    # end
+
     # GET /books/:id
     def show 
          book = Book.find(params[:id])
