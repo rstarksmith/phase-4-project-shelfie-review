@@ -6,6 +6,5 @@ class Book < ApplicationRecord
     has_many :reviews, -> { order(created_at: :desc)}, dependent: :destroy
     has_many :users, through: :reviews
 
-    # scope :by_title, -> { order(title: :asc) }
 
 end

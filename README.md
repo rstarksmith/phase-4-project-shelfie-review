@@ -1,11 +1,16 @@
-# ShelfieShare
+
+<img
+    src="https://i.imgur.com/Y0UCXTM.png"
+    alt="shelfie share logo"
+    className="logo"
+/>
 
 ## Description
----
-ShelfieShare is an application for readers, built by readers. Share your current books with your fellow readers and keep track of you past reads.a
+
+ShelfieShare is an application for readers, built by readers. Share your current books with your fellow readers and keep track of your past reads.
 ## Features
 ---
-- Community **Home** page with navigation
+- **Home** page with navigation
 - **Share**  -  ShelfieShare page displays users "shelfies" users create at sign up
 - **Sign up**  -  Join community by signing up with a new user account
 - **Sign in**  - Using secure password with confirmation and sign out
@@ -13,14 +18,15 @@ ShelfieShare is an application for readers, built by readers. Share your current
 - **Profile** - User has a profile with list of books they have reviewed and ability to update their user photo
 - **Delete** - User can delete their account 
 
-Entity Relationship diagram file:
-ERD.drawio
 
 ## Tech Stack
 ---
 - ReactJS
 - CSS
 - Ruby on Rails
+
+Entity Relationship diagram file:
+ERD.drawio
 ## Requirements
 ---
 - Ruby 2.7.4
