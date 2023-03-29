@@ -2,10 +2,11 @@
 <img
     src="https://i.imgur.com/Y0UCXTM.png"
     alt="shelfie share logo"
-    className="logo"
+    style="max-width:350px;"
 />
 
 ## Description
+---
 
 ShelfieShare is an application for readers, built by readers. Share your current books with your fellow readers and keep track of your past reads.
 ## Features
@@ -16,7 +17,13 @@ ShelfieShare is an application for readers, built by readers. Share your current
 - **Sign in**  - Using secure password with confirmation and sign out
 - **Bookshelf**  -  Browse and create books | Post, update, delete actions for user reviews
 - **Profile** - User has a profile with list of books they have reviewed and ability to update their user photo
-- **Delete** - User can delete their account 
+- **Delete** - User can delete their account
+
+
+<a href="https://www.loom.com/share/2b7cb6cbb5244a60bf555550e3b64d21">
+    <p>ShelfieShare - Watch Video</p>
+    <img style="max-width:400px;" src="https://cdn.loom.com/sessions/thumbnails/2b7cb6cbb5244a60bf555550e3b64d21-with-play.gif">
+</a>
 
 
 ## Tech Stack
