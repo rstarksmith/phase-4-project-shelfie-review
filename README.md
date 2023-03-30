@@ -1,9 +1,10 @@
-
+<p align="center">
 <img
     src="https://i.imgur.com/Y0UCXTM.png"
     alt="shelfie share logo"
     style="max-width:350px;"
 />
+</p>
 
 ## Description
 ---
