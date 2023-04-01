@@ -24,7 +24,6 @@ function App() {
   }, []);
 
   const logInUser = (userObj) => {
-    console.log(userObj);
     setUser(userObj);
     navigate("/");
   };
@@ -75,11 +74,18 @@ function App() {
         <Route path="/" element={<Home user={user} />} />
         <Route path="/signup" element={<SignUp logInUser={logInUser} />} />
         <Route path="/signin" element={<SignIn logInUser={logInUser} />} />
+        <Route path="/shelfieshare" element={<ShelfieShare />} />
         <Route path="/books" element={<BookList user={user} />} />
         <Route
           path="/books/:id"
           element={
-            <BookReviewPage user={user} removeFromShelf={removeFromShelf} updateUserRev={updateUserRev} addBookToShelf={addBookToShelf} addBookRev={addBookRev}/>
+            <BookReviewPage
+              user={user}
+              removeFromShelf={removeFromShelf}
+              updateUserRev={updateUserRev}
+              addBookToShelf={addBookToShelf}
+              addBookRev={addBookRev}
+            />
           }
         />
         <Route
@@ -92,7 +98,6 @@ function App() {
             />
           }
         />
-        <Route path="/shelfieshare" element={<ShelfieShare />} />
       </Routes>
     </>
   );

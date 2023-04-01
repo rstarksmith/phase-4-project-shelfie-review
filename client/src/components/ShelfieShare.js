@@ -23,7 +23,7 @@ const ShelfieShare = () => {
   return (
     <div>
       <h1 className="header">#shelfieshare</h1>
-      <h4 className="sub-head">Browse our readers shelfies</h4>
+      <h4 className="sub-head">Browse our reader's shelfies</h4>
       <div className="card-container">
         {displayPhotos}
       </div>

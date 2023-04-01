@@ -10,16 +10,20 @@ const BookList = ( {user } ) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (user) {
+    // if (user) {
       fetch("/books").then((resp) => {
         if (resp.ok) {
           resp.json().then((bookData) => setBooks(bookData));
         } else {
-          resp.json().then((resp) => setErrors(resp.errors));
+          resp.json().then((data) => setErrors(data.error))
         }
       });
-    }
+    // }
+    // else {
+    //   setErrors("Not Authorized. Please Sign In.")
+    // }
   }, [user]);
+
 
    const handleAddBook = (newBook) => {
      setBooks((prevState) => [newBook, ...prevState]);
@@ -32,7 +36,8 @@ const BookList = ( {user } ) => {
   
   const bookshelf = books.map(book => <Book key={book.id} book={book} />)
   
-  if (errors) return <h1>{errors}</h1>
+
+  if (errors) return <h1 className="header"> ⚠︎ {errors}</h1>
 
   return (
     <div>

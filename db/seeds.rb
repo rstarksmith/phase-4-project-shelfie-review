@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u1 = User.create(username: "booklover", password: '1234', password_confirmation: '1234', photo_url: "https://jennifertarheelreader.files.wordpress.com/2018/09/20180914_192727.jpg?w=1200")
-u2 = User.create(username: "readalot", password: '1234', password_confirmation: '1234', photo_url: "https://paperbacksandplanners.files.wordpress.com/2020/05/2020-05-07-05.22.55-1.jpg")
-u3 = User.create(username: "bookfriend", password: '1234', password_confirmation: '1234', photo_url: "https://i.pinimg.com/736x/c9/0b/63/c90b638142c455ab07ee88a13c83c5b8.jpg")
-u4 = User.create(username: "iheartbooks", password: 'book', password_confirmation: 'book', photo_url: "https://i.pinimg.com/736x/ee/26/6d/ee266de0e75d5e67b1cda67f35c92ed2--ravenclaw-bookshelves.jpg")
-u5 = User.create(username: "rainyreader", password: 'book', password_confirmation: 'book', photo_url: "https://external-preview.redd.it/6CwGTHnhL1OHvJCSSZ6ygEeuIafMdDGVwmCHu2Y48w0.jpg?width=640&crop=smart&auto=webp&s=b3d4007e42ddf06aaa047b20c6e85ca9faedcf1c")
-u6 = User.create(username: "booknerd", password: 'book', password_confirmation: 'book', photo_url: "https://i.pinimg.com/736x/24/f2/80/24f280900b1777a833946c47053380e8.jpg")
+u1 = User.create(username: "booklover", password: '1234', password_confirmation: '1234', photo_url: "https://i.imgur.com/DOiIxb7.jpg")
+u2 = User.create(username: "readalot", password: '1234', password_confirmation: '1234', photo_url: "https://i.imgur.com/44eQiL1.jpg")
+u3 = User.create(username: "bookfriend", password: '1234', password_confirmation: '1234', photo_url: "https://i.imgur.com/qnyhNFb.jpg")
+u4 = User.create(username: "iheartbooks", password: 'book', password_confirmation: 'book', photo_url: "https://i.imgur.com/9ggdS9X.jpg")
+u5 = User.create(username: "rainyreader", password: 'book', password_confirmation: 'book', photo_url: "https://i.imgur.com/SVvdLez.jpg")
+u6 = User.create(username: "booknerd", password: 'book', password_confirmation: 'book', photo_url: "https://i.imgur.com/0DVYZil.jpg")
     
 b1 = Book.create(title: "A Court of Thorns and Roses", author: "Sarah J. Maas", genre: "Fantasy", image_url: "https://sarahjmaas.com/wp-content/uploads/2022/01/ACOTAR_1.jpg")
 b2 = Book.create(title: "A Court of Mist and Fury", author: "Sarah J. Maas", genre: "Fantasy", image_url: "https://sarahjmaas.com/wp-content/uploads/2022/02/ACOMAF_2h.jpg")

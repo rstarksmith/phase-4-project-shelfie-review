@@ -10,9 +10,7 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
   const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
 
-
-  if (!user) return <h1>Loading...</h1>;
-
+  if (!user) return <h1 className="header">⚠︎ Not Authorized</h1>;
 
    const myBooks = user.books.map((book) => (
      <img
@@ -74,54 +72,56 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
   
   return (
     <>
-    {hideConfirm ? ( 
-      <ConfirmDelete deleteUser={deleteUser} closeConfirm={changePage} /> 
-    ) : ( 
-    <div className="shelf-container">
-      <div>
-        <div className="my-account">
-          <h3 className="shelf-head">@{user.username}</h3>
-          <img
-            src={user.photo_url}
-            alt="shelfie user TBR shelf"
-            className="my-shelfie"
-          />
-          <br />
-          <form className="shelfie-border" onSubmit={editShelfie}>
-            <label className="shelf-txt">
-              Is it time to update your shelfie?
-            </label>
-            <input
-              className="shelf-input"
-              name="photo_url"
-              onChange={handleChange}
-              value={photoUpdate.photo_url}
-              placeholder="New Shelfie Photo URL..."
-            />
-            <button className="shelf-bttn" type="submit">
-              Update Shelfie
-            </button>
-            {errors
-              ? Object.entries(errors).map(([key, value]) => (
-                  <p className="err">
-                    ▸ {key} {value}
-                  </p>
-                ))
-              : null}
-          </form>
+      {hideConfirm ? (
+        <ConfirmDelete deleteUser={deleteUser} closeConfirm={changePage} />
+      ) : (
+        <div className="shelf-container">
+          <div>
+            <div className="my-account">
+              <h3 className="shelf-head">@{user.username}</h3>
+              <img
+                src={user.photo_url}
+                alt="shelfie user TBR shelf"
+                className="my-shelfie"
+              />
+              <br />
+              <form className="shelfie-border" onSubmit={editShelfie}>
+                <label className="shelf-txt">
+                  Is it time to update your shelfie?
+                </label>
+                <input
+                  autoComplete="off"
+                  className="shelf-input"
+                  name="photo_url"
+                  onChange={handleChange}
+                  value={photoUpdate.photo_url}
+                  placeholder="New Shelfie Photo URL..."
+                />
+                <button className="shelf-bttn" type="submit">
+                  Update Shelfie
+                </button>
+                {errors
+                  ? Object.entries(errors).map(([key, value]) => (
+                      <p className="err">
+                        ▸ {key} {value}
+                      </p>
+                    ))
+                  : null}
+              </form>
+            </div>
+          </div>
+          <div className="my-books">
+            <h3 className="sub-head">My Books</h3>
+            <div className="book-scroll">
+              {myBooks}
+              <button onClick={changePage} className="shelf-bttn-flip">
+                Delete Account
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="my-books">
-        <h3 className="sub-head">My Books</h3>
-        <div className="book-scroll">
-          {myBooks}
-          <button onClick={changePage} className="shelf-bttn-flip">
-            Delete Account
-          </button>
-        </div>
-      </div>
-    </div>)}
-  </>
+      )}
+    </>
   );
 };
 
