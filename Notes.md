@@ -11,10 +11,11 @@
 - Update user photo
 
 ## Stretch
+- Add Admin to be able to delete books, access to other features
 - Share shelfie post - likes
 - Search books by name
 - Filter books genre
-- Option not to share photo
+
 
 ## Models - See ERD.drawio
 - User
@@ -22,16 +23,7 @@
 - Book
 
  
-custom serializer
-class UserPhotoSerializer
-    attributes: :id, :username, :photo_url
 
-def index
-    users = User.all
-    render json: users, serializer: UserPhotoSerializer
-end
-
-alphabetic order for books(scope?)
 
 
 

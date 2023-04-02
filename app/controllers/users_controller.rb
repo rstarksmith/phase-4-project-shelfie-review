@@ -28,9 +28,9 @@ class UsersController < ApplicationController
     #DELETE /closeaccount
     def destroy
         current_user.destroy!
-        session[:user_id] = nil
-        # head :no_content
-        render json: {}
+        session.delete :user_id  
+        head :no_content
+        # render json: {}
     end
 
     private
