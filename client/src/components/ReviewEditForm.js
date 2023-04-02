@@ -68,7 +68,7 @@ const ReviewEditForm = ({
       </form>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
-            <p className="err">
+            <p className="err" key={value}>
               ▸ {key} {value}
             </p>
           ))

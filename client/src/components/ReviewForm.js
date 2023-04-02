@@ -73,7 +73,7 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm, addBookR
       </form>
       {errors
         ? Object.entries(errors).map(([key, value]) => (
-            <p className="err">
+            <p className="err" key={value}>
               ▸ {key} {value}
             </p>
           ))

@@ -86,14 +86,17 @@ const SignUp = ({ logInUser }) => {
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p className="err">
+              <p className="err" key={value}>
                 ▸ {key} {value}
               </p>
             ))
           : null}
 
         <p>
-          Already have an account? <span onClick={()=> navigate('/signin')}className="line-link">Sign in</span>
+          Already have an account?{" "}
+          <span onClick={() => navigate("/signin")} className="line-link">
+            Sign in
+          </span>
         </p>
       </div>
     </div>

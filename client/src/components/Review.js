@@ -23,7 +23,8 @@ const Review = ({ user, review, handleDeleteReview, handleEditReview, updateUser
     setShowEditForm(!showEditForm)
   }
 
-  if(errors) return <h1>{errors}</h1>
+  if(!user) return <h1 className='header'>Loading...</h1>
+  if(errors) return <h1 className='header'>{errors}</h1>
 
   if (review.user_id !== user.id)
     return (

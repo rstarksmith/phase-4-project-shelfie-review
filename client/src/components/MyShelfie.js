@@ -10,7 +10,11 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
   const [errors, setErrors] = useState(null)
   const navigate = useNavigate();
 
-  if (!user) return <h1 className="header">⚠︎ Not Authorized</h1>;
+  if (!user) return <h1 className="header">Loading...</h1>;
+  // if this was fetching from the backend I could set the error
+  // on the backend, the error msg is set on client side so when the user is
+  // loading there is a you see loading msg, to put Not authorized, user 
+  // would see that flashed when their profile is loading. 
 
    const myBooks = user.books.map((book) => (
      <img
@@ -102,7 +106,7 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
                 </button>
                 {errors
                   ? Object.entries(errors).map(([key, value]) => (
-                      <p className="err">
+                      <p className="err" key={value}>
                         ▸ {key} {value}
                       </p>
                     ))
