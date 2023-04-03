@@ -2,9 +2,8 @@ class ReviewsController < ApplicationController
     before_action :find_review, :authorize_owner, only: [:update, :destroy]
  
     #POST /books/:book_id/reviews
-    def create
-        book = Book.find(params[:book_id])
-        review = book.reviews.create!(review_params)
+    def create     
+        review = current_user.reviews.create!(review_params)
         render json: review, status: :created
     end
 
@@ -27,7 +26,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.permit(:header, :comment, :book_id, :user_id)
+        params.permit(:header, :comment, :book_id)
     end
 
     #auth for patch/delete review

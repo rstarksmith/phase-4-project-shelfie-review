@@ -26,7 +26,6 @@ const BookReviewPage = ({
       });
   }, [user, id]);
   
-  console.log(book)
 
   const hideForm = () => setShowForm(false);
 

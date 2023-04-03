@@ -5,7 +5,6 @@ const ReviewForm = ({ user, currentBook, id, handleAddReview, hideForm, addBookR
     header: "",
     comment: "",
     book_id: +id,
-    user_id: user.id,
   })
   const [errors, setErrors] = useState(false)
 

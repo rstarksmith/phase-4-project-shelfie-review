@@ -23,7 +23,14 @@
 - Book
 
  
+Refactoring
+book.id, user.id.. current_user 
 
+
+has_many :reviews
+current_user.reviews
+Review.create(user_id: current_user.id)
+header: , comment: , book_id: 
 
 
 
