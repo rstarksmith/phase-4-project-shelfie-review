@@ -1,30 +1,34 @@
-import { useState } from 'react'
+import { useState } from "react";
 import ReviewEditForm from "./ReviewEditForm";
 
-const Review = ({ user, review, handleDeleteReview, handleEditReview, updateUserRev} ) => {
-  const [showEditForm, setShowEditForm] = useState(false)
-  const [errors, setErrors] = useState(false)
+const Review = ({
+  user,
+  review,
+  handleDeleteReview,
+  handleEditReview,
+  updateUserRev,
+}) => {
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   const deleteReview = () => {
     fetch(`/reviews/${review.id}`, {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(resp => {
-      if(resp.ok) {
-        handleDeleteReview(review.id)
+      method: "DELETE"
+    }).then((resp) => {
+      if (resp.ok) {
+        handleDeleteReview(review.id);
       } else {
-        resp.json().then(resp => setErrors(resp.errors))
-      } 
-    })
-  }
+        resp.json().then((resp) => setErrors(resp.errors));
+      }
+    });
+  };
 
   const toggleEditForm = () => {
-    setShowEditForm(!showEditForm)
-  }
+    setShowEditForm(!showEditForm);
+  };
 
-  if(!user) return <h1 className='header'>Loading...</h1>
-  if(errors) return <h1 className='header'>{errors}</h1>
+  // if (!user) return <h1 className="header">Loading...</h1>;
+  if (errors) return <h1 className="header">{errors}</h1>;
 
   if (review.user_id !== user.id)
     return (
@@ -60,6 +64,6 @@ const Review = ({ user, review, handleDeleteReview, handleEditReview, updateUser
       )}
     </div>
   );
-}
+};
 
-export default Review
+export default Review;

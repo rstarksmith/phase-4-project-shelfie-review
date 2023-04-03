@@ -14,7 +14,8 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/auth").then((resp) => {
+    fetch("/auth")
+    .then((resp) => {
       if (resp.ok) {
         resp.json().then((newUser) => {
           setUser(newUser);

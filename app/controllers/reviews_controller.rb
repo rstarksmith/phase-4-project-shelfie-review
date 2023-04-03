@@ -10,14 +10,12 @@ class ReviewsController < ApplicationController
 
     #PATCH /reviews/:id
     def update
-        # review = Review.find(params[:id])
         @review.update!(review_params)
         render json: @review, status: :ok
     end
 
     #DELETE /reviews/:id
     def destroy
-        # review = Review.find(params[:id])
         @review.destroy!
         head :no_content
     end

@@ -3,26 +3,21 @@ import { useState, useEffect } from "react"
 import BookForm from "./BookForm";
 import Book from "./Book";
 
-const BookList = ( {user } ) => {
+const BookList = () => {
   const [books, setBooks] = useState([]);
   const [showForm, setShowForm] = useState(false)
-  const [errors, setErrors] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate()
 
   useEffect(() => {
-    // if (user) {
       fetch("/books").then((resp) => {
         if (resp.ok) {
           resp.json().then((bookData) => setBooks(bookData));
         } else {
-          resp.json().then((data) => setErrors(data.error))
+          resp.json().then((data) => setError(data.error))
         }
       });
-    // }
-    // else {
-    //   setErrors("Not Authorized. Please Sign In.")
-    // }
-  }, [user]);
+  }, []);
 
 
    const handleAddBook = (newBook) => {
@@ -35,9 +30,8 @@ const BookList = ( {user } ) => {
    }
   
   const bookshelf = books.map(book => <Book key={book.id} book={book} />)
-  
 
-  if (errors) return <h1 className="header"> ⚠︎ {errors}</h1>
+  if (error) return <h1 className="header"> ⚠︎ {error}</h1>
 
   return (
     <div>

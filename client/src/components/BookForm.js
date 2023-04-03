@@ -102,7 +102,7 @@ const BookForm = ({ handleAddBook, noBookForm }) => {
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p className="err" key={value}>
+              <p className="err" key={`${key} ${value}`}>
                 ▸ {key} {value}
               </p>
             ))

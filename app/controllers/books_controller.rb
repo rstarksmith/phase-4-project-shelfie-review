@@ -18,7 +18,7 @@ class BooksController < ApplicationController
         render json: book, status: :created
     end
 
-    # def destroy
+    # def destroy - stretch admin
     #     book = Book.find(params[:id])
     #     book.destroy
     #     head :no_content

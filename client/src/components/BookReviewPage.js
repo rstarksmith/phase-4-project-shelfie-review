@@ -12,34 +12,34 @@ const BookReviewPage = ({
 }) => {
   const [book, setBook] = useState();
   const [showForm, setShowForm] = useState(false);
-  const [errors, setErrors] = useState(false);
+  const [error, setError] = useState(false);
   const { id } = useParams();
 
+
   useEffect(() => {
-    // if (user) {
       fetch(`/books/${id}`).then((resp) => {
         if (resp.ok) {
           resp.json().then((bookData) => setBook(bookData));
         } else {
-          resp.json().then((resp) => setErrors(resp.error));
+          resp.json().then((resp) => setError(resp.error));
         }
       });
-    // }
   }, [user, id]);
+  
+  console.log(book)
 
   const hideForm = () => setShowForm(false);
 
   const showReviewForm = () => setShowForm(true);
 
-  if (errors) {
-    return <h1 className="header">⚠︎ {errors}</h1>;
+  if(!user || error) {
+    return <h1 className="header">⚠︎ {error}</h1>;
   }
-  
+
   if (!book) {
     return <h1 className="header">Loading...</h1>;
   }
-
-
+  
   const handleAddReview = (newReview) => {
     setBook((prevState) => ({
       ...prevState,

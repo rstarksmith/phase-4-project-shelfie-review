@@ -11,14 +11,14 @@ const ShelfieShare = () => {
         if(resp.ok) {
           resp.json().then(setUserPhotos)
         }else{
-          resp.json().then(resp => setErrors(resp.errors))
+          resp.json().then(resp => setErrors(resp.error))
         }
       })
   }, []);
   
   const displayPhotos = userPhotos.map(userPhoto => <Shelfie key={userPhoto.id} userPhoto={userPhoto}/>)
 
-  if(errors) return <h1>{errors}</h1>;
+  if(errors) return <h1 className="header">⚠︎ {errors}</h1>;
   
   return (
     <div>
