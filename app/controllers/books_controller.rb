@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     #GET /books
     def index 
         books = Book.all.order(:title)
-        render json: books, status: :ok
+        render json: books, each_serializer: BookListSerializer, status: :ok
     end
 
     # GET /books/:id

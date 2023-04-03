@@ -12,7 +12,6 @@ const SignUp = ({ logInUser }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault()
-    setErrors(false)
     fetch("/signup", {
       method: "POST",
       headers: {

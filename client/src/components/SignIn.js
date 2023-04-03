@@ -9,7 +9,6 @@ const SignIn = ({ logInUser }) => {
 
   const handleSignIn = (e) => {
     e.preventDefault()
-    setErrors(false)
     fetch('/signin', {
       method: 'POST',
       headers: {'Content-Type': 'application/json',
@@ -63,8 +62,8 @@ const SignIn = ({ logInUser }) => {
         </form>
         {errors
           ? Object.entries(errors).map(([key, value]) => (
-              <p className="err" key={value}>
-                ▸ {key} {value}
+              <p className="err" key={`${key} ${value}`}>
+                ▸ {value}
               </p>
             ))
           : null}
