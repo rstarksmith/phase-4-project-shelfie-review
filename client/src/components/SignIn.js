@@ -63,7 +63,7 @@ const SignIn = ({ logInUser }) => {
         {errors
           ? Object.entries(errors).map(([key, value]) => (
               <p className="err" key={`${key} ${value}`}>
-                ▸ {value}
+                ⚠︎ {value}
               </p>
             ))
           : null}
