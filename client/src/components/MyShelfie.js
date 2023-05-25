@@ -34,7 +34,7 @@ const MyShelfie = ({ user, closeAccount, updateUserPhoto }) => {
    const editShelfie = (e) => {
     e.preventDefault()
     setErrors(null)
-    fetch(`/users/${user.id}}`, {
+    fetch(`/users/${user.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -21,7 +21,7 @@ ShelfieShare is an application for readers, built by readers. Share your current
 - **Delete** - User can delete their account
 
 
-<a href="https://www.loom.com/share/eca83dc5d1b34760af1c930b3719caa3">
+<a href="https://www.loom.com/share/98f70fbb05ef44f89b2d49177580c00a">
     <p>ShelfieShare - Watch Video</p>
     <img style="max-width:400px;" src="https://cdn.loom.com/sessions/thumbnails/eca83dc5d1b34760af1c930b3719caa3-1680309144138-with-play.gif">
   </a>
